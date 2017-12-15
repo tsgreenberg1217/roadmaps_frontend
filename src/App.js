@@ -1,53 +1,37 @@
 import React, { Component } from 'react';
 import Login from './components/Login'
 import AuthAdapter from './services/AuthAdapter'
-import './App.css';
+import './App.css'
+import {connect} from 'react-redux'
+import * as actions from './actions'
 
 
 class App extends Component {
-logIn(loginParams){
-    AuthAdapter.login(loginParams)
-      .then( user => {
-        if (!user.error) {
-          this.setState({
-            auth: { isLoggedIn: true, user: user}
-          })
-          localStorage.setItem('jwt', user.jwt )
-        }
-      })
+
+  componentDidMount(){
+    const token = localStorage.getItem("Token")
+    if(token){
+      this.props.confirmUser(token)
+    }
+    else{
+      console.log('token not found')
+    }
   }
 
-logout(){
-  localStorage.removeItem('jwt')
-  this.setState({ auth: { isLoggedIn: false, user:{}}})
-}
-
-componentWillMount(){
-      if (localStorage.getItem('jwt')) {
-       AuthAdapter.currentUser()
-         .then(user => {
-           if (!user.error) {
-             console.log("fetch user");
-             this.setState({
-               auth: {
-                 isLoggedIn: true,
-                 user: user
-               }
-             })
-           }
-         })
-     }
-   }
-
-
   render() {
+    console.log('APP is rendering', this.props);
     return (
-      <div>
-      This is the login page
-      <Login />
+      <div onClick={this.props.someAction}>
+        <Login />
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    user: state.auth.user
+  }
+}
+
+export default connect(mapStateToProps, actions)(App);

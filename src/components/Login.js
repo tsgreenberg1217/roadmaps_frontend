@@ -12,6 +12,7 @@ class Login extends React.Component{
     }
     this.handleNameChange = this.handleNameChange.bind(this)
     this.handlePasswordChange = this.handlePasswordChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleNameChange(name){
@@ -26,17 +27,26 @@ class Login extends React.Component{
     })
   }
 
+  handleSubmit(e){
+    e.preventDefault()
+    this.props.loginUser(this.state)
+  }
+
   render(){
+
+    console.log('hi');
+    console.log(this.props.state);
+
     return(
-      <form>
+      <form onSubmit = {(e) => this.handleSubmit(e)}>
       <input
-      type="text"
-      onChange = {(e) => this.handleNameChange(e.target.value)}
+        type="text"
+        onChange = {(e) => this.handleNameChange(e.target.value)}
       />
 
       <input
-      type="password"
-      onChange = {(e) => this.handlePasswordChange(e.target.value)}
+        type="password"
+        onChange = {(e) => this.handlePasswordChange(e.target.value)}
       />
 
       <button type="Submit"/>
@@ -45,4 +55,6 @@ class Login extends React.Component{
   }
 }
 
-export default Login
+
+
+export default connect(null, actions)(Login);
