@@ -1,4 +1,4 @@
-import {login, confirm} from '../services/backendApi'
+import {login, confirm, signup} from '../services/backendApi'
 
 export function loginUser(value){
   return function(dispatch){
@@ -20,7 +20,13 @@ export function loginUser(value){
 
 export function signupUser(value){
   return function(dispatch){
-
+    signup(value).then(json => {
+      localStorage.setItem("token", json["token"])
+      dispatch({
+        type: "SIGNUP_USER",
+        payload: json.user
+      })
+    }).then( () => {debugger} )
   }
 }
 

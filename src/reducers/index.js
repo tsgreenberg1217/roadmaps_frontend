@@ -12,6 +12,8 @@ function loginReducer(state = defaultState, action) {
         return {login: true, user: action.payload}
     case "CONFIRM_USER":
         return {login: true, user: action.payload}
+    case 'SIGNUP_USER':
+        return {login: true, user: action.payload}
     default:
       return state
   }

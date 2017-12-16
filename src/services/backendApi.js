@@ -28,7 +28,7 @@ export function confirm(token){
 }
 
 export function signup(user_params){
-  return fetch('http://localhost:3000/api/v1/auth', {
+  return fetch('http://localhost:3000/api/v1/users', {
     headers: HEADERS,
     method: 'POST',
     body: JSON.stringify(user_params)

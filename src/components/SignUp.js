@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 
 
-class Login extends React.Component{
+class SignUp extends React.Component{
   constructor(){
     super()
     this.state = {
@@ -29,7 +29,7 @@ class Login extends React.Component{
 
   handleSubmit(e){
     e.preventDefault()
-    this.props.loginUser(this.state)
+    this.props.signupUser(this.state)
   }
 
   render(){
@@ -51,7 +51,7 @@ class Login extends React.Component{
       onChange = {(e) => this.handlePasswordChange(e.target.value)}
       />
 
-      <button type="Submit"/>
+      <button type="Submit">Sign Up</button>
       </form>
 
       </div>
@@ -61,4 +61,4 @@ class Login extends React.Component{
 
 
 
-export default connect(null, actions)(Login);
+export default connect(null, actions)(SignUp);
