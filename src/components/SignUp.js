@@ -39,7 +39,7 @@ class Login extends React.Component{
 
     return(
       <div>
-      <h3>this is the login page</h3>
+      <h3>this is the signup page</h3>
       <form onSubmit = {(e) => this.handleSubmit(e)}>
       <input
       type="text"

@@ -18,6 +18,12 @@ export function loginUser(value){
   }
 }
 
+export function signupUser(value){
+  return function(dispatch){
+
+  }
+}
+
 export function confirmUser(token){
   return function(dispatch){
     confirm(token).then(json =>{
