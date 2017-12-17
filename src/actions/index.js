@@ -1,12 +1,21 @@
-import {login, confirm, signup, fetchNewTrip} from '../services/backendApi'
+import {login, confirm, signup, fetchNewTrip, fetchTrip} from '../services/backendApi'
 import {browserHistory } from "react-router-dom";
+
+
+export function getTrip(trip_id){
+  return function(dispatch){
+    fetchTrip(trip_id)
+
+  }
+}
+
 
 export function loginUser(value){
   return function(dispatch){
     login(value).then(json => {
       if (!json.error){
         localStorage.setItem("token", json["token"])
-        console.log('json', json);
+        // console.log('json', json);
         dispatch({
           type: "FETCH_USER",
           payload: json.user
