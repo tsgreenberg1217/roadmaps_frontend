@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import * as actions from '../actions';
+import { withRouter} from "react-router-dom";
 
 
 class SignUp extends React.Component{
@@ -61,4 +62,4 @@ class SignUp extends React.Component{
 
 
 
-export default connect(null, actions)(SignUp);
+export default connect(null, actions)(SignUp)

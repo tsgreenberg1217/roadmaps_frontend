@@ -1,4 +1,5 @@
-import {login, confirm, signup} from '../services/backendApi'
+import {login, confirm, signup, fetchNewTrip} from '../services/backendApi'
+import {browserHistory } from "react-router-dom";
 
 export function loginUser(value){
   return function(dispatch){
@@ -15,6 +16,19 @@ export function loginUser(value){
         console.log('invalid login')
       }
     })
+  }
+}
+
+export function createTrip(value){
+  const token = localStorage.Token
+  return function(dispatch){
+    fetchNewTrip({value, token}).then(json => {
+      dispatch({
+        type: "NEW_TRIP",
+        payload: json
+      })
+    })
+
   }
 }
 
@@ -38,6 +52,17 @@ export function confirmUser(token){
         payload: json
       })
     })
+  }
+}
+
+export function logoutUser(){
+  return function(dispatch){
+    localStorage.removeItem("token")
+    dispatch({
+      type: "LOGOUT_USER",
+      payload: null
+    })
+
   }
 }
 

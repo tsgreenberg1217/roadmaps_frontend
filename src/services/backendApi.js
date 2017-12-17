@@ -6,6 +6,17 @@ const HEADERS = {
 
 }
 
+export function fetchNewTrip(trip_params){
+  return fetch('http://localhost:3000/api/v1/trips',{
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': `Token ${trip_params.token}`
+    },
+    method: "POST",
+    body: JSON.stringify(trip_params)
+  }).then(res => res.json())
+}
 
 export function login(user_params){
   return fetch('http://localhost:3000/api/v1/auth',{

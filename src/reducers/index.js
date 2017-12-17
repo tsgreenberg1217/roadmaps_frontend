@@ -6,7 +6,7 @@ const defaultState = {
 }
 
 function loginReducer(state = defaultState, action) {
-  console.log('action sent to reducer', action)
+  // console.log('action sent to reducer', action)
   switch (action.type) {
     case "FETCH_USER":
         return {login: true, user: action.payload}
@@ -14,6 +14,10 @@ function loginReducer(state = defaultState, action) {
         return {login: true, user: action.payload}
     case 'SIGNUP_USER':
         return {login: true, user: action.payload}
+    case 'NEW_TRIP':
+        return {login: true, user: action.payload}
+    case "LOGOUT_USER":
+        return {login: false, user: {}}
     default:
       return state
   }
