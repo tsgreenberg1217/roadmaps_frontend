@@ -16,8 +16,8 @@ class TripShow extends React.Component{
     console.log('state in render is',this.props.trip)
     return(
       <div>
-      <h3>this is the trip show page!</h3>
-      <h3>{this.props.trip.selected_trip.title}</h3>
+        <h3>this is the trip show page!</h3>
+        <h3>{this.props.trip.selected_trip.title}</h3>
       </div>
 
     )
@@ -25,7 +25,7 @@ class TripShow extends React.Component{
 }
 
 const mapStateToProps = (state) => {
-  console.log(state)
+  // console.log(state)
   return{
     trip: state.auth
   }

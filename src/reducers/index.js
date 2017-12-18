@@ -20,9 +20,9 @@ function loginReducer(state = defaultState, action) {
         return {...state, login: false, user: {}}
     case "SELECT_TRIP":
         const filteredTrip = state.user.user_trips.find( trip => trip.id === action.payload)
-        // console.log(filteredTrip)
-        // console.log('state in reducer is',state.selected_trip)
         return {...state, login: true, user:state.user ,selected_trip: filteredTrip}
+    case "DELETE_TRIP":
+        return {...state, login: true, user:action.payload}
     default:
       return state
   }

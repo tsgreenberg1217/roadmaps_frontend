@@ -1,5 +1,18 @@
-import {login, confirm, signup, fetchNewTrip, fetchTrip} from '../services/backendApi'
+import {login, confirm, signup, fetchNewTrip, fetchTrip, destroyTrip} from '../services/backendApi'
 
+
+export function deleteTrip(trip_id){
+  // debugger
+  return function(dispatch){
+    destroyTrip(trip_id).then( user => {
+      debugger
+      dispatch({
+        type: "DELETE_TRIP",
+        payload: user
+      })
+    })
+  }
+}
 
 export function getTrip(trip_id, history, name){
   return function(dispatch){
