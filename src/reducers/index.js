@@ -7,7 +7,6 @@ const defaultState = {
 }
 
 function loginReducer(state = defaultState, action) {
-  // console.log('action sent to reducer', action)
   switch (action.type) {
     case "FETCH_USER":
         return {...state,login: true, user: action.payload}
@@ -20,25 +19,16 @@ function loginReducer(state = defaultState, action) {
     case "LOGOUT_USER":
         return {...state, login: false, user: {}}
     case "SELECT_TRIP":
-        return {...state, selected_trip: action.payload}
+        const filteredTrips = state.user.user_trips.filter( trip => trip.id === action.payload)
+        console.log(filteredTrips)
+        console.log(state.selected_trip)
+        return {...state, selected_trip: filteredTrips}
     default:
       return state
-  }
-}
-
-function tripReducer(state = defaultState, action){
-  switch (action.type) {
-    case "SELECT_TRIP":
-      console.log(state)
-      return {...state, selected_trip: action.payload}
-    default:
-    return state
-
   }
 }
 
 
 export default combineReducers({
   auth: loginReducer,
-  trip: tripReducer
 })

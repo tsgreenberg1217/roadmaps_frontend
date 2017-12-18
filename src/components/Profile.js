@@ -8,7 +8,7 @@ import * as actions from '../actions';
 
 class Profile extends React.Component{
   render(){
-    // console.log('rerender')
+    console.log('rerender', this.props)
     // console.log('selected trip is...', this.props.selected )
     const phrase = `welcome to your profile, ${this.props.user.name}`
     return(
@@ -24,7 +24,6 @@ class Profile extends React.Component{
 
         {(this.props.trips) ? <TripsContainer trips = {this.props.trips} />
         : <div>enter some trips</div>}
-        <h3>{this.props.selected}</h3>
       </div>
     )
   }
@@ -34,8 +33,7 @@ class Profile extends React.Component{
 const mapStateToProps = (state) => {
   return {
     user: state.auth.user,
-    trips: state.auth.user.user_trips,
-    selected: state.trip.selected
+    trips: state.auth.user.user_trips
   }
 }
 // <TripsContainer trips = {this.props.trips}/>

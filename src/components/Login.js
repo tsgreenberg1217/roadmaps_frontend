@@ -30,19 +30,19 @@ class Login extends React.Component{
 
   handleSubmit(e){
     e.preventDefault()
-    this.props.loginUser(this.state)
+    this.props.loginUser(this.state, this.props.history)
   }
 
   render(){
-
-    console.log('hi');
-    console.log(this.props.state);
+    // 
+    // console.log('hi');
+    // console.log("login props", this.props);
 
     return(
       <div>
         <h3>this is the login page</h3>
           <form onSubmit = {(e) => this.handleSubmit(e)}>
-          
+
             <input
             type="text"
             onChange = {(e) => this.handleNameChange(e.target.value)}

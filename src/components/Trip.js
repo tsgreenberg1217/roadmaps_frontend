@@ -1,14 +1,18 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import * as actions from '../actions';
+import { withRouter } from 'react-router-dom'
 
-const Trip = (props) =>{
-  console.log(props.getTrip);
-  return (
-    <div key = {props.id}
-      onClick = {()=> props.getTrip(props.id)}>
-      {props.title}
-    </div>
-  )
+
+
+class Trip extends React.Component{
+  render(){
+    return (
+      <div key = {this.props.id}
+        onClick = {()=> this.props.getTrip(this.props.id, this.props.history)}>
+        {this.props.title}
+      </div>
+    )
+  }
 }
-export default connect(null, actions)(Trip);
+export default withRouter(connect(null, actions)(Trip));
