@@ -9,10 +9,11 @@ class Trip extends React.Component{
   render(){
     return (
       <div key = {this.props.id}
-        onClick = {()=> this.props.getTrip(this.props.id, this.props.history)}>
+        onClick = {()=> this.props.getTrip(this.props.id, this.props.history, this.props.name)}>
         {this.props.title}
       </div>
     )
   }
 }
+
 export default withRouter(connect(null, actions)(Trip));

@@ -1,13 +1,13 @@
 import {login, confirm, signup, fetchNewTrip, fetchTrip} from '../services/backendApi'
 
 
-export function getTrip(trip_id, history){
+export function getTrip(trip_id, history, name){
   return function(dispatch){
       dispatch({
         type: "SELECT_TRIP",
         payload: trip_id
       })
-      // history.push("/profile/trip")
+      history.push(`/${name}/${trip_id}`)
     }
   }
 
@@ -23,7 +23,7 @@ export function loginUser(value, history){
           type: "FETCH_USER",
           payload: json.user
         })
-        history.push("/profile")
+        history.push(`/${json.user.name}`)
 
       }
       else{

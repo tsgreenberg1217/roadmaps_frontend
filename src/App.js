@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Login from './components/Login'
+import Map from './components/Map'
 import SignUp from './components/SignUp'
 import Profile from './components/Profile'
 import TripShow from './components/TripShow'
@@ -27,14 +28,12 @@ class App extends Component {
     return (
         <div>
           <Switch>
-            <Route exact path="/" component = {Login}/>
-            <Route path="/signup" component = {SignUp}/>
-            <Route path="/profile/trip" component = {TripShow}/>
-            <Route path="/profile" component = {Profile}/>
+            <Route exact path="/" component={Login}/>
+            <Route path="/:user/:trip" component={TripShow}/>
+            <Route path="/:user" component={Profile}/>
+            <Route path="/signup" component={SignUp}/>
           </Switch>
         </div>
-
-
     );
   }
 }

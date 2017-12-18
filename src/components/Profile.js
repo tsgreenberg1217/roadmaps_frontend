@@ -2,14 +2,14 @@ import React from 'react'
 import TripsContainer from './TripsContainer'
 import CreateTrip from './CreateTrip'
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom'
+
 import * as actions from '../actions';
 
 
 
 class Profile extends React.Component{
   render(){
-    console.log('rerender', this.props)
-    // console.log('selected trip is...', this.props.selected )
     const phrase = `welcome to your profile, ${this.props.user.name}`
     return(
       <div>
@@ -22,7 +22,10 @@ class Profile extends React.Component{
 
         <CreateTrip />
 
-        {(this.props.trips) ? <TripsContainer trips = {this.props.trips} />
+        {(this.props.trips) ?
+          <TripsContainer
+            trips = {this.props.trips}
+            name = {this.props.user.name}/>
         : <div>enter some trips</div>}
       </div>
     )
@@ -37,4 +40,4 @@ const mapStateToProps = (state) => {
   }
 }
 // <TripsContainer trips = {this.props.trips}/>
-export default connect(mapStateToProps, actions)(Profile);
+export default withRouter(connect(mapStateToProps, actions)(Profile));
