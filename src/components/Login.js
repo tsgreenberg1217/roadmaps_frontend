@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom'
 import * as actions from '../actions';
 
 
@@ -39,20 +40,22 @@ class Login extends React.Component{
 
     return(
       <div>
-      <h3>this is the login page</h3>
-      <form onSubmit = {(e) => this.handleSubmit(e)}>
-      <input
-      type="text"
-      onChange = {(e) => this.handleNameChange(e.target.value)}
-      />
+        <h3>this is the login page</h3>
+          <form onSubmit = {(e) => this.handleSubmit(e)}>
+          
+            <input
+            type="text"
+            onChange = {(e) => this.handleNameChange(e.target.value)}
+            />
 
-      <input
-      type="password"
-      onChange = {(e) => this.handlePasswordChange(e.target.value)}
-      />
+            <input
+            type="password"
+            onChange = {(e) => this.handlePasswordChange(e.target.value)}
+            />
 
-      <button type="Submit"/>
-      </form>
+            <button type="Submit"/>
+
+          </form>
 
       </div>
     )
@@ -61,4 +64,4 @@ class Login extends React.Component{
 
 
 
-export default connect(null, actions)(Login);
+export default withRouter(connect(null, actions)(Login));

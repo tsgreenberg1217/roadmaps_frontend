@@ -12,23 +12,23 @@ import * as actions from './actions'
 class App extends Component {
 
   componentDidMount(){
-    const token = localStorage.getItem("Token")
+    const token = localStorage.getItem("token")
     if(token){
       this.props.confirmUser(token)
     }
     else{
-      // console.log('token not found')
+      console.log('token not found')
     }
   }
 
   render() {
     // console.log('APP is rendering', this.props);
     return (
-      <div onClick={this.props.someAction}>
-        <Route exact path="/login" component = {Login}/>
-        <Route exact path="/signup" component = {SignUp}/>
-        <Route exact path="/profile" component = {Profile}/>
-      </div>
+        <div>
+            <Route exact path="/login" component = {Login}/>
+            <Route exact path="/signup" component = {SignUp}/>
+            <Route exact path="/profile" component = {Profile}/>
+        </div>
 
 
     );

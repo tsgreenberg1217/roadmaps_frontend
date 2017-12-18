@@ -6,8 +6,9 @@ const Trip = (props) =>{
   console.log(props.getTrip);
   return (
     <div key = {props.id}
-    onClick = {()=> props.getTrip(props.id)}
-    >{props.title}</div>
+      onClick = {()=> props.getTrip(props.id)}>
+      {props.title}
+    </div>
   )
 }
 export default connect(null, actions)(Trip);

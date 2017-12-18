@@ -1,10 +1,15 @@
 import {login, confirm, signup, fetchNewTrip, fetchTrip} from '../services/backendApi'
-import {browserHistory } from "react-router-dom";
+// import {browserHistory } from "react-router-dom";
 
 
 export function getTrip(trip_id){
   return function(dispatch){
-    fetchTrip(trip_id)
+    fetchTrip(trip_id).then(json => {
+      dispatch({
+        type: "SELECT_TRIP",
+        payload: json
+      })
+    })
 
   }
 }
@@ -14,12 +19,14 @@ export function loginUser(value){
   return function(dispatch){
     login(value).then(json => {
       if (!json.error){
-        localStorage.setItem("token", json["token"])
-        // console.log('json', json);
+        // debugger
+        localStorage.setItem("token", json.jwt)
         dispatch({
           type: "FETCH_USER",
           payload: json.user
         })
+        history.push("/profile")
+
       }
       else{
         console.log('invalid login')
@@ -29,7 +36,7 @@ export function loginUser(value){
 }
 
 export function createTrip(value){
-  const token = localStorage.Token
+  const token = localStorage.token
   return function(dispatch){
     fetchNewTrip({value, token}).then(json => {
       dispatch({

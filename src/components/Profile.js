@@ -1,7 +1,6 @@
 import React from 'react'
 import TripsContainer from './TripsContainer'
 import CreateTrip from './CreateTrip'
-
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 
@@ -9,7 +8,8 @@ import * as actions from '../actions';
 
 class Profile extends React.Component{
   render(){
-    // console.log('the user is',this.props.user);
+    // console.log('rerender')
+    // console.log('selected trip is...', this.props.selected )
     const phrase = `welcome to your profile, ${this.props.user.name}`
     return(
       <div>
@@ -24,7 +24,7 @@ class Profile extends React.Component{
 
         {(this.props.trips) ? <TripsContainer trips = {this.props.trips} />
         : <div>enter some trips</div>}
-
+        <h3>{this.props.selected}</h3>
       </div>
     )
   }
@@ -34,7 +34,8 @@ class Profile extends React.Component{
 const mapStateToProps = (state) => {
   return {
     user: state.auth.user,
-    trips: state.auth.user.user_trips
+    trips: state.auth.user.user_trips,
+    selected: state.trip.selected
   }
 }
 // <TripsContainer trips = {this.props.trips}/>

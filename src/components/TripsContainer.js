@@ -17,4 +17,4 @@ const TripsContainer = (props) =>{
 
 
 // export default connect(null, actions)(TripsContainer);
-export default TripsContainer
+export default connect(null, actions)(TripsContainer)
