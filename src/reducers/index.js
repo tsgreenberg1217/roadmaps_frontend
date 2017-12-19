@@ -24,21 +24,34 @@ function loginReducer(state = defaultState, action) {
         return {...state, login: true, user: action.payload}
     case 'SIGNUP_USER':
         return {...state, login: true, user: action.payload}
-    case 'NEW_TRIP':
-        return {...state, login: true, user: action.payload}
+    // case 'NEW_TRIP':
+    //     return {...state, login: true, user: action.payload}
     case "LOGOUT_USER":
         return {...state, login: false, user: {}}
-    case "SELECT_TRIP":
-        const filteredTrip = state.user.user_trips.find( trip => trip.id === action.payload)
-        return {...state ,selected_trip: filteredTrip}
-    case "DELETE_TRIP":
-        return {...state, login: true, user:action.payload}
+    // case "SELECT_TRIP":
+    //     const filteredTrip = state.user.user_trips.find( trip => trip.id === action.payload)
+    //     return {...state ,selected_trip: filteredTrip}
+    // case "DELETE_TRIP":
+    //     return {...state, login: true, user:action.payload}
     default:
       return state
   }
 }
 
-function tripReducer(state = )
+function tripReducer(state = tripDefault, action ){
+  switch (action.type) {
+    case 'NEW_TRIP':
+        return {...state, login: true, user: action.payload}
+    case "SELECT_TRIP":
+        const filteredTrip = state.user.user_trips.find( trip => trip.id === action.payload)
+        return {...state ,selected_trip: filteredTrip}
+    case "DELETE_TRIP":
+        return {...state, login: true, user:action.payload}
+
+    default:
+      return state
+  }
+}
 
 function stopReducer(state = stopDefault, action){
   switch (action.type) {
