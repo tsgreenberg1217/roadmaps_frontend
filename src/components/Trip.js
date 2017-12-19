@@ -1,4 +1,6 @@
 import React from 'react'
+import { Button } from 'semantic-ui-react'
+import { Image, Item } from 'semantic-ui-react'
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 import { withRouter } from 'react-router-dom'
@@ -12,14 +14,15 @@ class Trip extends React.Component{
         >
         {this.props.title}
 
-        <button
-        onClick = {()=> this.props.getTrip(this.props.id, this.props.history, this.props.name)}> go </button>
-
-        <button
+        <Button
+        primary
+        onClick = {()=> this.props.getTrip(this.props.id, this.props.history, this.props.name)}> go </Button>
+        <Button content='Click Here' />
+        <Button
         onClick = {() => this.props.deleteTrip(this.props.id)}
         >
         delete
-        </button>
+        </Button>
 
 
       </div>
