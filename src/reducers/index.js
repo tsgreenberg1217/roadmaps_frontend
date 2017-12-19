@@ -7,7 +7,13 @@ const defaultState = {
 }
 
 const stopDefault = {
-  stops: {}
+  stops: {},
+  ordered_stops: {}
+}
+
+const tripDefault = {
+  trips: {},
+  selected_trip: {}
 }
 
 function loginReducer(state = defaultState, action) {
@@ -27,18 +33,26 @@ function loginReducer(state = defaultState, action) {
         return {...state ,selected_trip: filteredTrip}
     case "DELETE_TRIP":
         return {...state, login: true, user:action.payload}
-
-
     default:
       return state
   }
 }
 
+function tripReducer(state = )
+
 function stopReducer(state = stopDefault, action){
   switch (action.type) {
     case "CREATE_STOP":
-    debugger
-      return {...state, stops: action.payload}
+
+    let id = 0
+    const orderList = Object.assign({},action.payload)
+      const ordered = [orderList].map(function(stop){
+        stop.id = ++id
+        return stop
+      })
+
+      return {...state, stops: action.payload, ordered_stops: ordered}
+
     default:
       return state
 
@@ -49,5 +63,6 @@ function stopReducer(state = stopDefault, action){
 
 
 export default combineReducers({
-  auth: loginReducer
+  auth: loginReducer,
+  stops: stopReducer
 })

@@ -18,11 +18,17 @@ class CreateStop extends React.Component{
     })
   }
 
+  handleStopDispatch(e,stop,trip_id){
+    e.preventDefault()
+    this.props.submitStop(stop,trip_id)
+  }
+
+
 
   render(){
     return(
       <div>
-        <form onSubmit = {()=>this.props.submitStop(this.state.stop, this.props.trip_id)}>
+        <form onSubmit = {(e)=>this.handleStopDispatch(e,this.state.stop, this.props.trip_id)}>
           <input type = "text"
           onChange={(e)=>this.handleStopChange(e.target.value)}/>
           <button type="Submit" />

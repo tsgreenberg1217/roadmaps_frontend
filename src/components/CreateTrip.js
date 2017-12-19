@@ -18,7 +18,7 @@ class CreateTrip extends React.Component{
     })
   }
 
-
+  
   render(){
     return(
       <div>

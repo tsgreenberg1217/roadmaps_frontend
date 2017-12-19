@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 import { withRouter } from 'react-router-dom'
 import CreateStop from './CreateStop'
+import StopContainer from './StopContainer'
 
 
 
@@ -22,21 +23,22 @@ class TripShow extends React.Component{
 
 
   render(){
-    console.log('state in render is',this.props.trip.selected_trip)
     return(
       <div>
         <h3>this is the trip show page!</h3>
         <CreateStop trip_id = {this.props.trip.selected_trip.id}/>
         <h3>{this.props.trip.selected_trip.title}</h3>
+        <StopContainer
+        stops = {this.props.stops} />
       </div>
-
     )
   }
 }
 
 const mapStateToProps = (state) => {
   return{
-    trip: state.auth
+    trip: state.auth,
+    stops: state.stops
   }
 }
 

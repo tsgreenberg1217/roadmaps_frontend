@@ -1,14 +1,20 @@
-import {login, confirm, signup, fetchNewTrip, fetchTrip, destroyTrip, createStop} from '../services/backendApi'
+import {login, confirm, signup, fetchNewTrip, fetchTrip, destroyTrip, createStop, showStops} from '../services/backendApi'
 
+
+
+
+export function fetchStops(){
+  const id = history.location.pathname.split('/')[2]
+  showStops(id)
+
+}
 
 
 export function submitStop(stop, trip_id){
-  // debugger
   return function(dispatch){
     const stopParams = {stop, trip_id}
-    // debugger
     createStop(stopParams).then( json => {
-      console.log(json)
+      debugger
       dispatch({
         type: "CREATE_STOP",
         payload: json
