@@ -5,7 +5,6 @@ export function deleteTrip(trip_id){
   // debugger
   return function(dispatch){
     destroyTrip(trip_id).then( user => {
-      debugger
       dispatch({
         type: "DELETE_TRIP",
         payload: user
@@ -27,11 +26,13 @@ export function getTrip(trip_id, history, name){
 
 
 export function loginUser(value, history){
+  debugger
   return function(dispatch){
     login(value).then(json => {
       if (!json.error){
-        // debugger
         localStorage.setItem("token", json.jwt)
+        json.user.user_trips = json.trips
+        debugger
         dispatch({
           type: "FETCH_USER",
           payload: json.user

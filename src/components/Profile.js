@@ -26,7 +26,7 @@ class Profile extends React.Component{
           <TripsContainer
             trips = {this.props.trips}
             name = {this.props.user.name}/>
-        : <div>enter some trips</div>}
+        : <div>null</div>}
       </div>
     )
   }
