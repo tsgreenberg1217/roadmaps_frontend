@@ -2,7 +2,6 @@ import {login, confirm, signup, fetchNewTrip, fetchTrip, destroyTrip} from '../s
 
 
 export function deleteTrip(trip_id){
-  // debugger
   return function(dispatch){
     destroyTrip(trip_id).then( user => {
       dispatch({
@@ -12,6 +11,23 @@ export function deleteTrip(trip_id){
     })
   }
 }
+
+export function refreshShowTrip(history){
+  const id = history.location.pathname.split('/')[2]
+  return function(dispatch){
+
+    fetchTrip(id).then( json =>{
+      dispatch({
+        type: "SELECT_TRIP",
+        payload: json.id
+      })
+      history.push(`/${name}/${id}`)
+    })
+  }
+
+
+}
+
 
 export function getTrip(trip_id, history, name){
   return function(dispatch){
@@ -26,13 +42,11 @@ export function getTrip(trip_id, history, name){
 
 
 export function loginUser(value, history){
-  debugger
   return function(dispatch){
     login(value).then(json => {
       if (!json.error){
         localStorage.setItem("token", json.jwt)
         json.user.user_trips = json.trips
-        debugger
         dispatch({
           type: "FETCH_USER",
           payload: json.user

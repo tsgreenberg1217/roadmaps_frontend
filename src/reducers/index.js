@@ -11,6 +11,7 @@ function loginReducer(state = defaultState, action) {
     case "FETCH_USER":
         return {...state,login: true, user: action.payload}
     case "CONFIRM_USER":
+    // debugger
         return {...state, login: true, user: action.payload}
     case 'SIGNUP_USER':
         return {...state, login: true, user: action.payload}
@@ -20,7 +21,8 @@ function loginReducer(state = defaultState, action) {
         return {...state, login: false, user: {}}
     case "SELECT_TRIP":
         const filteredTrip = state.user.user_trips.find( trip => trip.id === action.payload)
-        return {...state, login: true, user:state.user ,selected_trip: filteredTrip}
+        // debugger
+        return {...state ,selected_trip: filteredTrip}
     case "DELETE_TRIP":
         return {...state, login: true, user:action.payload}
     default:

@@ -19,11 +19,12 @@ export function destroyTrip(trip_id){
 
 
 export function fetchTrip(trip_id){
+  // debugger
   return fetch(`http://localhost:3000/api/v1/trips/${trip_id}`,{
     headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
-      'Authorization': `Token ${localStorage.Token}`
+      'Authorization': `Token ${localStorage.token}`
     },
   }).then(res => res.json())
 }

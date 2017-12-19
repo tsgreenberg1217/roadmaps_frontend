@@ -11,9 +11,14 @@ class TripShow extends React.Component{
     this.state = {}
   }
 
+  componentWillReceiveProps(){
+    (this.props.trip.selected_trip.id !== undefined)
+    ? console.log('location shown')
+    : this.props.refreshShowTrip(this.props.history)
+  }
 
   render(){
-    console.log('state in render is',this.props.trip)
+    // console.log('state in render is',this.props.trip)
     return(
       <div>
         <h3>this is the trip show page!</h3>
@@ -25,7 +30,6 @@ class TripShow extends React.Component{
 }
 
 const mapStateToProps = (state) => {
-  // console.log(state)
   return{
     trip: state.auth
   }
