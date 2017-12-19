@@ -9,7 +9,18 @@ import * as actions from '../actions';
 
 
 class Profile extends React.Component{
+  constructor(){
+    super()
+    this.state = {}
+  }
+
+  componentDidMount(){
+    this.props.allTrips()
+  }
+
+
   render(){
+    console.log(this.props.trips)
     const phrase = `welcome to your profile, ${this.props.user.name}`
     return(
       <div>
@@ -36,7 +47,8 @@ class Profile extends React.Component{
 const mapStateToProps = (state) => {
   return {
     user: state.auth.user,
-    trips: state.auth.user.user_trips
+    // trips: state.auth.user.user_trips
+    trips: state.trips
   }
 }
 // <TripsContainer trips = {this.props.trips}/>

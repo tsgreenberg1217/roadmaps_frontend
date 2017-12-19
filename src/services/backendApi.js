@@ -7,7 +7,15 @@ const HEADERS = {
 }
 
 
-
+export function getAllTrips(){
+  return fetch('http://localhost:3000/api/v1/trips',{
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': `Token ${localStorage.token}`
+    }
+  }).then(res => res.json())
+}
 
 export function createStop(stopParams){
   return fetch('http://localhost:3000/api/v1/stops', {

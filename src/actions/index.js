@@ -1,7 +1,16 @@
-import {login, confirm, signup, fetchNewTrip, fetchTrip, destroyTrip, createStop, showStops} from '../services/backendApi'
+import {login, confirm, signup, fetchNewTrip, fetchTrip, destroyTrip, createStop, showStops, getAllTrips} from '../services/backendApi'
 
 
-
+export function allTrips(){
+  return function(dispatch){
+    getAllTrips().then(json => {
+      dispatch({
+        type: "ALL_TRIPS",
+        payload: json
+      })
+    })
+  }
+}
 
 export function fetchStops(){
   const id = history.location.pathname.split('/')[2]

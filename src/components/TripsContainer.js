@@ -6,15 +6,15 @@ import { withRouter } from 'react-router-dom'
 
 
 const TripsContainer = (props) =>{
-  const tripDivs = props.trips.map(trip =>
-    <Trip
-    key = {trip.id}
-    id = {trip.id}
-    title = {trip.title}
-    name = {props.name}/>
-  )
+  // const tripDivs = props.trips.map(trip =>
+  //   <Trip
+  //   key = {trip.id}
+  //   id = {trip.id}
+  //   title = {trip.title}
+  //   name = {props.name}/>
+  // )
   return(
-    <div>{tripDivs}</div>
+    <div>sup</div>
   )
 }
 
