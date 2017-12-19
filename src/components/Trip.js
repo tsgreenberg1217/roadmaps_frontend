@@ -10,19 +10,31 @@ import { withRouter } from 'react-router-dom'
 class Trip extends React.Component{
   render(){
     return (
-      <div key = {this.props.id}
-        >
-        {this.props.title}
+      <div key = {this.props.id}>
+        <Item.Group>
+  <Item>
+    <Item.Image size='tiny' src='/assets/images/wireframe/image.png' />
 
-        <Button
-        primary
-        onClick = {()=> this.props.getTrip(this.props.id, this.props.history, this.props.name)}> go </Button>
-        <Button content='Click Here' />
-        <Button
-        onClick = {() => this.props.deleteTrip(this.props.id)}
-        >
-        delete
-        </Button>
+    <Item.Content>
+      <Item.Header as='a'>{this.props.title}</Item.Header>
+      <Item.Meta>Description</Item.Meta>
+      <Item.Description>
+        // <Image src='/assets/images/wireframe/short-paragraph.png' />
+      </Item.Description>
+      <Item.Extra>Additional Details</Item.Extra>
+    </Item.Content>
+  </Item>
+  <Button
+  primary
+  onClick = {()=> this.props.getTrip(this.props.id, this.props.history, this.props.name)}> go </Button>
+  <Button
+  onClick = {() => this.props.deleteTrip(this.props.id)}
+  >
+  delete
+  </Button>
+</Item.Group>
+
+
 
 
       </div>
