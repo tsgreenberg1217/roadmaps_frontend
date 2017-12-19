@@ -8,20 +8,23 @@ import { withRouter } from 'react-router-dom'
 class TripShow extends React.Component{
   constructor(){
     super()
-    this.state = {}
+    this.state = {
+      spot: ''
+    }
   }
 
   componentWillReceiveProps(){
     (this.props.trip.selected_trip.id !== undefined)
-    ? console.log('location shown')
+    ? console.log('location recieved')
     : this.props.refreshShowTrip(this.props.history)
   }
 
   render(){
-    // console.log('state in render is',this.props.trip)
+    console.log('state in render is',this.props.trip.selected_trip)
     return(
       <div>
         <h3>this is the trip show page!</h3>
+        
         <h3>{this.props.trip.selected_trip.title}</h3>
       </div>
 
