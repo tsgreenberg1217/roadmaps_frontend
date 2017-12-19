@@ -6,6 +6,10 @@ const defaultState = {
   selected_trip: {}
 }
 
+const stopDefault = {
+  stops: {}
+}
+
 function loginReducer(state = defaultState, action) {
   switch (action.type) {
     case "FETCH_USER":
@@ -23,26 +27,25 @@ function loginReducer(state = defaultState, action) {
         return {...state ,selected_trip: filteredTrip}
     case "DELETE_TRIP":
         return {...state, login: true, user:action.payload}
+
+
     default:
       return state
   }
 }
 
+function stopReducer(state = stopDefault, action){
+  switch (action.type) {
+    case "CREATE_STOP":
+    debugger
+      return {...state, stops: action.payload}
+    default:
+      return state
+
+  }
+}
 
 
-// function tripReducer(state = defaultState, action){
-//   switch (action.type) {
-//     case "SELECT_TRIP":
-//     console.log(state);
-//         const filteredTrip = state.user.user_trips.find( trip => trip.id === action.payload)
-//         console.log(filteredTrip)
-//         console.log(state.selected_trip)
-//         return {...state, login: true, user:state.user ,selected_trip: filteredTrip}
-//     default:
-//       return state
-//   }
-//
-// }
 
 
 export default combineReducers({

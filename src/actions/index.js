@@ -1,5 +1,21 @@
-import {login, confirm, signup, fetchNewTrip, fetchTrip, destroyTrip} from '../services/backendApi'
+import {login, confirm, signup, fetchNewTrip, fetchTrip, destroyTrip, createStop} from '../services/backendApi'
 
+
+
+export function submitStop(stop, trip_id){
+  // debugger
+  return function(dispatch){
+    const stopParams = {stop, trip_id}
+    // debugger
+    createStop(stopParams).then( json => {
+      console.log(json)
+      dispatch({
+        type: "CREATE_STOP",
+        payload: json
+      })
+    })
+  }
+}
 
 export function deleteTrip(trip_id){
   return function(dispatch){

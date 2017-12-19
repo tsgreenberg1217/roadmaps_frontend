@@ -6,6 +6,19 @@ const HEADERS = {
 
 }
 
+
+export function createStop(stopParams){
+  return fetch('http://localhost:3000/api/v1/stops', {
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': `Token ${localStorage.token}`
+    },
+    method: 'POST',
+    body: JSON.stringify(stopParams)
+  }).then(res => res.json())
+}
+
 export function destroyTrip(trip_id){
   return fetch(`http://localhost:3000/api/v1/trips/${trip_id}`,{
     headers: {
