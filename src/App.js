@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Login from './components/Login'
-import Map from './components/Map'
 import SignUp from './components/SignUp'
 import Profile from './components/Profile'
 import TripShow from './components/TripShow'
@@ -24,7 +23,6 @@ class App extends Component {
   }
 
   render() {
-    // console.log('APP is rendering', this.props);
     return (
         <div>
           <Switch>

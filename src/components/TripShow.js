@@ -4,6 +4,7 @@ import * as actions from '../actions';
 import { withRouter } from 'react-router-dom'
 import CreateStop from './CreateStop'
 import StopContainer from './StopContainer'
+import MyFancyComponent from './MyMapComponent'
 
 
 
@@ -16,20 +17,17 @@ class TripShow extends React.Component{
 
 
   componentDidMount(){
-    //right now this goes first then the user is confirmed second
     this.props.refreshShowTrip(this.props.history)
   }
 
-  // componentWillReceiveProps(){
-  //   debugger
-  //   if(this.props.trips.selected_trip.id === undefined){
-  //     this.props.refreshShowTrip(this.props.history)
-  //   }
-  //
-  // }
+
 
   render(){
     // debugger
+    const location = {
+      lat: 40.75,
+      lng: -73.98
+    }
     return(
       <div>
         <h3>this is the trip show page!</h3>
@@ -42,6 +40,8 @@ class TripShow extends React.Component{
         ? <StopContainer
         stops = {this.props.trips.selected_trip.stops}/>
         : <div>nothing</div>}
+
+        <MyFancyComponent center = {location}/>
 
       </div>
     )
