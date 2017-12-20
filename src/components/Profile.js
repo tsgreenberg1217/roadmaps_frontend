@@ -16,11 +16,13 @@ class Profile extends React.Component{
 
   componentDidMount(){
     this.props.allTrips()
+    // debugger
   }
 
 
   render(){
     console.log(this.props.trips)
+    // debugger
     const phrase = `welcome to your profile, ${this.props.user.name}`
     return(
       <div>
@@ -28,14 +30,13 @@ class Profile extends React.Component{
         onClick = {this.props.logoutUser} >
         Logout
         </button>
-
         {phrase}
 
         <CreateTrip />
 
-        {(this.props.trips) ?
+        {(this.props.trips.trips.length !== undefined) ?
           <TripsContainer
-            trips = {this.props.trips}
+            trips = {this.props.trips.trips}
             name = {this.props.user.name}/>
         : <div>null</div>}
       </div>
