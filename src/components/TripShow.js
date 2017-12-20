@@ -29,7 +29,7 @@ class TripShow extends React.Component{
   // }
 
   render(){
-    debugger
+    // debugger
     return(
       <div>
         <h3>this is the trip show page!</h3>

@@ -12,17 +12,19 @@ class StopContainer extends React.Component{
 
     }
   }
-
-  componentDidMount(){
-    debugger
-  }
-
+  //
+  // componentDidMount(){
+  //   debugger
+  // }
 
 
   render(){
+    const stopDivs = this.props.stops.map(stop =>
+      <div>{stop.name}</div>
+    )
     console.log('sc props are', this.props.stops)
     return(
-      <div>hello from sc</div>
+      <div>{stopDivs}</div>
     )
   }
 

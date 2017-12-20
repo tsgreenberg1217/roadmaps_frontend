@@ -3,7 +3,7 @@ import {login, confirm, signup, fetchNewTrip, fetchTrip, destroyTrip, createStop
 
 export function allTrips(){
   return function(dispatch){
-    debugger
+    // debugger
     getAllTrips().then(json => {
       dispatch({
         type: "ALL_TRIPS",
@@ -21,11 +21,11 @@ export function allTrips(){
 
 
 export function submitStop(stop, trip_id){
-  debugger
+  // debugger
   return function(dispatch){
     const stopParams = {stop, trip_id}
     createStop(stopParams).then( json => {
-      debugger
+      // debugger
       dispatch({
         type: "CREATE_STOP",
         payload: json
@@ -51,7 +51,7 @@ export function refreshShowTrip(history){
   return function(dispatch){
       getAllTrips().then(json =>{
         const obj = {trips: json, id: id}
-        debugger
+        // debugger
         dispatch({
           type: "REFRESH_TRIPS",
           payload: obj
