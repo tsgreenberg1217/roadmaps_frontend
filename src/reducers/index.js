@@ -69,7 +69,7 @@ function stopReducer(state = stopDefault, action){
         stop.id = ++id
         return stop
       })
-
+      debugger
       return {...state, stops: action.payload, ordered_stops: ordered}
 
     default:

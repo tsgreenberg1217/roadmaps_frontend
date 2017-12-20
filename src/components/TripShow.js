@@ -11,7 +11,6 @@ class TripShow extends React.Component{
   constructor(){
     super()
     this.state = {
-      spot: ''
     }
   }
 
@@ -29,12 +28,20 @@ class TripShow extends React.Component{
   //
   // }
 
-
   render(){
+    debugger
     return(
       <div>
         <h3>this is the trip show page!</h3>
         <h3>{this.props.trips.selected_trip.title}</h3>
+
+        <CreateStop
+        trip_id = {this.props.trips.selected_trip.id}/>
+
+        {(this.props.trips.selected_trip.id !== undefined)
+        ? <StopContainer
+        stops = {this.props.trips.selected_trip.stops}/>
+        : <div>nothing</div>}
 
       </div>
     )

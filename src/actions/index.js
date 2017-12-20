@@ -21,10 +21,11 @@ export function allTrips(){
 
 
 export function submitStop(stop, trip_id){
+  debugger
   return function(dispatch){
     const stopParams = {stop, trip_id}
     createStop(stopParams).then( json => {
-      //
+      debugger
       dispatch({
         type: "CREATE_STOP",
         payload: json

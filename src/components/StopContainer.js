@@ -13,36 +13,22 @@ class StopContainer extends React.Component{
     }
   }
 
-  // componentWillMount(){
-  //
-  //   (this.props.stops.stops[0] !== undefined) ?
-  //   console.log('yes')
-  //   : this.props.fetchStops(this.props.history)
-  // }
-
-  componentWillReceiveProps(){
-    // debugger
-    // (this.props.stops.id !== undefined) ? console.log('we have stops') : console.log('oops')
+  componentDidMount(){
+    debugger
   }
 
+
+
   render(){
-    console.log('this SC props are:',this.props)
+    console.log('sc props are', this.props.stops)
     return(
-      <div>
-      </div>
+      <div>hello from sc</div>
     )
   }
 
+
 }
 
 
 
-const mapStateToProps = (state) => {
-  return {
-    stops: state.stops
-  }
-}
-
-
-
-export default withRouter(connect(mapStateToProps, actions)(StopContainer))
+export default withRouter(connect(null, actions)(StopContainer))
