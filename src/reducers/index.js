@@ -19,12 +19,16 @@ const tripDefault = {
 function loginReducer(state = defaultState, action) {
   switch (action.type) {
     case "FETCH_USER":
+    // debugger
         return {...state,login: true, user: action.payload}
     case "CONFIRM_USER":
+    // debugger
         return {...state, login: true, user: action.payload}
     case 'SIGNUP_USER':
+    // debugger
         return {...state, login: true, user: action.payload}
     case "LOGOUT_USER":
+    // debugger
         return {...state, login: false, user: {}}
     default:
       return state
@@ -34,14 +38,22 @@ function loginReducer(state = defaultState, action) {
 function tripReducer(state = tripDefault, action ){
   switch (action.type) {
     case "ALL_TRIPS":
+    // debugger
       return {...state, trips: action.payload}
     case 'NEW_TRIP':
-        return {...state, login: true, user: action.payload}
+    // debugger
+        return {...state, login: true, trips: action.payload}
     case "SELECT_TRIP":
-        const filteredTrip = state.user.user_trips.find( trip => trip.id === action.payload)
-        return {...state ,selected_trip: filteredTrip}
+    // debugger
+        const filteredTrip2 = state.trips.find( trip => trip.id === action.payload)
+        return {...state ,selected_trip: filteredTrip2}
     case "DELETE_TRIP":
-        return {...state, login: true, user:action.payload}
+    // debugger
+        return {...state, login: true, trips:action.payload}
+    case "REFRESH_TRIPS":
+          const filteredTrip = action.payload.trips.find( trip => trip.id === action.payload.id)
+          // debugger
+          return {...state ,trips: action.payload.trips ,selected_trip: filteredTrip}
     default:
       return state
   }

@@ -15,21 +15,27 @@ class TripShow extends React.Component{
     }
   }
 
-  componentWillReceiveProps(){
-    (this.props.trip.selected_trip.id !== undefined)
-    ? console.log('location recieved')
-    : this.props.refreshShowTrip(this.props.history)
+
+  componentDidMount(){
+    //right now this goes first then the user is confirmed second
+    this.props.refreshShowTrip(this.props.history)
   }
+
+  // componentWillReceiveProps(){
+  //   debugger
+  //   if(this.props.trips.selected_trip.id === undefined){
+  //     this.props.refreshShowTrip(this.props.history)
+  //   }
+  //
+  // }
 
 
   render(){
     return(
       <div>
         <h3>this is the trip show page!</h3>
-        <CreateStop trip_id = {this.props.trip.selected_trip.id}/>
-        <h3>{this.props.trip.selected_trip.title}</h3>
-        <StopContainer
-        stops = {this.props.stops} />
+        <h3>{this.props.trips.selected_trip.title}</h3>
+
       </div>
     )
   }
@@ -37,9 +43,12 @@ class TripShow extends React.Component{
 
 const mapStateToProps = (state) => {
   return{
-    trip: state.auth,
+    trips: state.trips,
     stops: state.stops
   }
 }
-
+// <CreateStop trip_id = {this.props.trip.selected_trip.id}/>
+// <h3>{this.props.trip.selected_trip.title}</h3>
+// <StopContainer
+// stops = {this.props.stops} />
 export default withRouter(connect(mapStateToProps, actions)(TripShow));

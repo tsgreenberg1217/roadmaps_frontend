@@ -3,6 +3,7 @@ import {login, confirm, signup, fetchNewTrip, fetchTrip, destroyTrip, createStop
 
 export function allTrips(){
   return function(dispatch){
+    debugger
     getAllTrips().then(json => {
       dispatch({
         type: "ALL_TRIPS",
@@ -12,18 +13,18 @@ export function allTrips(){
   }
 }
 
-export function fetchStops(){
-  const id = history.location.pathname.split('/')[2]
-  showStops(id)
-
-}
+// export function fetchStops(){
+//   const id = history.location.pathname.split('/')[2]
+//   showStops(id)
+//
+// }
 
 
 export function submitStop(stop, trip_id){
   return function(dispatch){
     const stopParams = {stop, trip_id}
     createStop(stopParams).then( json => {
-      debugger
+      //
       dispatch({
         type: "CREATE_STOP",
         payload: json
@@ -35,33 +36,39 @@ export function submitStop(stop, trip_id){
 export function deleteTrip(trip_id){
   return function(dispatch){
     destroyTrip(trip_id).then( user => {
+      //
       dispatch({
         type: "DELETE_TRIP",
-        payload: user
+        payload: user.user_trips
       })
     })
   }
 }
 
 export function refreshShowTrip(history){
-  const id = history.location.pathname.split('/')[2]
+  const id = parseInt(history.location.pathname.split('/')[2])
   return function(dispatch){
+      getAllTrips().then(json =>{
+        const obj = {trips: json, id: id}
+        debugger
+        dispatch({
+          type: "REFRESH_TRIPS",
+          payload: obj
 
-    fetchTrip(id).then( json =>{
-      dispatch({
-        type: "SELECT_TRIP",
-        payload: json.id
+        })
       })
-      history.push(`/${name}/${id}`)
-    })
+      // history.push(`/${name}/${id}`)
+    }
   }
 
 
-}
+
 
 
 export function getTrip(trip_id, history, name){
+
   return function(dispatch){
+
       dispatch({
         type: "SELECT_TRIP",
         payload: trip_id

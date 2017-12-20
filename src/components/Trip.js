@@ -8,6 +8,9 @@ import { withRouter } from 'react-router-dom'
 
 
 class Trip extends React.Component{
+  componentDidMount(){
+    // debugger
+  }
   render(){
     return (
       <div key = {this.props.id}>
@@ -29,7 +32,6 @@ class Trip extends React.Component{
         <div className='ui two buttons'>
           <Button basic color='green'
           onClick = {()=> this.props.getTrip(this.props.id, this.props.history, this.props.name)}>Go</Button>
-
           <Button basic color='red'
           onClick = {() => this.props.deleteTrip(this.props.id)}>Delete</Button>
         </div>

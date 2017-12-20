@@ -30,6 +30,7 @@ export function createStop(stopParams){
 }
 
 export function destroyTrip(trip_id){
+  // debugger
   return fetch(`http://localhost:3000/api/v1/trips/${trip_id}`,{
     headers: {
       'Content-Type': 'application/json',
