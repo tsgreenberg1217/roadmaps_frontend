@@ -9,7 +9,7 @@ import {withScriptjs, withGoogleMap, GoogleMap, DirectionsRenderer} from 'react-
 class MyMapComponent extends React.Component {
   constructor(props){
     super(props)
-    this.state = {}
+    // this.state = {}
   }
 
 
@@ -60,8 +60,8 @@ class MyMapComponent extends React.Component {
 
     return (
       <DirectionsComponent
-        isMarkerShown={this.state.isMarkerShown}
-        onMarkerClick={this.handleMarkerClick}
+        // isMarkerShown={this.state.isMarkerShown}
+        // onMarkerClick={this.handleMarkerClick}
       />
     )
   }

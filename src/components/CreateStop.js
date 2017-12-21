@@ -23,6 +23,7 @@ class CreateStop extends React.Component{
   handleStopDispatch(e,stop,trip_id){
     e.preventDefault()
     this.props.submitStop(stop,trip_id, this.props.history)
+    this.props.refreshShowTrip(history)
   }
 
 

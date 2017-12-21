@@ -13,17 +13,24 @@ export function allTrips(){
 }
 
 export function submitStop(stop, trip_id, history){
-
+  // debugger
   return function(dispatch){
     const stopParams = {stop, trip_id}
     createStop(stopParams).then( json => {
-      const trip_id = json[0].trip_id
       // debugger
-          dispatch({
+      // const trip_id = json[0].trip_id
+      dispatch({
         type: "CREATE_STOP",
-        payload: json
+        payload: json.stops
       })
-      this.refreshShowTrip(history)
+      // debugger
+      const trip = json.trip.find(trip => trip.id === json.stop.trip_id)
+      trip.stops = json.stops
+      // debugger
+      dispatch({
+        type: "REFRESH_TRIP",
+        payload: trip
+      })
     })
   }
 }
