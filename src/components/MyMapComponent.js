@@ -4,8 +4,6 @@ import { compose, withProps, lifecycle } from "recompose"
 import { withScriptjs, withGoogleMap, GoogleMap, DirectionsRenderer } from "react-google-maps"
 
 
-const google = window.google;
-
 const MyMapComponent = compose(
   withProps({
     googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyBkkZymmIhFolJNzBjNf4EIxZTy8ORmujo&v=3.exp&libraries=geometry,drawing,places",
@@ -64,7 +62,7 @@ class MyFancyComponent extends React.PureComponent {
   // }
 
   render() {
-    debugger
+    // debugger
     return (
       <MyMapComponent/>
     )
