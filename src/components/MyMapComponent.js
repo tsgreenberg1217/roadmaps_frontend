@@ -1,14 +1,14 @@
-const { compose, withProps, lifecycle } = require("recompose");
-const {
-  withScriptjs,
-  withGoogleMap,
-  GoogleMap,
-  DirectionsRenderer,
-} = require("react-google-maps");
+import React from "react"
 
-const MapWithADirectionsRenderer = compose(
+import { compose, withProps, lifecycle } from "recompose"
+import { withScriptjs, withGoogleMap, GoogleMap, DirectionsRenderer } from "react-google-maps"
+
+
+const google = window.google;
+
+const MyMapComponent = compose(
   withProps({
-    googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyC4R6AN7SmujjPUIGKdyao2Kqitzr1kiRg&v=3.exp&libraries=geometry,drawing,places",
+    googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyBkkZymmIhFolJNzBjNf4EIxZTy8ORmujo&v=3.exp&libraries=geometry,drawing,places",
     loadingElement: <div style={{ height: `100%` }} />,
     containerElement: <div style={{ height: `400px` }} />,
     mapElement: <div style={{ height: `100%` }} />,
@@ -43,4 +43,32 @@ const MapWithADirectionsRenderer = compose(
   </GoogleMap>
 );
 
-<MapWithADirectionsRenderer />
+class MyFancyComponent extends React.PureComponent {
+  // state = {
+  //   isMarkerShown: false,
+  // }
+  //
+  // componentDidMount() {
+  //   this.delayedShowMarker()
+  // }
+  //
+  // delayedShowMarker = () => {
+  //   setTimeout(() => {
+  //     this.setState({ isMarkerShown: true })
+  //   }, 3000)
+  // }
+  //
+  // handleMarkerClick = () => {
+  //   this.setState({ isMarkerShown: false })
+  //   this.delayedShowMarker()
+  // }
+
+  render() {
+    debugger
+    return (
+      <MyMapComponent/>
+    )
+  }
+}
+
+export default MyFancyComponent
