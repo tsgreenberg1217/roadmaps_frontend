@@ -21,10 +21,10 @@ const MyFancyComponent = compose(
   withScriptjs,
   withGoogleMap,
   lifecycle({
+
     componentDidMount() {
       const DirectionsService = new google.maps.DirectionsService();
 
-      // debugger
       DirectionsService.route({
         origin: new google.maps.LatLng(41.8507300, -87.6512600),
         waypoints: [{location: 'williamsburg, VA', stopover: true}, {location: 'New York, NY', stopover: true},{location: 'Atlanta, GA', stopover: true}],
