@@ -35,7 +35,7 @@ const MyFancyComponent = compose(
           this.setState({
             directions: {...result},
             markers: true
-          }, () => {debugger});
+          })
         } else {
           console.error(`error fetching directions ${result}`);
         }
@@ -44,7 +44,7 @@ const MyFancyComponent = compose(
   })
 )(props =>
   <GoogleMap
-    defaultZoom={7}
+    defaultZoom={3}
     defaultCenter={new google.maps.LatLng(41.8507300, -87.6512600)}
   >
     {props.directions && <DirectionsRenderer directions={props.directions} suppressMarkers={props.markers}/>}
