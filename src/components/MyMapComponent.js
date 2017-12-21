@@ -73,4 +73,4 @@ class MyFancyComponent extends React.Component {
 }
 
 
-export default () => <MyFancyComponent />
+export default MyFancyComponent
