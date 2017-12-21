@@ -22,7 +22,7 @@ const MyFancyComponent = compose(
   withGoogleMap,
   lifecycle({
     componentDidMount() {
-      debugger
+      // debugger
       const DirectionsService = new google.maps.DirectionsService();
 
       DirectionsService.route({
