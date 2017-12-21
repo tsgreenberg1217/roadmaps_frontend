@@ -3,8 +3,7 @@ import {login, confirm, signup, fetchNewTrip, fetchTrip, destroyTrip, createStop
 
 export function allTrips(){
   return function(dispatch){
-    // debugger
-    getAllTrips().then(json => {
+      getAllTrips().then(json => {
       dispatch({
         type: "ALL_TRIPS",
         payload: json
@@ -13,23 +12,18 @@ export function allTrips(){
   }
 }
 
-// export function fetchStops(){
-//   const id = history.location.pathname.split('/')[2]
-//   showStops(id)
-//
-// }
+export function submitStop(stop, trip_id, history){
 
-
-export function submitStop(stop, trip_id){
-  // debugger
   return function(dispatch){
     const stopParams = {stop, trip_id}
     createStop(stopParams).then( json => {
+      const trip_id = json[0].trip_id
       // debugger
-      dispatch({
+          dispatch({
         type: "CREATE_STOP",
         payload: json
       })
+      this.refreshShowTrip(history)
     })
   }
 }
@@ -51,14 +45,16 @@ export function refreshShowTrip(history){
   return function(dispatch){
       getAllTrips().then(json =>{
         const obj = {trips: json, id: id}
-        // debugger
         dispatch({
           type: "REFRESH_TRIPS",
           payload: obj
-
+        })
+        const stops = obj.trips.find(trip => trip.id === id).stops
+        dispatch({
+          type: "ALL_STOPS",
+          payload: stops
         })
       })
-      // history.push(`/${name}/${id}`)
     }
   }
 

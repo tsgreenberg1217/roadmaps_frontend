@@ -4,7 +4,7 @@ import * as actions from '../actions';
 import { withRouter } from 'react-router-dom'
 import CreateStop from './CreateStop'
 import StopContainer from './StopContainer'
-import MyFancyComponent from './MyMapComponent'
+import MyMapComponent from './MyMapComponent'
 
 
 
@@ -41,7 +41,7 @@ class TripShow extends React.Component{
         stops = {this.props.trips.selected_trip.stops}/>
         : <div>nothing</div>}
 
-        <MyFancyComponent center = {location}/>
+        <MyMapComponent center = {location}/>
 
       </div>
     )

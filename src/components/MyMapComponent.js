@@ -6,12 +6,7 @@ import React from 'react'
 import  { compose, withProps, lifecycle } from 'recompose'
 import {withScriptjs, withGoogleMap, GoogleMap, DirectionsRenderer} from 'react-google-maps'
 
-
-
-
-
-
-class MyFancyComponent extends React.Component {
+class MyMapComponent extends React.Component {
   constructor(props){
     super(props)
     this.state = {}
@@ -21,7 +16,7 @@ class MyFancyComponent extends React.Component {
   render() {
     console.log(this.props)
 
-    const MyMapComponent = compose(
+    const DirectionsComponent = compose(
       withProps({
         googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyAa_1I2oAv-cNMvVnW0EeAW6WaUeBniIhE&v=3.exp&libraries=geometry,drawing,places",
         loadingElement: <div style={{ height: `100%` }} />,
@@ -64,7 +59,7 @@ class MyFancyComponent extends React.Component {
 
 
     return (
-      <MyMapComponent
+      <DirectionsComponent
         isMarkerShown={this.state.isMarkerShown}
         onMarkerClick={this.handleMarkerClick}
       />
@@ -73,4 +68,4 @@ class MyFancyComponent extends React.Component {
 }
 
 
-export default MyFancyComponent
+export default MyMapComponent

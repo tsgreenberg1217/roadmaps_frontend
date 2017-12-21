@@ -18,7 +18,6 @@ export function getAllTrips(){
 }
 
 export function createStop(stopParams){
-  debugger
   return fetch('http://localhost:3000/api/v1/stops', {
     headers: {
       'Content-Type': 'application/json',
@@ -31,7 +30,6 @@ export function createStop(stopParams){
 }
 
 export function destroyTrip(trip_id){
-  // debugger
   return fetch(`http://localhost:3000/api/v1/trips/${trip_id}`,{
     headers: {
       'Content-Type': 'application/json',
@@ -44,7 +42,6 @@ export function destroyTrip(trip_id){
 
 
 export function fetchTrip(trip_id){
-  // debugger
   return fetch(`http://localhost:3000/api/v1/trips/${trip_id}`,{
     headers: {
       'Content-Type': 'application/json',
