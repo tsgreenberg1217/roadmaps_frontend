@@ -1,12 +1,23 @@
-import React from "react"
 
-import { compose, withProps, lifecycle } from "recompose"
-import { withScriptjs, withGoogleMap, GoogleMap, DirectionsRenderer } from "react-google-maps"
+/*global google*/
+// const google = window.google;
 
+import React from 'react'
+const { compose, withProps, lifecycle } = require("recompose");
+const {
+  withScriptjs,
+  withGoogleMap,
+  GoogleMap,
+  DirectionsRenderer,
+} = require("react-google-maps");
 
+<<<<<<< HEAD
 const MyMapComponent = compose(
+=======
+const MyFancyComponent = compose(
+>>>>>>> waypoint-feature-async-fix
   withProps({
-    googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyBkkZymmIhFolJNzBjNf4EIxZTy8ORmujo&v=3.exp&libraries=geometry,drawing,places",
+    googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyAa_1I2oAv-cNMvVnW0EeAW6WaUeBniIhE&v=3.exp&libraries=geometry,drawing,places",
     loadingElement: <div style={{ height: `100%` }} />,
     containerElement: <div style={{ height: `400px` }} />,
     mapElement: <div style={{ height: `100%` }} />,
@@ -15,6 +26,7 @@ const MyMapComponent = compose(
   withGoogleMap,
   lifecycle({
     componentDidMount() {
+      // debugger
       const DirectionsService = new google.maps.DirectionsService();
 
       DirectionsService.route({
@@ -41,6 +53,7 @@ const MyMapComponent = compose(
   </GoogleMap>
 );
 
+<<<<<<< HEAD
 class MyFancyComponent extends React.PureComponent {
   // state = {
   //   isMarkerShown: false,
@@ -68,5 +81,7 @@ class MyFancyComponent extends React.PureComponent {
     )
   }
 }
+=======
+>>>>>>> waypoint-feature-async-fix
 
-export default MyFancyComponent
+export default () => <MyFancyComponent />
