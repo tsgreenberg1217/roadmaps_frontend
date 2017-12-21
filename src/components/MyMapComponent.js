@@ -3,13 +3,9 @@
 // const google = window.google;
 
 import React from 'react'
-const { compose, withProps, lifecycle } = require("recompose");
-const {
-  withScriptjs,
-  withGoogleMap,
-  GoogleMap,
-  DirectionsRenderer,
-} = require("react-google-maps");
+import  { compose, withProps, lifecycle } from 'recompose'
+import {withScriptjs, withGoogleMap, GoogleMap, DirectionsRenderer} from 'react-google-maps'
+
 
 const MyFancyComponent = compose(
   withProps({
