@@ -10,14 +10,15 @@ class Stop extends React.Component{
   }
 
   handleDelete(stop_id, trip_id){
-    debugger
+    // debugger
     this.props.deleteStop(stop_id,trip_id)
   }
 
   render(){
     return (
       <div>
-        <p>{this.props.name}</p>
+        <p></p>
+        <p>{this.props.order}: {this.props.name}</p>
         <button
         onClick = {() => this.handleDelete(this.props.id, this.props.trip_id)}>delete</button>
       </div>

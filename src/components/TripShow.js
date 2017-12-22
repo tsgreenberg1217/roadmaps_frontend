@@ -49,9 +49,10 @@ class TripShow extends React.Component{
 }
 
 const mapStateToProps = (state) => {
+  // console.log(state)
   return{
     trips: state.trips,
-    stops: state.stops
+    // stops: state.stops
   }
 }
 // <CreateStop trip_id = {this.props.trip.selected_trip.id}/>

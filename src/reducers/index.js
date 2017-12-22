@@ -1,3 +1,6 @@
+
+
+
 import {combineReducers} from 'redux'
 
 const defaultState = {
@@ -37,25 +40,27 @@ function loginReducer(state = defaultState, action) {
 
 function tripReducer(state = tripDefault, action ){
   switch (action.type) {
+
     case "ALL_TRIPS":
-      // debugger
-      return {...state, trips: action.payload}
+        return {...state, trips: action.payload}
+
     case 'NEW_TRIP':
-
         return {...state, login: true, trips: action.payload}
-    case "SELECT_TRIP":
 
+    case "SELECT_TRIP":
         const filteredTrip2 = state.trips.find( trip => trip.id === action.payload)
         return {...state ,selected_trip: filteredTrip2}
-    case "DELETE_TRIP":
 
+    case "DELETE_TRIP":
         return {...state, login: true, trips:action.payload}
+
     case "REFRESH_TRIPS":
           const filteredTrip = action.payload.trips.find( trip => trip.id === action.payload.id)
           return {...state ,trips: action.payload.trips ,selected_trip: filteredTrip}
+
      case "REFRESH_TRIP":
-    //  debugger
           return {...state, selected_trip: action.payload}
+
     default:
       return state
   }
@@ -63,21 +68,13 @@ function tripReducer(state = tripDefault, action ){
 
 function stopReducer(state = stopDefault, action){
 
-  function stopOrderer(payload){
-      let id = 0
-      const orderList = Object.assign({},payload)
-      for(let key in orderList){orderList[key].id = ++id}
-      return orderList
-  }
-
   switch (action.type) {
 
     case "CREATE_STOP":
       return {...state, stops: action.payload}
 
-      case "ALL_STOPS":
-      // debugger
-      return {...state, stops: action.payload, ordered_stops: stopOrderer(action.payload)}
+    case "ALL_STOPS":
+      return {...state, stops: action.payload}
 
     default:
       return state

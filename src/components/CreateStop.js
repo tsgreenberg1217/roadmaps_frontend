@@ -8,6 +8,7 @@ class CreateStop extends React.Component{
   constructor(){
     super()
     this.state={
+      order: '1',
       stop: ''
     }
     this.handleStopChange = this.handleStopChange.bind(this)
@@ -20,10 +21,24 @@ class CreateStop extends React.Component{
     })
   }
 
-  handleStopDispatch(e,stop,trip_id){
+  // addAfterSubmit(){
+  //   const num = parseInt(this.state.order) + 1
+  //   this.setState({
+  //     order:
+  //   })
+  // }
+
+  handleOrderChange(num){
+    this.setState({
+      order: num
+    })
+  }
+
+  handleStopDispatch(e,state,trip_id){
     e.preventDefault()
-    this.props.submitStop(stop,trip_id, this.props.history)
-    this.props.refreshShowTrip(history)
+    this.props.submitStop(state,trip_id)
+    //is this syncronus?
+    // this.props.refreshShowTrip(history)
   }
 
 
@@ -31,7 +46,14 @@ class CreateStop extends React.Component{
   render(){
     return(
       <div>
-        <form onSubmit = {(e)=>this.handleStopDispatch(e,this.state.stop, this.props.trip_id)}>
+        <form onSubmit = {(e)=>this.handleStopDispatch(e,this.state, this.props.trip_id)}>
+          <input
+            type="number"
+            name="order"
+            value= {this.state.order}
+            min="1" max="23"
+            onChange = {(e) =>this.handleOrderChange(e.target.value)}
+            />
           <input type = "text"
           onChange={(e)=>this.handleStopChange(e.target.value)}/>
           <button type="Submit" />

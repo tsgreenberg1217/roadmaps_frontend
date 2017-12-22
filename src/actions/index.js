@@ -2,15 +2,12 @@ import {destroyStop,login, confirm, signup, fetchNewTrip, fetchTrip, destroyTrip
 
 
 export function deleteStop(stop_id, trip_id){
-  debugger
+  //
   return function(dispatch){
 
     destroyStop(stop_id, trip_id).then(json => {
+      //refactor to just get trip
       const trip_id = json.trip[0].id
-    // dispatch({
-    //     type: "ALL_TRIPS",
-    //     payload: json
-    //   })
       const trip = json.trip.find(trip => trip.id === trip_id)
       trip.stops = json.stops
 
@@ -19,7 +16,6 @@ export function deleteStop(stop_id, trip_id){
         payload: trip
       })
     })
-
   }
 }
 
@@ -34,15 +30,17 @@ export function allTrips(){
   }
 }
 
-export function submitStop(stop, trip_id, history){
-  // debugger
+export function submitStop(state, trip_id){
   return function(dispatch){
-    const stopParams = {stop, trip_id}
+    const stopParams = {state, trip_id}
+
     createStop(stopParams).then( json => {
       dispatch({
         type: "CREATE_STOP",
         payload: json.stops
       })
+      // refactor to just get trip back
+      // is this syncronus?
       const trip = json.trip.find(trip => trip.id === json.stop.trip_id)
       trip.stops = json.stops
       dispatch({
@@ -54,6 +52,7 @@ export function submitStop(stop, trip_id, history){
 }
 
 export function deleteTrip(trip_id){
+
   return function(dispatch){
     destroyTrip(trip_id).then( user => {
       //
@@ -88,7 +87,7 @@ export function refreshShowTrip(history){
 
 
 export function getTrip(trip_id, history, name){
-
+  //
   return function(dispatch){
 
       dispatch({
