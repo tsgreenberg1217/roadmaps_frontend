@@ -8,7 +8,7 @@ const HEADERS = {
 
 
 export function destroyStop(stop_id,trip_id){
-  debugger
+  // debugger
   return fetch(`http://localhost:3000/api/v1/stops/${stop_id}`,{
     headers: {
       'Content-Type': 'application/json',

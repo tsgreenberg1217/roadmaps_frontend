@@ -38,7 +38,7 @@ function loginReducer(state = defaultState, action) {
 function tripReducer(state = tripDefault, action ){
   switch (action.type) {
     case "ALL_TRIPS":
-      debugger
+      // debugger
       return {...state, trips: action.payload}
     case 'NEW_TRIP':
 
@@ -54,7 +54,7 @@ function tripReducer(state = tripDefault, action ){
           const filteredTrip = action.payload.trips.find( trip => trip.id === action.payload.id)
           return {...state ,trips: action.payload.trips ,selected_trip: filteredTrip}
      case "REFRESH_TRIP":
-     debugger
+    //  debugger
           return {...state, selected_trip: action.payload}
     default:
       return state
@@ -76,6 +76,7 @@ function stopReducer(state = stopDefault, action){
       return {...state, stops: action.payload}
 
       case "ALL_STOPS":
+      // debugger
       return {...state, stops: action.payload, ordered_stops: stopOrderer(action.payload)}
 
     default:

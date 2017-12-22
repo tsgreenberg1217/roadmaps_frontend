@@ -2,16 +2,18 @@ import {destroyStop,login, confirm, signup, fetchNewTrip, fetchTrip, destroyTrip
 
 
 export function deleteStop(stop_id, trip_id){
+  debugger
   return function(dispatch){
+
     destroyStop(stop_id, trip_id).then(json => {
-      const trip_id = json.stops[0].trip_id
+      const trip_id = json.trip[0].id
     // dispatch({
     //     type: "ALL_TRIPS",
     //     payload: json
     //   })
       const trip = json.trip.find(trip => trip.id === trip_id)
       trip.stops = json.stops
-      debugger
+
       dispatch({
         type: "REFRESH_TRIP",
         payload: trip
