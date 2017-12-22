@@ -31,9 +31,9 @@ class MyMapComponent extends React.Component {
           const DirectionsService = new google.maps.DirectionsService();
 
           DirectionsService.route({
-            origin: new google.maps.LatLng(41.8507300, -87.6512600),
-            waypoints: [{location: 'williamsburg, VA', stopover: true}, {location: 'New York, NY', stopover: true},{location: 'Atlanta, GA', stopover: true}],
-            destination: new google.maps.LatLng(26.158147, -80.325408),
+            origin: new google.maps.LatLng(26.368306, -80.128932),
+            waypoints: [{location: 'Boca Raton, FL', stopover: true}, {location: 'Sarasota, FL', stopover: true},{location: 'St. Petersburg, FL', stopover: true},{location: 'St. Augunstine, FL', stopover: true}, {location: 'Orlando, FL', stopover: true}],
+            destination: new google.maps.LatLng(26.368306, -80.128932),
             travelMode: google.maps.TravelMode.DRIVING,
           }, (result, status) => {
             if (status === google.maps.DirectionsStatus.OK) {

@@ -62,21 +62,21 @@ function tripReducer(state = tripDefault, action ){
 }
 
 function stopReducer(state = stopDefault, action){
+
+  function stopOrderer(payload){
+      let id = 0
+      const orderList = Object.assign({},payload)
+      for(let key in orderList){orderList[key].id = ++id}
+      return orderList
+  }
+
   switch (action.type) {
 
     case "CREATE_STOP":
-    let id = 0
-    const orderList = Object.assign({},action.payload)
-      const ordered = [orderList].map(function(stop){
-        stop.id = ++id
-        return stop
-      })
-
-      return {...state, stops: action.payload, ordered_stops: ordered}
+      return {...state, stops: action.payload}
 
       case "ALL_STOPS":
-
-      return {...state, stops: action.payload}
+      return {...state, stops: action.payload, ordered_stops: stopOrderer(action.payload)}
 
     default:
       return state

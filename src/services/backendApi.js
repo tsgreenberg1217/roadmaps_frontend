@@ -7,6 +7,19 @@ const HEADERS = {
 }
 
 
+export function destroyStop(stop_id,trip_id){
+  debugger
+  return fetch(`http://localhost:3000/api/v1/stops/${stop_id}`,{
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': `Token ${localStorage.token}`
+    },
+    method: "DELETE"
+  }).then(res => res.json())
+}
+
+
 export function getAllTrips(){
   return fetch('http://localhost:3000/api/v1/trips',{
     headers: {

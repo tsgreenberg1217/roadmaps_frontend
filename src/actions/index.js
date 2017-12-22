@@ -1,5 +1,12 @@
-import {login, confirm, signup, fetchNewTrip, fetchTrip, destroyTrip, createStop, showStops, getAllTrips} from '../services/backendApi'
+import {destroyStop,login, confirm, signup, fetchNewTrip, fetchTrip, destroyTrip, createStop, showStops, getAllTrips} from '../services/backendApi'
 
+
+export function deleteStop(stop_id, trip_id){
+  return function(dispatch){
+    destroyStop(stop_id, trip_id).then(json => {debugger})
+
+  }
+}
 
 export function allTrips(){
   return function(dispatch){
@@ -17,16 +24,12 @@ export function submitStop(stop, trip_id, history){
   return function(dispatch){
     const stopParams = {stop, trip_id}
     createStop(stopParams).then( json => {
-      // debugger
-      // const trip_id = json[0].trip_id
       dispatch({
         type: "CREATE_STOP",
         payload: json.stops
       })
-      // debugger
       const trip = json.trip.find(trip => trip.id === json.stop.trip_id)
       trip.stops = json.stops
-      // debugger
       dispatch({
         type: "REFRESH_TRIP",
         payload: trip
