@@ -68,15 +68,17 @@ export function refreshShowTrip(history){
   const id = parseInt(history.location.pathname.split('/')[2])
   return function(dispatch){
       fetchTrip(id).then(json =>{
-        const obj = {trips: json, id: id}
+        // const obj = {trips: json, id: id}
+        json.trip.stops = json.stops
         dispatch({
           type: "REFRESH_TRIP",
-          payload: json
+          payload: json.trip
         })
-        const stops = obj.trips.find(trip => trip.id === id).stops
+        // debugger
+        // const stops = obj.trips.find(trip => trip.id === id).stops
         dispatch({
           type: "ALL_STOPS",
-          payload: stops
+          payload: json.stops
         })
       })
     }
