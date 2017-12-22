@@ -67,11 +67,11 @@ export function deleteTrip(trip_id){
 export function refreshShowTrip(history){
   const id = parseInt(history.location.pathname.split('/')[2])
   return function(dispatch){
-      getAllTrips().then(json =>{
+      fetchTrip(id).then(json =>{
         const obj = {trips: json, id: id}
         dispatch({
-          type: "REFRESH_TRIPS",
-          payload: obj
+          type: "REFRESH_TRIP",
+          payload: json
         })
         const stops = obj.trips.find(trip => trip.id === id).stops
         dispatch({
