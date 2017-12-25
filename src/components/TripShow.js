@@ -23,7 +23,6 @@ class TripShow extends React.Component{
 
 
   render(){
-    // debugger
     const location = {
       lat: 40.75,
       lng: -73.98
@@ -41,7 +40,7 @@ class TripShow extends React.Component{
         stops = {this.props.trips.selected_trip.stops}/>
         : <div>nothing</div>}
 
-        <MyMapComponent center = {location}/>
+        {(this.props.stops !== undefined) ? <MyMapComponent center = {location} stops = {this.props.stops}/> : <div>no stops</div>}
 
       </div>
     )
@@ -49,10 +48,9 @@ class TripShow extends React.Component{
 }
 
 const mapStateToProps = (state) => {
-  // console.log(state)
   return{
     trips: state.trips,
-    // stops: state.stops
+    stops: state.stops
   }
 }
 // <CreateStop trip_id = {this.props.trip.selected_trip.id}/>

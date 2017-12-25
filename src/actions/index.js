@@ -8,10 +8,13 @@ export function deleteStop(stop_id, trip_id){
     destroyStop(stop_id, trip_id).then(json => {
       //refactor to just get trip
       json.trip.stops = json.stops
-      // debugger
       dispatch({
         type: "REFRESH_TRIP",
         payload: json.trip
+      })
+      dispatch({
+        type: "ALL_STOPS",
+        payload: json.stops
       })
     })
   }
@@ -45,6 +48,10 @@ export function submitStop(state, trip_id){
         type: "REFRESH_TRIP",
         payload: trip
       })
+      dispatch({
+        type: "CREATE_STOP",
+        payload: json.stops
+      })
     })
   }
 }
@@ -64,13 +71,12 @@ export function refreshShowTrip(history){
   const id = parseInt(history.location.pathname.split('/')[2])
   return function(dispatch){
       fetchTrip(id).then(json =>{
-        // const obj = {trips: json, id: id}
+
         json.trip.stops = json.stops
         dispatch({
           type: "REFRESH_TRIP",
           payload: json.trip
         })
-        // debugger
         // const stops = obj.trips.find(trip => trip.id === id).stops
         dispatch({
           type: "ALL_STOPS",
@@ -163,8 +169,4 @@ export function logoutUser(){
     })
 
   }
-}
-
-export function someAction() {
-  return {type: 'SOMETHING'}
 }

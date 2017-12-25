@@ -9,6 +9,8 @@ const defaultState = {
   selected_trip: {}
 }
 
+
+
 const stopDefault = {
   stops: {},
   ordered_stops: {}
@@ -56,6 +58,7 @@ function tripReducer(state = tripDefault, action ){
 
     case "REFRESH_TRIPS":
           const filteredTrip = action.payload.trips.find( trip => trip.id === action.payload.id)
+          // debugger
           return {...state ,trips: action.payload.trips ,selected_trip: filteredTrip}
 
      case "REFRESH_TRIP":
@@ -82,6 +85,16 @@ function stopReducer(state = stopDefault, action){
 
   }
 }
+//
+// function mapReducer(state = defaultMap, action){
+//   switch (action.type){
+//     case "UPDATE_MAP":
+//       return {...state, stops: action.payload}
+//     default:
+//       return state
+//
+//   }
+// }
 
 
 

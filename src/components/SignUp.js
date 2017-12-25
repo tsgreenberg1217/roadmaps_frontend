@@ -34,10 +34,6 @@ class SignUp extends React.Component{
   }
 
   render(){
-
-    console.log('hi');
-    console.log(this.props.state);
-
     return(
       <div>
       <h3>this is the signup page</h3>

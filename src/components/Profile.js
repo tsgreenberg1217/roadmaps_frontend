@@ -21,7 +21,6 @@ class Profile extends React.Component{
 
 
   render(){
-    console.log(this.props.trips)
     // debugger
     const phrase = `welcome to your profile, ${this.props.user.name}`
     return(

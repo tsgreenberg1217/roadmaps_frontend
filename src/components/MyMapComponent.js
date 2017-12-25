@@ -1,23 +1,21 @@
 
 /*global google*/
-// const google = window.google;
 
 import React from 'react'
 import  { compose, withProps, lifecycle } from 'recompose'
 import {withScriptjs, withGoogleMap, GoogleMap, DirectionsRenderer} from 'react-google-maps'
+import { connect } from 'react-redux';
+import * as actions from '../actions';
 
 class MyMapComponent extends React.Component {
   constructor(props){
     super(props)
-    // this.state = {}
   }
 
-
   render() {
-    console.log(this.props)
-
     const DirectionsComponent = compose(
       withProps({
+        stops: this.props.stops,
         googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyAa_1I2oAv-cNMvVnW0EeAW6WaUeBniIhE&v=3.exp&libraries=geometry,drawing,places",
         loadingElement: <div style={{ height: `100%` }} />,
         containerElement: <div style={{ height: `400px` }} />,
@@ -26,12 +24,11 @@ class MyMapComponent extends React.Component {
       withScriptjs,
       withGoogleMap,
       lifecycle({
-
         componentDidMount() {
+          console.log(this.props)
           const DirectionsService = new google.maps.DirectionsService();
-
           DirectionsService.route({
-            origin: new google.maps.LatLng(26.368306, -80.128932),
+            origin: new google.maps.LatLng(this.props.stops.stops[0].lat, this.props.stops.stops[0].lng),
             waypoints: [{location: 'Boca Raton, FL', stopover: true}, {location: 'Sarasota, FL', stopover: true},{location: 'St. Petersburg, FL', stopover: true},{location: 'St. Augunstine, FL', stopover: true}, {location: 'Orlando, FL', stopover: true}],
             destination: new google.maps.LatLng(26.368306, -80.128932),
             travelMode: google.maps.TravelMode.DRIVING,
@@ -66,6 +63,13 @@ class MyMapComponent extends React.Component {
     )
   }
 }
+
+// const mapStateToProps = (state) => {
+//   console.log(state)
+//   return{
+//     stops: state.stops
+//   }
+// }
 
 
 export default MyMapComponent
