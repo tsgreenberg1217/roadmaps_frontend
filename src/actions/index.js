@@ -7,13 +7,11 @@ export function deleteStop(stop_id, trip_id){
 
     destroyStop(stop_id, trip_id).then(json => {
       //refactor to just get trip
-      const trip_id = json.trip[0].id
-      const trip = json.trip.find(trip => trip.id === trip_id)
-      trip.stops = json.stops
-
+      json.trip.stops = json.stops
+      // debugger
       dispatch({
         type: "REFRESH_TRIP",
-        payload: trip
+        payload: json.trip
       })
     })
   }
@@ -52,10 +50,8 @@ export function submitStop(state, trip_id){
 }
 
 export function deleteTrip(trip_id){
-
   return function(dispatch){
     destroyTrip(trip_id).then( user => {
-      //
       dispatch({
         type: "DELETE_TRIP",
         payload: user.user_trips

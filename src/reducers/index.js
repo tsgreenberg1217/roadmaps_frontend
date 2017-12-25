@@ -59,6 +59,7 @@ function tripReducer(state = tripDefault, action ){
           return {...state ,trips: action.payload.trips ,selected_trip: filteredTrip}
 
      case "REFRESH_TRIP":
+          // debugger
           return {...state, selected_trip: action.payload}
 
     default:
