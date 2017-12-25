@@ -25,12 +25,18 @@ class MyMapComponent extends React.Component {
       withGoogleMap,
       lifecycle({
         componentDidMount() {
-          console.log(this.props)
+          const allStops = this.props.stops
+          const firstStop = allStops.shift()
+          const lastStop = allStops.pop()
+          // const middleStops = []
+
+          const middleStops = allStops.map(stop => {return{location: stop.name, stopover: true}}) || [{}]
+          debugger
           const DirectionsService = new google.maps.DirectionsService();
           DirectionsService.route({
-            origin: new google.maps.LatLng(this.props.stops.stops[0].lat, this.props.stops.stops[0].lng),
-            waypoints: [{location: 'Boca Raton, FL', stopover: true}, {location: 'Sarasota, FL', stopover: true},{location: 'St. Petersburg, FL', stopover: true},{location: 'St. Augunstine, FL', stopover: true}, {location: 'Orlando, FL', stopover: true}],
-            destination: new google.maps.LatLng(26.368306, -80.128932),
+            origin: new google.maps.LatLng(firstStop.lat, firstStop.lng),
+            waypoints: middleStops,
+            destination: new google.maps.LatLng(lastStop.lat, lastStop.lng),
             travelMode: google.maps.TravelMode.DRIVING,
           }, (result, status) => {
             if (status === google.maps.DirectionsStatus.OK) {

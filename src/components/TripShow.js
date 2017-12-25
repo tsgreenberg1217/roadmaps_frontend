@@ -40,7 +40,7 @@ class TripShow extends React.Component{
         stops = {this.props.trips.selected_trip.stops}/>
         : <div>nothing</div>}
 
-        {(this.props.stops !== undefined) ? <MyMapComponent center = {location} stops = {this.props.stops}/> : <div>no stops</div>}
+        {(this.props.stops !== undefined) ? <MyMapComponent center = {location} stops = {this.props.stops.stops}/> : <div>no stops</div>}
 
       </div>
     )
