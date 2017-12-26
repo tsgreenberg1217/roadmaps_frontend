@@ -17,9 +17,9 @@ class MyMapComponent extends React.Component {
       withProps({
         stops: this.props.stops,
         googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyAa_1I2oAv-cNMvVnW0EeAW6WaUeBniIhE&v=3.exp&libraries=geometry,drawing,places",
-        loadingElement: <div style={{ height: `100%` }} />,
+        loadingElement: <div style={{ height: `400px` }} />,
         containerElement: <div style={{ height: `400px` }} />,
-        mapElement: <div style={{ height: `100%` }} />,
+        mapElement: <div style={{ height: `400px`, width:'400px', float: 'left' }} />,
       }),
       withScriptjs,
       withGoogleMap,
@@ -28,10 +28,7 @@ class MyMapComponent extends React.Component {
           const allStops = this.props.stops
           const firstStop = allStops.shift()
           const lastStop = allStops.pop()
-          // const middleStops = []
-
           const middleStops = allStops.map(stop => {return{location: stop.name, stopover: true}}) || [{}]
-          debugger
           const DirectionsService = new google.maps.DirectionsService();
           DirectionsService.route({
             origin: new google.maps.LatLng(firstStop.lat, firstStop.lng),
@@ -53,7 +50,7 @@ class MyMapComponent extends React.Component {
     )(props =>
       <GoogleMap
         defaultZoom={3}
-        defaultCenter={new google.maps.LatLng(41.8507300, -87.6512600)}
+        // defaultCenter={new google.maps.LatLng(41.8507300, -87.6512600)}
       >
         {props.directions && <DirectionsRenderer directions={props.directions} suppressMarkers={props.markers}/>}
       </GoogleMap>
@@ -69,13 +66,5 @@ class MyMapComponent extends React.Component {
     )
   }
 }
-
-// const mapStateToProps = (state) => {
-//   console.log(state)
-//   return{
-//     stops: state.stops
-//   }
-// }
-
 
 export default MyMapComponent

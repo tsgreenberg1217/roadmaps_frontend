@@ -24,17 +24,17 @@ const tripDefault = {
 function loginReducer(state = defaultState, action) {
   switch (action.type) {
     case "FETCH_USER":
-
         return {...state,login: true, user: action.payload}
+
     case "CONFIRM_USER":
-
         return {...state, login: true, user: action.payload}
+
     case 'SIGNUP_USER':
-
         return {...state, login: true, user: action.payload}
-    case "LOGOUT_USER":
 
+    case "LOGOUT_USER":
         return {...state, login: false, user: {}}
+
     default:
       return state
   }
@@ -58,11 +58,10 @@ function tripReducer(state = tripDefault, action ){
 
     case "REFRESH_TRIPS":
           const filteredTrip = action.payload.trips.find( trip => trip.id === action.payload.id)
-          // debugger
           return {...state ,trips: action.payload.trips ,selected_trip: filteredTrip}
 
      case "REFRESH_TRIP":
-          // debugger
+    //  debugger
           return {...state, selected_trip: action.payload}
 
     default:
@@ -85,16 +84,6 @@ function stopReducer(state = stopDefault, action){
 
   }
 }
-//
-// function mapReducer(state = defaultMap, action){
-//   switch (action.type){
-//     case "UPDATE_MAP":
-//       return {...state, stops: action.payload}
-//     default:
-//       return state
-//
-//   }
-// }
 
 
 

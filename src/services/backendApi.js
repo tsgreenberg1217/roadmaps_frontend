@@ -7,8 +7,30 @@ const HEADERS = {
 }
 
 
+export function getAllOnTrips(){
+  return fetch('http://localhost:3000/api/v1/ontrips',{
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': `Token ${localStorage.token}`
+    }
+  }).then(res => res.json())
+}
+
+export function createFriendship(friend, trip_id){
+  const friendParams = {friend, trip_id}
+  return fetch('http://localhost:3000/api/v1/friendships', {
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': `Token ${localStorage.token}`
+    },
+    method: 'POST',
+    body: JSON.stringify(friendParams)
+  }).then(res => res.json())
+}
+
 export function destroyStop(stop_id,trip_id){
-  // debugger
   return fetch(`http://localhost:3000/api/v1/stops/${stop_id}`,{
     headers: {
       'Content-Type': 'application/json',

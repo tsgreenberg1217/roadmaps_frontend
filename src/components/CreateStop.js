@@ -21,12 +21,6 @@ class CreateStop extends React.Component{
     })
   }
 
-  // addAfterSubmit(){
-  //   const num = parseInt(this.state.order) + 1
-  //   this.setState({
-  //     order:
-  //   })
-  // }
 
   handleOrderChange(num){
     this.setState({

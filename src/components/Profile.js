@@ -16,13 +16,12 @@ class Profile extends React.Component{
 
   componentDidMount(){
     this.props.allTrips()
-    // debugger
   }
 
 
   render(){
     // debugger
-    const phrase = `welcome to your profile, ${this.props.user.name}`
+    const phrase = `welcome to your profile, ${this.props.user.name}, these are your trips`
     return(
       <div>
         <button
@@ -47,9 +46,7 @@ class Profile extends React.Component{
 const mapStateToProps = (state) => {
   return {
     user: state.auth.user,
-    // trips: state.auth.user.user_trips
     trips: state.trips
   }
 }
-// <TripsContainer trips = {this.props.trips}/>
 export default withRouter(connect(mapStateToProps, actions)(Profile));

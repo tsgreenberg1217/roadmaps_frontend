@@ -1,12 +1,30 @@
-import {destroyStop,login, confirm, signup, fetchNewTrip, fetchTrip, destroyTrip, createStop, showStops, getAllTrips} from '../services/backendApi'
+import {destroyStop,login, confirm, signup, fetchNewTrip, fetchTrip, destroyTrip, createStop, showStops, getAllTrips, createFriendship, getAllOnTrips} from '../services/backendApi'
 
+
+
+
+export function submitFriendship(friend, history){
+  // debugger
+  const trip_id = parseInt(history.location.pathname.split('/')[2])
+  return function(dispatch){
+    createFriendship(friend, trip_id).then(json => {
+      json.trip.friends = json.friends
+      json.trip.stops = json.stops
+      dispatch({
+        type: "REFRESH_TRIP",
+        payload: json.trip
+      })
+      dispatch({
+        type: "ALL_STOPS",
+        payload: json.stops
+      })
+    })
+  }
+}
 
 export function deleteStop(stop_id, trip_id){
-  //
   return function(dispatch){
-
     destroyStop(stop_id, trip_id).then(json => {
-      //refactor to just get trip
       json.trip.stops = json.stops
       dispatch({
         type: "REFRESH_TRIP",
@@ -23,6 +41,7 @@ export function deleteStop(stop_id, trip_id){
 export function allTrips(){
   return function(dispatch){
       getAllTrips().then(json => {
+        // debugger
       dispatch({
         type: "ALL_TRIPS",
         payload: json
@@ -30,6 +49,14 @@ export function allTrips(){
     })
   }
 }
+
+export function getOnTrips(){
+  return function(dispatch){
+    getAllOnTrips()
+  }
+
+}
+
 
 export function submitStop(state, trip_id){
   return function(dispatch){
@@ -40,8 +67,6 @@ export function submitStop(state, trip_id){
         type: "CREATE_STOP",
         payload: json.stops
       })
-      // refactor to just get trip back
-      // is this syncronus?
       const trip = json.trip.find(trip => trip.id === json.stop.trip_id)
       trip.stops = json.stops
       dispatch({
@@ -71,13 +96,14 @@ export function refreshShowTrip(history){
   const id = parseInt(history.location.pathname.split('/')[2])
   return function(dispatch){
       fetchTrip(id).then(json =>{
+        json.trip.friends = json.friends
+        // debugger
 
         json.trip.stops = json.stops
         dispatch({
           type: "REFRESH_TRIP",
           payload: json.trip
         })
-        // const stops = obj.trips.find(trip => trip.id === id).stops
         dispatch({
           type: "ALL_STOPS",
           payload: json.stops
@@ -91,9 +117,7 @@ export function refreshShowTrip(history){
 
 
 export function getTrip(trip_id, history, name){
-  //
   return function(dispatch){
-
       dispatch({
         type: "SELECT_TRIP",
         payload: trip_id
@@ -140,6 +164,7 @@ export function createTrip(value){
 export function signupUser(value){
   return function(dispatch){
     signup(value).then(json => {
+      debugger
       localStorage.setItem("token", json.jwt)
       dispatch({
         type: "SIGNUP_USER",
