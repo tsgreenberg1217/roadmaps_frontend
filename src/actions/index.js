@@ -1,7 +1,13 @@
 import {destroyStop,login, confirm, signup, fetchNewTrip, fetchTrip, destroyTrip, createStop, showStops, getAllTrips, createFriendship, getAllOnTrips} from '../services/backendApi'
 
 
-
+export function toggleTrips(){
+  return function(dispatch){
+    dispatch({
+      type: "TOGGLE_TRIP"
+    })
+  }
+}
 
 export function submitFriendship(friend, history){
   // debugger
@@ -41,7 +47,6 @@ export function deleteStop(stop_id, trip_id){
 export function allTrips(){
   return function(dispatch){
       getAllTrips().then(json => {
-        // debugger
       dispatch({
         type: "ALL_TRIPS",
         payload: json
@@ -52,7 +57,12 @@ export function allTrips(){
 
 export function getOnTrips(){
   return function(dispatch){
-    getAllOnTrips()
+    getAllOnTrips().then(json => {
+      // dispatch({
+      //   type: "ALL_ONTRIPS",
+      //   payload: json
+      // })
+    })
   }
 
 }

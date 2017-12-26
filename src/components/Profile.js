@@ -1,10 +1,13 @@
 import React from 'react'
-import TripsContainer from './TripsContainer'
-import CreateTrip from './CreateTrip'
+import * as actions from '../actions';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom'
 
-import * as actions from '../actions';
+import TripsContainer from './TripsContainer'
+import CreateTrip from './CreateTrip'
+import OnTrips from './OnTrips'
+import UserTrips from './UserTrips'
+
 
 
 
@@ -14,39 +17,26 @@ class Profile extends React.Component{
     this.state = {}
   }
 
-  componentDidMount(){
-    this.props.allTrips()
-  }
 
 
   render(){
     // debugger
-    const phrase = `welcome to your profile, ${this.props.user.name}, these are your trips`
+    console.log(this.props.ui.user_trips)
     return(
       <div>
-        <button
-        onClick = {this.props.logoutUser} >
-        Logout
-        </button>
-        {phrase}
-
-        <CreateTrip />
-
-        {(this.props.trips.trips.length !== undefined) ?
-          <TripsContainer
-            trips = {this.props.trips.trips}
-            name = {this.props.user.name}/>
-        : <div>null</div>}
+      <button onClick = {this.props.toggleTrips}>see the trips youre on</button>
+      {(this.props.ui.user_trips) ? <UserTrips/> : <OnTrips/>}
       </div>
     )
   }
+
+
 }
 
-
 const mapStateToProps = (state) => {
-  return {
-    user: state.auth.user,
-    trips: state.trips
+  console.log(state);
+  return{
+    ui: state.ui,
   }
 }
 export default withRouter(connect(mapStateToProps, actions)(Profile));

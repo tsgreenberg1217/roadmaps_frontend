@@ -9,7 +9,9 @@ const defaultState = {
   selected_trip: {}
 }
 
-
+const defaultUi = {
+  user_trips: true
+}
 
 const stopDefault = {
   stops: {},
@@ -61,7 +63,6 @@ function tripReducer(state = tripDefault, action ){
           return {...state ,trips: action.payload.trips ,selected_trip: filteredTrip}
 
      case "REFRESH_TRIP":
-    //  debugger
           return {...state, selected_trip: action.payload}
 
     default:
@@ -85,11 +86,24 @@ function stopReducer(state = stopDefault, action){
   }
 }
 
+function uiReducer(state = defaultUi, action){
+  switch (action.type) {
+
+    case "TOGGLE_TRIP":
+      return {...state, user_trips: !state.user_trips}
+
+    default:
+      return state
+
+  }
+}
+
 
 
 
 export default combineReducers({
   auth: loginReducer,
   stops: stopReducer,
+  ui: uiReducer,
   trips: tripReducer
 })
