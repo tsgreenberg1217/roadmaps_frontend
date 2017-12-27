@@ -56,8 +56,7 @@ function tripReducer(state = tripDefault, action ){
         return {...state, login: true, trips: action.payload}
 
     case "SELECT_TRIP":
-        const filteredTrip2 = state.trips.find( trip => trip.id === action.payload)
-        return {...state ,selected_trip: filteredTrip2}
+        return {...state ,selected_trip: action.payload}
 
     case "DELETE_TRIP":
         return {...state, login: true, trips:action.payload}
