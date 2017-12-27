@@ -18,9 +18,10 @@ class Stop extends React.Component{
 
 
   render(){
+    console.log(this.props)
     return (
       <div>
-        <p></p>
+        {(this.props.order>1) ? <p>{this.props.duration}</p> : <p></p>}
         <p>{this.props.order}: {this.props.name}</p>
 
         <button
