@@ -77,7 +77,6 @@ export function submitStop(state, trip_id){
         payload: json.stops
       })
 
-      debugger
       const trip = json.trip.find(trip => trip.id === json.stop.trip_id)
       trip.stops = json.stops
       dispatch({
@@ -129,7 +128,7 @@ export function refreshShowTrip(history){
 
 export function getTrip(trip_id, history, name){
   return function(dispatch){
-    // debugger
+    debugger
       dispatch({
         type: "SELECT_TRIP",
         payload: trip_id
