@@ -24,6 +24,8 @@ class UserTrips extends React.Component{
     const phrase = `welcome to your profile, ${this.props.user.name}, these are your trips`
     return(
       <div>
+      <button onClick = {() => this.props.history.push(`${this.props.user.name}/invited`)}>see the trips youre on</button>
+
         <button
         onClick = {this.props.logoutUser} >
         Logout

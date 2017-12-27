@@ -20,23 +20,28 @@ class OnTrips extends React.Component{
 
 
   render(){
-    // debugger
+    console.log(this.props.trips.on_trips)
     const phrase = `welcome to your profile, ${this.props.user.name}, these are your ontrips`
     return(
       <div>
+
+      <button onClick = {() => this.props.history.push(`/${this.props.user.name}`)}>see the trips youre on</button>
+
         <button
         onClick = {this.props.logoutUser} >
+
         Logout
         </button>
         {phrase}
 
         <CreateTrip />
 
-        {(this.props.trips.trips.length !== undefined) ?
+        {(this.props.trips.on_trips.length !== undefined) ?
           <TripsContainer
-            trips = {this.props.trips.trips}
+            trips = {this.props.trips.on_trips}
             name = {this.props.user.name}/>
         : <div>null</div>}
+
       </div>
     )
   }

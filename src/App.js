@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Login from './components/Login'
 import SignUp from './components/SignUp'
+import OnTrips from './components/OnTrips'
 import Profile from './components/Profile'
 import TripShow from './components/TripShow'
 import AuthAdapter from './services/AuthAdapter'
@@ -28,6 +29,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Login}/>
             <Route path="/signup" component={SignUp}/>
+            <Route path="/:user/invited" component={OnTrips}/>
             <Route path="/:user/:trip" component={TripShow}/>
             <Route path="/:user" component={Profile}/>
           </Switch>

@@ -10,7 +10,6 @@ export function toggleTrips(){
 }
 
 export function submitFriendship(friend, history){
-  // debugger
   const trip_id = parseInt(history.location.pathname.split('/')[2])
   return function(dispatch){
     createFriendship(friend, trip_id).then(json => {
@@ -58,10 +57,10 @@ export function allTrips(){
 export function getOnTrips(){
   return function(dispatch){
     getAllOnTrips().then(json => {
-      // dispatch({
-      //   type: "ALL_ONTRIPS",
-      //   payload: json
-      // })
+      dispatch({
+        type: "ALL_ONTRIPS",
+        payload: json
+      })
     })
   }
 
@@ -128,6 +127,7 @@ export function refreshShowTrip(history){
 
 export function getTrip(trip_id, history, name){
   return function(dispatch){
+    debugger
       dispatch({
         type: "SELECT_TRIP",
         payload: trip_id

@@ -9,7 +9,6 @@ import { withRouter } from 'react-router-dom'
 
 class Trip extends React.Component{
   componentDidMount(){
-    // debugger
   }
   render(){
     return (

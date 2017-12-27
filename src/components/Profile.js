@@ -20,12 +20,10 @@ class Profile extends React.Component{
 
 
   render(){
-    // debugger
     console.log(this.props.ui.user_trips)
     return(
       <div>
-      <button onClick = {this.props.toggleTrips}>see the trips youre on</button>
-      {(this.props.ui.user_trips) ? <UserTrips/> : <OnTrips/>}
+      <UserTrips/>
       </div>
     )
   }
@@ -37,6 +35,7 @@ const mapStateToProps = (state) => {
   console.log(state);
   return{
     ui: state.ui,
+    user: state.auth
   }
 }
 export default withRouter(connect(mapStateToProps, actions)(Profile));

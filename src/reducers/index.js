@@ -20,6 +20,7 @@ const stopDefault = {
 
 const tripDefault = {
   trips: {},
+  on_trips: {},
   selected_trip: {}
 }
 
@@ -48,6 +49,9 @@ function tripReducer(state = tripDefault, action ){
     case "ALL_TRIPS":
         return {...state, trips: action.payload}
 
+    case "ALL_ONTRIPS":
+        return {...state, on_trips: action.payload}
+
     case 'NEW_TRIP':
         return {...state, login: true, trips: action.payload}
 
@@ -59,11 +63,11 @@ function tripReducer(state = tripDefault, action ){
         return {...state, login: true, trips:action.payload}
 
     case "REFRESH_TRIPS":
-          const filteredTrip = action.payload.trips.find( trip => trip.id === action.payload.id)
-          return {...state ,trips: action.payload.trips ,selected_trip: filteredTrip}
+        const filteredTrip = action.payload.trips.find( trip => trip.id === action.payload.id)
+        return {...state ,trips: action.payload.trips ,selected_trip: filteredTrip}
 
      case "REFRESH_TRIP":
-          return {...state, selected_trip: action.payload}
+        return {...state, selected_trip: action.payload}
 
     default:
       return state
