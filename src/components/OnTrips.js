@@ -20,7 +20,6 @@ class OnTrips extends React.Component{
 
 
   render(){
-    console.log(this.props.trips.on_trips)
     const phrase = `welcome to your profile, ${this.props.user.name}, these are your ontrips`
     return(
       <div>

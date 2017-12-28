@@ -83,10 +83,6 @@ export function submitStop(state, trip_id){
         type: "REFRESH_TRIP",
         payload: trip
       })
-      // dispatch({
-      //   type: "CREATE_STOP",
-      //   payload: json.stops
-      // })
     })
   }
 }
@@ -174,7 +170,7 @@ export function createTrip(value){
 export function signupUser(value){
   return function(dispatch){
     signup(value).then(json => {
-      
+
       localStorage.setItem("token", json.jwt)
       dispatch({
         type: "SIGNUP_USER",

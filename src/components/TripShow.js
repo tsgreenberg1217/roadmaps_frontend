@@ -9,7 +9,7 @@ import MyMapComponent from './MyMapComponent'
 import FriendSearch from './FriendSearch'
 import FriendsContainer from './FriendsContainer'
 
-import { Embed } from 'semantic-ui-react'
+import { Embed, Container } from 'semantic-ui-react'
 
 
 
@@ -41,13 +41,16 @@ class TripShow extends React.Component{
 
         <FriendSearch/>
 
-        <CreateStop
-        trip_id = {this.props.trips.selected_trip.id}/>
 
-        {(this.props.trips.selected_trip.id !== undefined)
-        ? <StopContainer
-        stops = {this.props.trips.selected_trip.stops}/>
-        : <div>nothing</div>}
+        <Container>
+          <CreateStop
+          trip_id = {this.props.trips.selected_trip.id}/>
+
+          {(this.props.trips.selected_trip.id !== undefined)
+            ? <StopContainer
+            stops = {this.props.trips.selected_trip.stops}/>
+            : <div>nothing</div>}
+        </Container>
 
         {(this.props.stops !== undefined) ?
           <MyMapComponent center = {location} stops = {this.props.stops.stops}/>
