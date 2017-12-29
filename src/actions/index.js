@@ -5,7 +5,6 @@ export function changeOrder(trip_id, stop_id, move){
   return function(dispatch){
     updateStopOrder(trip_id, stop_id, move).then(json => {
       json.trip.stops = json.stops
-      // debugger
       dispatch({
         type: "REFRESH_TRIP",
         payload: json.trip

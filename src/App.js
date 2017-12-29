@@ -5,6 +5,7 @@ import OnTrips from './components/OnTrips'
 import Profile from './components/Profile'
 import TripShow from './components/TripShow'
 import AuthAdapter from './services/AuthAdapter'
+import StopShow from './components/StopShow'
 import { withRouter, Route, browserHistory, Switch } from "react-router-dom";
 import './App.css'
 import {connect} from 'react-redux'
@@ -30,6 +31,7 @@ class App extends Component {
             <Route exact path="/" component={Login}/>
             <Route path="/signup" component={SignUp}/>
             <Route path="/:user/invited" component={OnTrips}/>
+            <Route path="/:user/:trip/:stop" component={StopShow}/>
             <Route path="/:user/:trip" component={TripShow}/>
             <Route path="/:user" component={Profile}/>
           </Switch>
