@@ -6,6 +6,18 @@ const HEADERS = {
 
 }
 
+export function updateStopOrder(trip_id, stop_id, move){
+  return fetch('http://localhost:3000/api/v1/update-order',{
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': `Token ${localStorage.token}`
+    },
+    method: "PATCH",
+    body: JSON.stringify({trip_id,stop_id, move})
+  }).then(res => res.json())
+}
+
 
 export function getAllOnTrips(){
   return fetch('http://localhost:3000/api/v1/ontrips',{

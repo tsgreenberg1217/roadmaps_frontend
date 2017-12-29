@@ -15,10 +15,23 @@ class Stop extends React.Component{
     this.props.deleteStop(stop_id,trip_id)
   }
 
+  handleUp(){
+
+  }
+
+  handleDown(){
+    
+  }
+
+
+
 
 
   render(){
-    console.log(this.props)
+    const ifUp = (this.props.order !== 1 )
+    const ifDown = (this.props.length !== this.props.order)
+
+    console.log(ifDown)
     return (
           <div>
       <Card.Group>
@@ -36,8 +49,8 @@ class Stop extends React.Component{
         </Card.Content>
         <Card.Content extra>
           <div className='ui two buttons'>
-            <Button><Icon name = 'chevron up'/></Button>
-            <Button><Icon name = 'chevron down'/></Button>
+            <Button onClick = {() => this.props.changeOrder(this.props.trip_id, this.props.id, "UP")}><Icon name = 'chevron up'/></Button>
+            <Button onClick = {() => this.props.changeOrder(this.props.trip_id, this.props.id, "DOWN")}><Icon name = 'chevron down'/></Button>
             <Icon name = "search"/>
 
           </div>

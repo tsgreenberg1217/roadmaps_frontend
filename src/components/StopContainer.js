@@ -22,7 +22,8 @@ class StopContainer extends React.Component{
             order = {stop.order}
             trip_id = {stop.trip_id}
             name = {stop.name}
-            id = {stop.id}/>)}
+            id = {stop.id}
+            length = {this.props.length}/>)}
     )
     return(
       <div>{stopDivs}</div>

@@ -41,14 +41,16 @@ class TripShow extends React.Component{
 
 
 
-        <Container style = {{float: 'right'}}>
+        <Container style = {{float: 'left'}}>
         <FriendSearch/>
           <CreateStop
           trip_id = {this.props.trips.selected_trip.id}/>
 
           {(this.props.trips.selected_trip.id !== undefined)
             ? <StopContainer
-            stops = {this.props.trips.selected_trip.stops}/>
+            length = {this.props.trips.selected_trip.stops.length}
+            stops = {this.props.trips.selected_trip.stops}
+            style = {{display: 'block', float: 'left'}}/>
             : <div>nothing</div>}
 
             {(this.props.trips.selected_trip.friends !== undefined) ?
