@@ -9,6 +9,8 @@ class Stop extends React.Component{
   constructor(){
     super()
     this.state = {}
+    this.handleUp = this.handleUp.bind(this)
+    this.handleDown = this.handleDown.bind(this)
   }
 
   handleDelete(stop_id, trip_id){
@@ -16,11 +18,15 @@ class Stop extends React.Component{
   }
 
   handleUp(){
-
+    this.props.changeOrder(this.props.trip_id, this.props.id, "UP")
   }
 
   handleDown(){
-    
+    this.props.changeOrder(this.props.trip_id, this.props.id, "DOWN")
+  }
+
+  deny(){
+    console.log('cannot move')
   }
 
 
@@ -49,8 +55,8 @@ class Stop extends React.Component{
         </Card.Content>
         <Card.Content extra>
           <div className='ui two buttons'>
-            <Button onClick = {() => this.props.changeOrder(this.props.trip_id, this.props.id, "UP")}><Icon name = 'chevron up'/></Button>
-            <Button onClick = {() => this.props.changeOrder(this.props.trip_id, this.props.id, "DOWN")}><Icon name = 'chevron down'/></Button>
+            <Button onClick = {(ifUp) ? this.handleUp : this.deny}><Icon name = 'chevron up'/></Button>
+            <Button onClick = {(ifDown) ? this.handleDown : this.deny}><Icon name = 'chevron down'/></Button>
             <Icon name = "search"/>
 
           </div>
