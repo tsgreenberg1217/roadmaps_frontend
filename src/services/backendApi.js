@@ -43,7 +43,7 @@ export function createFriendship(friend, trip_id){
 }
 
 export function destroyStop(stop_id,trip_id){
-  return fetch(`http://localhost:3000/api/v1/stops/${stop_id}`,{
+  return fetch(`http://localhost:3000/api/v1/trips/${trip_id}/stops/${stop_id}`,{
     headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
@@ -64,8 +64,9 @@ export function getAllTrips(){
   }).then(res => res.json())
 }
 
-export function createStop(stopParams){
-  return fetch('http://localhost:3000/api/v1/stops', {
+export function createStop(state, trip_id){
+  const stopParams = {state, trip_id}
+  return fetch(`http://localhost:3000/api/v1/trips/${trip_id}/stops`, {
     headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
