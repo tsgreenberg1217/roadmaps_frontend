@@ -22,8 +22,7 @@ class CreateActivity extends React.Component{
 
   handleSubmit(e){
     e.preventDefault()
-    debugger
-    this.props.submitActivity(this.state.activity)
+    this.props.submitActivity(this.props.stop.trip_id, this.props.stop.id, this.state.activity)
   }
 
 

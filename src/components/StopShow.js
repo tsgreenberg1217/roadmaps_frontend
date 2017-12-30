@@ -14,7 +14,6 @@ class StopShow extends React.Component{
   componentDidMount(){
     const stop_id = this.props.history.location.pathname.split("/")[3]
     const trip_id = this.props.history.location.pathname.split("/")[2]
-    // debugger
     this.props.refreshStop(trip_id,stop_id)
 
   }
@@ -26,7 +25,7 @@ class StopShow extends React.Component{
     return(
       <div>
       <h2>{this.props.stop.name}</h2>
-      <CreateActivity/>
+      <CreateActivity stop = {this.props.stop}/>
       <ImageUploader/>
       </div>
     )

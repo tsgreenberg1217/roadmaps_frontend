@@ -85,7 +85,6 @@ function stopReducer(state = stopDefault, action){
       return {...state, stops: action.payload}
 
     case "SELECT_STOP":
-    debugger
       return {...state, selected_stop: action.payload}
 
     default:

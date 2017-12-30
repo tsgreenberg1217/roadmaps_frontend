@@ -25,10 +25,10 @@ export function refreshStop(trip_id, stop_id){
   }
 }
 
-export function submitActivity(activity){
-  const stop_id = parseInt(history.location.pathname.split('/')[2])
+export function submitActivity(trip_id,stop_id,activity){
+  debugger
   return function(dispatch){
-    createActivity(activity,stop_id).then(json => {
+    createActivity(trip_id,stop_id,activity).then(json => {
       console.log('weeeee')
     })
 
