@@ -9,11 +9,10 @@ class CreateActivity extends React.Component{
     this.state = {
       activity: ''
     }
+
   }
 
-  handleSubmit(){
-    // this.props.submitActivity(value)
-  }
+
 
   handleChange(value){
     this.setState({
@@ -21,15 +20,22 @@ class CreateActivity extends React.Component{
     })
   }
 
+  handleSubmit(e){
+    e.preventDefault()
+    debugger
+    this.props.submitActivity(this.state.activity)
+  }
+
 
   render(){
     return(
       <div>
-      <form>
+      <form onSubmit = {(e) => this.handleSubmit(e)}>
       <input
         type = "text"
         onChange = {(e)=>this.handleChange(e.target.value)}
         value = {this.state.activity}/>
+      <button type= "Submit">submit</button>
       </form>
       </div>
     )

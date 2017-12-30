@@ -1,5 +1,24 @@
-import {updateStopOrder, destroyStop,login, confirm, signup, fetchNewTrip, fetchTrip, destroyTrip, createStop, showStops, getAllTrips, createFriendship, getAllOnTrips} from '../services/backendApi'
+import {fetchStop,createActivity,updateStopOrder, destroyStop,login, confirm, signup, fetchNewTrip, fetchTrip, destroyTrip, createStop, showStops, getAllTrips, createFriendship, getAllOnTrips} from '../services/backendApi'
 
+
+export function getStop(trip_id,stop_id){
+  return function(dispatch){
+    fetchStop(trip_id,stop_id).then(json => {
+      console.log('weeeee')
+    })
+  }
+}
+
+export function submitActivity(activity){
+  // debugger
+  const stop_id = parseInt(history.location.pathname.split('/')[2])
+  return function(dispatch){
+    createActivity(activity,stop_id).then(json => {
+      console.log('weeeee')
+    })
+
+  }
+}
 
 export function changeOrder(trip_id, stop_id, move){
   return function(dispatch){

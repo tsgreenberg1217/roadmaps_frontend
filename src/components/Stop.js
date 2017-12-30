@@ -28,9 +28,10 @@ class Stop extends React.Component{
     this.props.changeOrder(this.props.trip_id, this.props.id, "DOWN")
   }
 
-  goToPictures(){
+  goToStop(){
     console.log('pushed')
-    this.props.history.push(`${this.props.trip_id}/${this.props.id}`)
+    this.props.getStop(this.props.trip_id,this.props.id)
+    // this.props.history.push(`${this.props.trip_id}/${this.props.id}`)
   }
 
   deny(){
@@ -64,7 +65,7 @@ class Stop extends React.Component{
           <div className='ui three buttons'>
             <Button onClick = {(ifUp) ? this.handleUp : this.deny}><Icon name = 'chevron up'/></Button>
             <Button onClick = {(ifDown) ? this.handleDown : this.deny}><Icon name = 'chevron down'/></Button>
-            <Button onClick = {this.goToPictures} ><Icon name = 'photo'/></Button>
+            <Button onClick = {this.goToStop} ><Icon name = 'photo'/></Button>
           </div>
         </Card.Content>
       </Card>

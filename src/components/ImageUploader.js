@@ -4,13 +4,13 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 
 class ImageUploader extends Component {
-  static propTypes = {
-    associations: PropTypes.string,
-    fieldName: PropTypes.string.isRequired,
-    label: PropTypes.string,
-    message: PropTypes.string,
-    model: PropTypes.string.isRequired
-  }
+  // static propTypes = {
+  //   associations: PropTypes.string,
+  //   fieldName: PropTypes.string.isRequired,
+  //   label: PropTypes.string,
+  //   message: PropTypes.string,
+  //   model: PropTypes.string.isRequired
+  // }
 
   constructor() {
     super()
