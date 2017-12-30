@@ -13,7 +13,7 @@ class Stop extends React.Component{
     this.state = {}
     this.handleUp = this.handleUp.bind(this)
     this.handleDown = this.handleDown.bind(this)
-    this.goToPictures = this.goToPictures.bind(this)
+    // this.goToPictures = this.goToPictures.bind(this)
   }
 
   handleDelete(stop_id, trip_id){
