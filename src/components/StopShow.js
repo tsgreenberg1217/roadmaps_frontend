@@ -1,7 +1,8 @@
 import React from 'react'
 import * as actions from '../actions'
 import { connect } from 'react-redux';
-
+import ImageUploader from './ImageUploader'
+import CreateActivity from './CreateActivity'
 
 
 class StopShow extends React.Component{
@@ -15,6 +16,8 @@ class StopShow extends React.Component{
     return(
       <div>
       Welcome to the stop show page
+      <CreateActivity/>
+      <ImageUploader/>
       </div>
     )
   }
