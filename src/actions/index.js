@@ -4,9 +4,10 @@ import {fetchStop,createActivity,updateStopOrder, destroyStop,login, confirm, si
 export function getStop(trip_id,stop_id, history){
   return function(dispatch){
     fetchStop(trip_id,stop_id).then(json => {
+      json.stop.activities = json.activities
       dispatch({
         type: "SELECT_STOP",
-        payload: json
+        payload: json.stop
       })
       history.push(`${trip_id}/${stop_id}`)
 
@@ -17,19 +18,23 @@ export function getStop(trip_id,stop_id, history){
 export function refreshStop(trip_id, stop_id){
   return function(dispatch){
     fetchStop(trip_id, stop_id).then(json => {
+      json.stop.activities = json.activities
       dispatch({
         type: "SELECT_STOP",
-        payload: json
+        payload: json.stop
       })
     })
   }
 }
 
 export function submitActivity(trip_id,stop_id,activity){
-  debugger
   return function(dispatch){
     createActivity(trip_id,stop_id,activity).then(json => {
-      console.log('weeeee')
+      json.stop.activities = json.activities
+      dispatch({
+        type: "SELECT_STOP",
+        payload: json.stop
+      })
     })
 
   }

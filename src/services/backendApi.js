@@ -20,11 +20,11 @@ export function fetchStop(trip_id,stop_id){
 }
 
 
-export function createActivity(activity,trip_id,stop_id){
+export function createActivity(trip_id,stop_id,activity){
   return fetch(`http://localhost:3000/api/v1/trips/:id/stops/${stop_id}/activities`,{
     headers: T_HEADER,
     method: "POST",
-    body: JSON.stringify({activity,stop_id})
+    body: JSON.stringify({trip_id,stop_id,activity})
   }).then(res => res.json())
 }
 

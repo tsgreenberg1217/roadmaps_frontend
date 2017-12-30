@@ -1,8 +1,8 @@
 import React from 'react'
 import * as actions from '../actions'
 import { connect } from 'react-redux';
-import ImageUploader from './ImageUploader'
 import CreateActivity from './CreateActivity'
+import ActivityContainer from './ActivityContainer'
 
 
 class StopShow extends React.Component{
@@ -18,15 +18,17 @@ class StopShow extends React.Component{
 
   }
   componentWillReceiveProps(){
+    debugger
   }
 
 
   render(){
+    console.log(this.props.stop.activities)
     return(
       <div>
       <h2>{this.props.stop.name}</h2>
       <CreateActivity stop = {this.props.stop}/>
-      <ImageUploader/>
+      {(this.props.stop.activities) ? <ActivityContainer activities = {this.props.stop.activities}/> : <div/>}
       </div>
     )
   }
