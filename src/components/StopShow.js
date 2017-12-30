@@ -11,11 +11,21 @@ class StopShow extends React.Component{
     this.state = {}
   }
 
+  componentDidMount(){
+    const stop_id = this.props.history.location.pathname.split("/")[3]
+    const trip_id = this.props.history.location.pathname.split("/")[2]
+    // debugger
+    this.props.refreshStop(trip_id,stop_id)
+
+  }
+  componentWillReceiveProps(){
+  }
+
 
   render(){
     return(
       <div>
-      Welcome to the stop show page
+      <h2>{this.props.stop.name}</h2>
       <CreateActivity/>
       <ImageUploader/>
       </div>
@@ -24,4 +34,10 @@ class StopShow extends React.Component{
 
 }
 
-export default connect(null, actions)(StopShow)
+const mapStateToProps = (state) => {
+  return {
+    stop : state.stops.selected_stop
+  }
+}
+
+export default connect(mapStateToProps, actions)(StopShow)

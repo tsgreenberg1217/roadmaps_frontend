@@ -1,16 +1,31 @@
 import {fetchStop,createActivity,updateStopOrder, destroyStop,login, confirm, signup, fetchNewTrip, fetchTrip, destroyTrip, createStop, showStops, getAllTrips, createFriendship, getAllOnTrips} from '../services/backendApi'
 
 
-export function getStop(trip_id,stop_id){
+export function getStop(trip_id,stop_id, history){
   return function(dispatch){
     fetchStop(trip_id,stop_id).then(json => {
-      console.log('weeeee')
+      dispatch({
+        type: "SELECT_STOP",
+        payload: json
+      })
+      history.push(`${trip_id}/${stop_id}`)
+
+    })
+  }
+}
+
+export function refreshStop(trip_id, stop_id){
+  return function(dispatch){
+    fetchStop(trip_id, stop_id).then(json => {
+      dispatch({
+        type: "SELECT_STOP",
+        payload: json
+      })
     })
   }
 }
 
 export function submitActivity(activity){
-  // debugger
   const stop_id = parseInt(history.location.pathname.split('/')[2])
   return function(dispatch){
     createActivity(activity,stop_id).then(json => {

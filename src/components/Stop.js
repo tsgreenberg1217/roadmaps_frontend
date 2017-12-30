@@ -13,7 +13,7 @@ class Stop extends React.Component{
     this.state = {}
     this.handleUp = this.handleUp.bind(this)
     this.handleDown = this.handleDown.bind(this)
-    // this.goToPictures = this.goToPictures.bind(this)
+    this.goToStop = this.goToStop.bind(this)
   }
 
   handleDelete(stop_id, trip_id){
@@ -30,17 +30,12 @@ class Stop extends React.Component{
 
   goToStop(){
     console.log('pushed')
-    this.props.getStop(this.props.trip_id,this.props.id)
-    // this.props.history.push(`${this.props.trip_id}/${this.props.id}`)
+    this.props.getStop(this.props.trip_id,this.props.id, this.props.history)
   }
 
   deny(){
     console.log('cannot move')
   }
-
-
-
-
 
   render(){
     const ifUp = (this.props.order !== 1 )

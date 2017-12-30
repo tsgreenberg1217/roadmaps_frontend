@@ -15,7 +15,8 @@ const defaultUi = {
 
 const stopDefault = {
   stops: {},
-  ordered_stops: {}
+  selected_stop: {},
+
 }
 
 const tripDefault = {
@@ -82,6 +83,10 @@ function stopReducer(state = stopDefault, action){
 
     case "ALL_STOPS":
       return {...state, stops: action.payload}
+
+    case "SELECT_STOP":
+    debugger
+      return {...state, selected_stop: action.payload}
 
     default:
       return state
