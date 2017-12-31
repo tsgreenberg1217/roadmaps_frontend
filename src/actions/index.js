@@ -34,7 +34,6 @@ export function refreshStop(trip_id, stop_id){
 export function submitActivity(trip_id,stop_id,activity){
   return function(dispatch){
     createActivity(trip_id,stop_id,activity).then(json => {
-      debugger
       json.stop.activities = json.activities
       dispatch({
         type: "SELECT_STOP",
