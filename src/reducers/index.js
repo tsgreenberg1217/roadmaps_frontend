@@ -57,6 +57,7 @@ function tripReducer(state = tripDefault, action ){
         return {...state, login: true, trips: action.payload}
 
     case "SELECT_TRIP":
+    debugger
         return {...state ,selected_trip: action.payload}
 
     case "DELETE_TRIP":

@@ -19,8 +19,8 @@ class UserTrips extends React.Component{
   }
 
 
+
   render(){
-    // debugger
     const phrase = `welcome to your profile, ${this.props.user.name}, these are your trips`
     return(
       <div>

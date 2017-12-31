@@ -18,7 +18,6 @@ class StopShow extends React.Component{
 
   }
   componentWillReceiveProps(){
-    debugger
   }
 
 

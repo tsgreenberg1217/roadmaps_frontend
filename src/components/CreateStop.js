@@ -8,10 +8,15 @@ class CreateStop extends React.Component{
   constructor(){
     super()
     this.state={
-      order: '1',
+      order: 1,
       stop: ''
     }
     this.handleStopChange = this.handleStopChange.bind(this)
+    this.handleStopDispatch = this.handleStopDispatch.bind(this)
+  }
+
+  componentDidMount(){
+    console.log(this.props)
   }
 
 
@@ -29,8 +34,12 @@ class CreateStop extends React.Component{
   }
 
   handleStopDispatch(e,state,trip_id){
+    debugger
     e.preventDefault()
-    this.props.submitStop(state,trip_id)
+    this.setState({
+      order: this.props.stops_list+1
+    }, () => this.props.submitStop(this.state,trip_id))
+
     //is this syncronus?
     // this.props.refreshShowTrip(history)
   }
@@ -57,4 +66,11 @@ class CreateStop extends React.Component{
   }
 }
 
-export default withRouter(connect(null, actions)(CreateStop));
+const mapStateToProps = (state) =>{
+  return{
+    stops: state.stops,
+    trip: state.trips
+  }
+}
+
+export default withRouter(connect(mapStateToProps, actions)(CreateStop));

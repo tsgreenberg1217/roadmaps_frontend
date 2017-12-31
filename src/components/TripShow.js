@@ -23,12 +23,14 @@ class TripShow extends React.Component{
 
 
   componentDidMount(){
+    debugger
     this.props.refreshShowTrip(this.props.history)
   }
 
 
 
   render(){
+    debugger
     const location = {
       lat: 40.75,
       lng: -73.98
@@ -42,21 +44,22 @@ class TripShow extends React.Component{
 
 
         <Container style = {{float: 'left'}}>
-        <FriendSearch/>
-          <CreateStop
-          trip_id = {this.props.trips.selected_trip.id}/>
+          <FriendSearch/>
+            {(this.props.trips.selected_trip.stops) ?
+            <CreateStop
+            stops_list = {this.props.trips.selected_trip.stops}
+            trip_id = {this.props.trips.selected_trip.id}/> : <div/>}
 
-          {(this.props.trips.selected_trip.id !== undefined)
-            ? <StopContainer
-            length = {this.props.trips.selected_trip.stops.length}
-            stops = {this.props.trips.selected_trip.stops}
-            style = {{display: 'block', float: 'left'}}/>
-            : <div>nothing</div>}
+            {(this.props.trips.selected_trip.id !== undefined)
+              ? <StopContainer
+              length = {this.props.trips.selected_trip.stops.length}
+              stops = {this.props.trips.selected_trip.stops}
+              style = {{display: 'block', float: 'left'}}/>
+              : <div>nothing</div>}
 
-            {(this.props.trips.selected_trip.friends !== undefined) ?
-              <FriendsContainer friend = {this.props.trips.selected_trip.friends}/>
-              :<p>no friends to show</p>
-            }
+              {(this.props.trips.selected_trip.friends !== undefined) ?
+                <FriendsContainer friend = {this.props.trips.selected_trip.friends}/>
+                :<p>no friends to show</p>}
 
         </Container>
 

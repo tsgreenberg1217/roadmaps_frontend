@@ -1,6 +1,10 @@
 import {fetchStop,createActivity,updateStopOrder, destroyStop,login, confirm, signup, fetchNewTrip, fetchTrip, destroyTrip, createStop, showStops, getAllTrips, createFriendship, getAllOnTrips} from '../services/backendApi'
 
 
+export function submitPicture(activity_id, url){
+
+}
+
 export function getStop(trip_id,stop_id, history){
   return function(dispatch){
     fetchStop(trip_id,stop_id).then(json => {
@@ -30,6 +34,7 @@ export function refreshStop(trip_id, stop_id){
 export function submitActivity(trip_id,stop_id,activity){
   return function(dispatch){
     createActivity(trip_id,stop_id,activity).then(json => {
+      debugger
       json.stop.activities = json.activities
       dispatch({
         type: "SELECT_STOP",
@@ -101,6 +106,7 @@ export function deleteStop(stop_id, trip_id){
 export function allTrips(){
   return function(dispatch){
       getAllTrips().then(json => {
+        debugger
       dispatch({
         type: "ALL_TRIPS",
         payload: json
@@ -123,9 +129,8 @@ export function getOnTrips(){
 
 
 export function submitStop(state, trip_id){
+  debugger
   return function(dispatch){
-
-
     createStop(state, trip_id).then( json => {
       dispatch({
         type: "CREATE_STOP",
@@ -159,8 +164,12 @@ export function refreshShowTrip(history){
       fetchTrip(id).then(json =>{
         json.trip.friends = json.friends
         json.trip.stops = json.stops
+        // dispatch({
+        //   type: "REFRESH_TRIP",
+        //   payload: json.trip
+        // })
         dispatch({
-          type: "REFRESH_TRIP",
+          type: "SELECT_TRIP",
           payload: json.trip
         })
         dispatch({

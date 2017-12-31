@@ -13,6 +13,10 @@ const T_HEADER = {
 }
 
 
+export function createPicture(activity_id, url){
+  return fetch(`http://localhost:3000/api/v1/trips/id/stops/id/activities/${activity_id}/pictures`)
+}
+
 export function fetchStop(trip_id,stop_id){
   return fetch(`http://localhost:3000/api/v1/trips/${trip_id}/stops/${stop_id}`,{
     headers: T_HEADER

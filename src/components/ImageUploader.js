@@ -28,12 +28,11 @@ class ImageUploader extends Component {
   }
 
   fileLoaded(event) {
-    debugger
     this.setState({ fileURL: event.target.result, loading: false })
   }
 
   handleChange(event) {
-    console.log(this)
+    // console.log(this.state.fileURL)
     if(!event.target.files || !event.target.files[0]) return;
     this.setState({ loading: true })
     this.reader.readAsDataURL(event.target.files[0])
@@ -51,7 +50,8 @@ class ImageUploader extends Component {
     return (
       <div>
         <input className="form-control" type="file" name="image_uploader" id="image_uploader" onChange={this.handleChange} />
-        <button type="button">upload image</button>
+        <br/>
+        <button type="button" onClick = {() => this.props.submitPicture(this.props.id,this.state.fileURL)}>upload image</button>
       </div>
     )
   }
