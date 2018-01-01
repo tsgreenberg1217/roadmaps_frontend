@@ -3,15 +3,19 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 import { withRouter } from 'react-router-dom'
 
+import {Button, Form} from 'semantic-ui-react'
+
 
 class CreateStop extends React.Component{
   constructor(){
     super()
     this.state={
       order: 1,
-      stop: ''
+      city: '',
+      state: ''
     }
-    this.handleStopChange = this.handleStopChange.bind(this)
+    this.handleCityChange = this.handleCityChange.bind(this)
+    this.handleStateChange = this.handleStateChange.bind(this)
     this.handleStopDispatch = this.handleStopDispatch.bind(this)
   }
 
@@ -20,25 +24,20 @@ class CreateStop extends React.Component{
   }
 
 
-  handleStopChange(value){
+  handleCityChange(value){
     this.setState({
-      stop: value
-    })
+      city: value
+    }, () => console.log(this.state))
   }
-
-
-  handleOrderChange(num){
+  handleStateChange(value){
     this.setState({
-      order: num
-    })
+      state: value
+    }, () => console.log(this.state))
   }
 
   handleStopDispatch(e,state,trip_id){
-    debugger
     e.preventDefault()
-    this.setState({
-      order: this.props.stops_list+1
-    }, () => this.props.submitStop(this.state,trip_id))
+    this.props.submitStop(this.state,trip_id)
 
     //is this syncronus?
     // this.props.refreshShowTrip(history)
@@ -48,20 +47,21 @@ class CreateStop extends React.Component{
 
   render(){
     return(
-      <div>
-        <form onSubmit = {(e)=>this.handleStopDispatch(e,this.state, this.props.trip_id)}>
-          <input
-            type="number"
-            name="order"
-            value= {this.state.order}
-            min="1" max="23"
-            onChange = {(e) =>this.handleOrderChange(e.target.value)}
-            />
-          <input type = "text"
-          onChange={(e)=>this.handleStopChange(e.target.value)}/>
-          <button type="Submit" />
-        </form>
-      </div>
+
+      <Form onSubmit = {(e)=>this.handleStopDispatch(e,this.state, this.props.trip_id)}>
+        <Form.Field>
+          <label>City</label>
+          <input placeholder='Miami'
+          value = {this.state.city}
+          onChange={(e)=>this.handleCityChange(e.target.value)}/>
+          <label>State</label>
+          <input placeholder='FL'
+          value = {this.state.state}
+          onChange={(e)=>this.handleStateChange(e.target.value)}/>
+        </Form.Field>
+        <Button type='submit'>Submit</Button>
+      </Form>
+
     )
   }
 }

@@ -9,7 +9,6 @@ class CreateActivity extends React.Component{
     this.state = {
       activity: ''
     }
-
   }
 
 

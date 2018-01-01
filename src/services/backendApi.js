@@ -13,8 +13,19 @@ const T_HEADER = {
 }
 
 
+export function fetchEveryTrip(){
+  return fetch(`http://localhost:3000/api/v1/everytrip`,{
+    headers: T_HEADER
+  }).then(res => res.json())
+}
+
+
 export function createPicture(activity_id, url){
-  return fetch(`http://localhost:3000/api/v1/trips/id/stops/id/activities/${activity_id}/pictures`)
+  return fetch(`http://localhost:3000/api/v1/trips/id/stops/id/activities/${activity_id}/pictures`,{
+    headers: T_HEADER,
+    method: "POST",
+    body: JSON.stringify({activity_id,url})
+  }).then(res => res.json())
 }
 
 export function fetchStop(trip_id,stop_id){
@@ -71,7 +82,8 @@ export function getAllTrips(){
 }
 
 export function createStop(state, trip_id){
-  const stopParams = {state, trip_id}
+  const stop = `${state.city}, ${state.state.toUpperCase()}`
+  const stopParams = {stop, trip_id}
   return fetch(`http://localhost:3000/api/v1/trips/${trip_id}/stops`, {
     headers: T_HEADER,
     method: 'POST',

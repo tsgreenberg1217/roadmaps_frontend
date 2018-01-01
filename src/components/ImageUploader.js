@@ -32,7 +32,6 @@ class ImageUploader extends Component {
   }
 
   handleChange(event) {
-    // console.log(this.state.fileURL)
     if(!event.target.files || !event.target.files[0]) return;
     this.setState({ loading: true })
     this.reader.readAsDataURL(event.target.files[0])

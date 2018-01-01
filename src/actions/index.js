@@ -1,7 +1,22 @@
-import {fetchStop,createActivity,updateStopOrder, destroyStop,login, confirm, signup, fetchNewTrip, fetchTrip, destroyTrip, createStop, showStops, getAllTrips, createFriendship, getAllOnTrips} from '../services/backendApi'
+import {fetchEveryTrip, createPicture ,fetchStop,createActivity,updateStopOrder, destroyStop,login, confirm, signup, fetchNewTrip, fetchTrip, destroyTrip, createStop, showStops, getAllTrips, createFriendship, getAllOnTrips} from '../services/backendApi'
 
+
+export function getEveryTrip(){
+  return function(dispatch){
+    fetchEveryTrip().then(json => {
+      dispatch({
+        type: "EVERY_TRIP",
+        payload: json
+      })
+    })
+  }
+}
 
 export function submitPicture(activity_id, url){
+  createPicture(activity_id, url).then( json =>{
+    debugger
+    console.log(json)
+  })
 
 }
 
@@ -23,6 +38,8 @@ export function refreshStop(trip_id, stop_id){
   return function(dispatch){
     fetchStop(trip_id, stop_id).then(json => {
       json.stop.activities = json.activities
+      debugger
+
       dispatch({
         type: "SELECT_STOP",
         payload: json.stop
@@ -128,7 +145,6 @@ export function getOnTrips(){
 
 
 export function submitStop(state, trip_id){
-  debugger
   return function(dispatch){
     createStop(state, trip_id).then( json => {
       dispatch({

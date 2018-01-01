@@ -9,7 +9,7 @@ import MyMapComponent from './MyMapComponent'
 import FriendSearch from './FriendSearch'
 import FriendsContainer from './FriendsContainer'
 
-import { Embed, Container, Modal, Button, Header, Icon } from 'semantic-ui-react'
+import { Embed, Container, Modal, Button } from 'semantic-ui-react'
 
 
 
@@ -36,24 +36,9 @@ class TripShow extends React.Component{
     return(
 
       <div>
+      
         <h3>this is the trip show page!</h3>
         <h3>{this.props.trips.selected_trip.title}</h3>
-
-        <Modal trigger={<Button>Show Modal</Button>} closeIcon>
-          <Header icon='archive' content='Archive Old Messages' />
-          <Modal.Content>
-            <p>Your inbox is getting full, would you like us to enable automatic archiving of old messages?</p>
-          </Modal.Content>
-          <Modal.Actions>
-            <Button color='red'>
-              <Icon name='remove' /> No
-            </Button>
-            <Button color='green'>
-              <Icon name='checkmark' /> Yes
-            </Button>
-          </Modal.Actions>
-        </Modal>
-
 
         <Container style = {{float: 'left'}}>
           <FriendSearch/>

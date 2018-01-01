@@ -22,7 +22,8 @@ const stopDefault = {
 const tripDefault = {
   trips: {},
   on_trips: {},
-  selected_trip: {}
+  selected_trip: {},
+  every_trip: {}
 }
 
 function loginReducer(state = defaultState, action) {
@@ -46,6 +47,9 @@ function loginReducer(state = defaultState, action) {
 
 function tripReducer(state = tripDefault, action ){
   switch (action.type) {
+
+    case "EVERY_TRIP":
+        return {...state, every_trip: action.payload}
 
     case "ALL_TRIPS":
         return {...state, trips: action.payload}
