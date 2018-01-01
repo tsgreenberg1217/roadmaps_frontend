@@ -20,18 +20,11 @@ class OnTrips extends React.Component{
 
 
   render(){
-    const phrase = `welcome to your profile, ${this.props.user.name}, these are your ontrips`
+    const phrase = `${this.props.user.name}`
     return(
       <div>
 
-      <button onClick = {() => this.props.history.push(`/${this.props.user.name}`)}>see the trips youre on</button>
-
-        <button
-        onClick = {this.props.logoutUser} >
-
-        Logout
-        </button>
-        {phrase}
+        <h3>{phrase}</h3>
 
         <CreateTrip />
 

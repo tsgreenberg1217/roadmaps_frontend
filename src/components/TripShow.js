@@ -35,7 +35,6 @@ class TripShow extends React.Component{
     return(
 
       <div>
-        <h3>this is the trip show page!</h3>
         <h3>{this.props.trips.selected_trip.title}</h3>
 
         <Container style = {{width: "290px", float: 'left'}}>

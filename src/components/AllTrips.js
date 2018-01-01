@@ -18,15 +18,6 @@ class AllTrips extends React.Component{
   render(){
     return(
       <div>
-      <button onClick = {() => this.props.history.push(`${this.props.user.name}/invited`)}>see the trips youre on</button>
-
-        <button
-        onClick = {this.props.logoutUser} >
-        Logout
-        </button>
-
-        <CreateTrip />
-
         {(this.props.trips.every_trip.length !== undefined) ?
           <TripsContainer
             trips = {this.props.trips.every_trip}

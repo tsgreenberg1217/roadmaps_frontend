@@ -122,7 +122,6 @@ export function deleteStop(stop_id, trip_id){
 export function allTrips(){
   return function(dispatch){
       getAllTrips().then(json => {
-        debugger
       dispatch({
         type: "ALL_TRIPS",
         payload: json
@@ -270,13 +269,14 @@ export function confirmUser(token){
   }
 }
 
-export function logoutUser(){
+export function logoutUser(history){
   return function(dispatch){
     localStorage.removeItem("token")
     dispatch({
       type: "LOGOUT_USER",
       payload: null
     })
+    history.push(`/`)
 
   }
 }

@@ -20,7 +20,6 @@ class Profile extends React.Component{
 
 
   render(){
-    console.log(this.props.ui.user_trips)
     return(
       <div>
       <UserTrips/>

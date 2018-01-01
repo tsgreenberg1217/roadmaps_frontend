@@ -7,6 +7,7 @@ import TripShow from './components/TripShow'
 import AuthAdapter from './services/AuthAdapter'
 import AllTrips from './components/AllTrips'
 import StopShow from './components/StopShow'
+import NavBar from './components/NavBar'
 import { withRouter, Route, browserHistory, Switch } from "react-router-dom";
 import './App.css'
 import {connect} from 'react-redux'
@@ -28,6 +29,7 @@ class App extends Component {
   render() {
     return (
         <div>
+        { (this.props.login) ? <NavBar/> : null}
           <Switch>
             <Route exact path="/" component={Login}/>
             <Route path="/signup" component={SignUp}/>
@@ -44,7 +46,8 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.auth.user
+    user: state.auth.user,
+    login: state.auth.login
   }
 }
 
