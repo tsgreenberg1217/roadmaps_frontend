@@ -22,7 +22,7 @@ class App extends Component {
       this.props.confirmUser(token)
     }
     else{
-      console.log('token not found')
+      this.props.history.push(`/`)
     }
   }
 
