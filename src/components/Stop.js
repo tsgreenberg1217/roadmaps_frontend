@@ -43,8 +43,7 @@ class Stop extends React.Component{
 
     console.log(ifDown)
     return (
-      <Card.Group>
-        <Card>
+        <Card >
         <Card.Content>
           <Card.Header>
             {this.props.name}
@@ -64,7 +63,6 @@ class Stop extends React.Component{
           </div>
         </Card.Content>
       </Card>
-    </Card.Group>
 
 
     )

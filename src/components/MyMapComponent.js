@@ -5,6 +5,7 @@ import  { compose, withProps, lifecycle } from 'recompose'
 import {withScriptjs, withGoogleMap, GoogleMap, DirectionsRenderer} from 'react-google-maps'
 import { connect } from 'react-redux';
 import * as actions from '../actions';
+import FriendSearch from './FriendSearch'
 
 class MyMapComponent extends React.Component {
   constructor(props){
@@ -17,8 +18,8 @@ class MyMapComponent extends React.Component {
         stops: this.props.stops,
         googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyAa_1I2oAv-cNMvVnW0EeAW6WaUeBniIhE&v=3.exp&libraries=geometry,drawing,places",
         loadingElement: <div style={{ height: `400px` }} />,
-        containerElement: <div style={{ height: `400px` }} />,
-        mapElement: <div style={{ height: `600px`, width:'600px', float: 'left', diplay: 'block' }} />,
+        containerElement: <div style={{ height: `600px`, width: `600px` }} />,
+        mapElement: <div style={{ height: `100%` }}  />,
       }),
       withScriptjs,
       withGoogleMap,
@@ -58,10 +59,13 @@ class MyMapComponent extends React.Component {
 
 
     return (
-      <DirectionsComponent
+      <div>
+        <DirectionsComponent
         // isMarkerShown={this.state.isMarkerShown}
         // onMarkerClick={this.handleMarkerClick}
-      />
+        />
+        <FriendSearch/>
+      </div>
     )
   }
 }

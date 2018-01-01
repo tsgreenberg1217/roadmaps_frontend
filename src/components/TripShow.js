@@ -6,7 +6,6 @@ import { withRouter } from 'react-router-dom'
 import CreateStop from './CreateStop'
 import StopContainer from './StopContainer'
 import MyMapComponent from './MyMapComponent'
-import FriendSearch from './FriendSearch'
 import FriendsContainer from './FriendsContainer'
 
 import { Embed, Container, Modal, Button } from 'semantic-ui-react'
@@ -36,12 +35,10 @@ class TripShow extends React.Component{
     return(
 
       <div>
-      
         <h3>this is the trip show page!</h3>
         <h3>{this.props.trips.selected_trip.title}</h3>
 
-        <Container style = {{float: 'left'}}>
-          <FriendSearch/>
+        <Container style = {{width: "200px", float: 'left'}}>
             {(this.props.trips.selected_trip.stops) ?
             <CreateStop
             stops_list = {this.props.trips.selected_trip.stops}
@@ -65,6 +62,7 @@ class TripShow extends React.Component{
           <MyMapComponent center = {location} stops = {this.props.stops.stops} style = {{float: 'left'}}/>
           : <div>no stops</div>}
         </Container>
+
       </div>
     )
   }

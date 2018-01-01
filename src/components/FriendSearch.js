@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import * as actions from '../actions';
+import { Button, Form } from 'semantic-ui-react'
+
 import { withRouter } from 'react-router-dom'
 
 
@@ -27,13 +29,14 @@ class FriendSearch extends React.Component{
   render(){
     return(
       <div>
-      <h1>This is the friend search</h1>
-        <form onSubmit = {(e) => this.handleSubmit(e,this.state.friend)}>
-          <input
+        <form >
+        <Form.Input
           type = 'text'
+          id='form-subcomponent-shorthand-input-first-name'
+          placeholder='Invite your friends here'
           value = {this.state.friend}
           onChange = {(e)=> this.handeChange(e.target.value)}/>
-          <button type= "Submit"/>
+          <Button type= "Submit">Invite</Button>
         </form>
       </div>
 
