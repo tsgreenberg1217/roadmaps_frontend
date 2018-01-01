@@ -38,7 +38,7 @@ class TripShow extends React.Component{
         <h3>this is the trip show page!</h3>
         <h3>{this.props.trips.selected_trip.title}</h3>
 
-        <Container style = {{width: "200px", float: 'left'}}>
+        <Container style = {{width: "290px", float: 'left'}}>
             {(this.props.trips.selected_trip.stops) ?
             <CreateStop
             stops_list = {this.props.trips.selected_trip.stops}
@@ -56,7 +56,7 @@ class TripShow extends React.Component{
                 :<p>no friends to show</p>}
         </Container>
 
-        <Container style = {{float: 'right'}}>
+        <Container style = {{float: 'right', width: '670px'}}>
         {(this.props.stops !== undefined) ?
 
           <MyMapComponent center = {location} stops = {this.props.stops.stops} style = {{float: 'left'}}/>
