@@ -30,7 +30,7 @@ class UserTrips extends React.Component{
         <h3>{phrase}</h3>
 
         <Modal trigger={<Button>Create Trip</Button>} closeIcon>
-          <Header icon='archive' content='Archive Old Messages' />
+          <Header icon='archive' content='Create your trip' />
           <Modal.Content>
             <CreateTrip />
           </Modal.Content>

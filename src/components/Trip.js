@@ -16,7 +16,7 @@ class Trip extends React.Component{
       <Card.Group>
     <Card>
       <Card.Content>
-        <Image floated='left' size='medium' src='https://www.parentmap.com/images/article/9102/sky_high_space_needle_at_night_iStock_20870368_1352x900.jpg' />
+        <Image floated='left' size='medium' src={this.props.photo} />
         <Card.Header>
           {this.props.title}
         </Card.Header>

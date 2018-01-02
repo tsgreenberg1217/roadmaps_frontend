@@ -11,6 +11,7 @@ const TripsContainer = (props) =>{
     key = {trip.id}
     id = {trip.id}
     title = {trip.title}
+    photo = {trip.photo}
     name = {props.name}/>
   )
   return(

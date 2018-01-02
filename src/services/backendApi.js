@@ -106,6 +106,7 @@ export function fetchTrip(trip_id){
 }
 
 export function fetchNewTrip(trip_params){
+  debugger
   return fetch('http://localhost:3000/api/v1/trips',{
     headers: T_HEADER,
     method: "POST",
