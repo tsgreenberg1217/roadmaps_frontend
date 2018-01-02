@@ -38,7 +38,6 @@ export function refreshStop(trip_id, stop_id){
   return function(dispatch){
     fetchStop(trip_id, stop_id).then(json => {
       json.stop.activities = json.activities
-      debugger
 
       dispatch({
         type: "SELECT_STOP",
@@ -147,7 +146,6 @@ export function getOnTrips(){
 export function submitStop(state, trip_id){
   return function(dispatch){
     createStop(state, trip_id).then( json => {
-      debugger
       dispatch({
         type: "CREATE_STOP",
         payload: json.stops

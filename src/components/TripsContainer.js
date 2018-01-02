@@ -20,5 +20,4 @@ const TripsContainer = (props) =>{
 }
 
 
-// export default connect(null, actions)(TripsContainer);
 export default withRouter(connect(null, actions)(TripsContainer))

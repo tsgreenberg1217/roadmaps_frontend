@@ -29,7 +29,7 @@ class FriendSearch extends React.Component{
   render(){
     return(
       <div>
-        <form >
+        <form onSubmit = {(e) => this.handleSubmit(e,this.state.friend)} >
         <Form.Input
           type = 'text'
           id='form-subcomponent-shorthand-input-first-name'

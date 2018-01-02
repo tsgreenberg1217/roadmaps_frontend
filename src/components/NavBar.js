@@ -14,12 +14,11 @@ class NavBar extends React.Component{
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
   render(){
-    console.log(this.props.user.name);
     return(
       <Menu secondary>
         <Menu.Item name='home' onClick = {() => this.props.history.push(`/home`)} />
         <Menu.Item name='Profile' onClick = {() => this.props.history.push(`/${this.props.user.name}`)} />
-        <Menu.Item name='Your Trips' onClick = {() => this.props.history.push(`/${this.props.user.name}/invited`)} />
+        <Menu.Item name='Invited' onClick = {() => this.props.history.push(`/${this.props.user.name}/invited`)} />
         <Menu.Menu position='right'>
             <Menu.Item name='logout' onClick = {()=>this.props.logoutUser(this.props.history)}/>
         </Menu.Menu>
