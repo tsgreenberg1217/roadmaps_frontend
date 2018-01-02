@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom'
 
 import * as actions from '../actions';
+import { Button, Header, Image, Modal } from 'semantic-ui-react'
+
 
 
 
@@ -33,7 +35,7 @@ class UserTrips extends React.Component{
           <TripsContainer
             trips = {this.props.trips.trips}
             name = {this.props.user.name}/>
-        : <div>null</div>}
+          : <div>null</div>}
       </div>
     )
   }

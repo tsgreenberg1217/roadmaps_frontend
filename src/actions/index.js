@@ -178,10 +178,6 @@ export function refreshShowTrip(history){
       fetchTrip(id).then(json =>{
         json.trip.friends = json.friends
         json.trip.stops = json.stops
-        // dispatch({
-        //   type: "REFRESH_TRIP",
-        //   payload: json.trip
-        // })
         dispatch({
           type: "SELECT_TRIP",
           payload: json.trip
@@ -232,7 +228,7 @@ export function loginUser(value, history){
   }
 }
 
-export function createTrip(value){
+export function createTrip(value, history){
   const token = localStorage.token
   return function(dispatch){
     fetchNewTrip({value, token}).then(json => {
