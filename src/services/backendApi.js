@@ -77,7 +77,11 @@ export function destroyStop(stop_id,trip_id){
 
 export function getAllTrips(){
   return fetch('http://localhost:3000/api/v1/trips',{
-    headers: T_HEADER
+    headers:{
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': `Token ${localStorage.token}`
+    }
   }).then(res => res.json())
 }
 
@@ -106,7 +110,6 @@ export function fetchTrip(trip_id){
 }
 
 export function fetchNewTrip(trip_params){
-  debugger
   return fetch('http://localhost:3000/api/v1/trips',{
     headers: T_HEADER,
     method: "POST",

@@ -127,7 +127,8 @@ export function deleteStop(stop_id, trip_id){
 export function allTrips(){
   return function(dispatch){
       getAllTrips().then(json => {
-      dispatch({
+        debugger
+        dispatch({
         type: "ALL_TRIPS",
         payload: json
       })
@@ -184,7 +185,7 @@ export function refreshShowTrip(history){
       fetchTrip(id).then(json =>{
         json.trip.friends = json.friends
         json.trip.stops = json.stops
-        dispatch({
+          dispatch({
           type: "SELECT_TRIP",
           payload: json.trip
         })
@@ -219,10 +220,15 @@ export function loginUser(value, history){
     login(value).then(json => {
       if (!json.error){
         localStorage.setItem("token", json.jwt)
+        debugger
         json.user.user_trips = json.trips
         dispatch({
           type: "FETCH_USER",
           payload: json.user
+        })
+        dispatch({
+          type: "ALL_TRIPS",
+          payload: json.trips
         })
         history.push(`/${json.user.name}`)
 

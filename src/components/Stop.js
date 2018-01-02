@@ -10,7 +10,6 @@ class Stop extends React.Component{
 
   constructor(){
     super()
-    this.state = {}
     this.handleUp = this.handleUp.bind(this)
     this.handleDown = this.handleDown.bind(this)
     this.goToStop = this.goToStop.bind(this)

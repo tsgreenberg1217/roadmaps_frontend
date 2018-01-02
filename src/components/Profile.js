@@ -21,9 +21,7 @@ class Profile extends React.Component{
 
   render(){
     return(
-      <div>
       <UserTrips/>
-      </div>
     )
   }
 

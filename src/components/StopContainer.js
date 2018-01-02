@@ -9,9 +9,6 @@ import { withRouter } from 'react-router-dom'
 class StopContainer extends React.Component{
   constructor(){
     super()
-    this.state = {
-
-    }
   }
 
 

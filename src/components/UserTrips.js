@@ -57,6 +57,7 @@ class UserTrips extends React.Component{
 
 
 const mapStateToProps = (state) => {
+  debugger
   return {
     user: state.auth.user,
     trips: state.trips

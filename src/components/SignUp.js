@@ -34,6 +34,7 @@ class SignUp extends React.Component{
   }
 
   render(){
+    debugger
     return(
       <div>
       <h3>this is the signup page</h3>
