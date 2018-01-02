@@ -15,14 +15,22 @@ const T_HEADER = {
 
 export function fetchEveryTrip(){
   return fetch(`http://localhost:3000/api/v1/everytrip`,{
-    headers: T_HEADER
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': `Token ${localStorage.token}`
+    }
   }).then(res => res.json())
 }
 
 
 export function createPicture(activity_id, url){
   return fetch(`http://localhost:3000/api/v1/trips/id/stops/id/activities/${activity_id}/pictures`,{
-    headers: T_HEADER,
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': `Token ${localStorage.token}`
+    },
     method: "POST",
     body: JSON.stringify({activity_id,url})
   }).then(res => res.json())
@@ -30,14 +38,22 @@ export function createPicture(activity_id, url){
 
 export function fetchStop(trip_id,stop_id){
   return fetch(`http://localhost:3000/api/v1/trips/${trip_id}/stops/${stop_id}`,{
-    headers: T_HEADER
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': `Token ${localStorage.token}`
+    }
   }).then(res => res.json())
 }
 
 
 export function createActivity(trip_id,stop_id,activity){
   return fetch(`http://localhost:3000/api/v1/trips/:id/stops/${stop_id}/activities`,{
-    headers: T_HEADER,
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': `Token ${localStorage.token}`
+    },
     method: "POST",
     body: JSON.stringify({trip_id,stop_id,activity})
   }).then(res => res.json())
@@ -45,7 +61,11 @@ export function createActivity(trip_id,stop_id,activity){
 
 export function updateStopOrder(trip_id, stop_id, move){
   return fetch('http://localhost:3000/api/v1/update-order',{
-    headers: T_HEADER,
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': `Token ${localStorage.token}`
+    },
     method: "PATCH",
     body: JSON.stringify({trip_id,stop_id, move})
   }).then(res => res.json())
@@ -54,14 +74,22 @@ export function updateStopOrder(trip_id, stop_id, move){
 
 export function getAllOnTrips(){
   return fetch('http://localhost:3000/api/v1/ontrips',{
-    headers: T_HEADER
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': `Token ${localStorage.token}`
+    }
   }).then(res => res.json())
 }
 
 export function createFriendship(friend, trip_id){
   const friendParams = {friend, trip_id}
   return fetch('http://localhost:3000/api/v1/friendships', {
-    headers: T_HEADER,
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': `Token ${localStorage.token}`
+    },
     method: 'POST',
     body: JSON.stringify(friendParams)
   }).then(res => res.json())
@@ -69,7 +97,11 @@ export function createFriendship(friend, trip_id){
 
 export function destroyStop(stop_id,trip_id){
   return fetch(`http://localhost:3000/api/v1/trips/${trip_id}/stops/${stop_id}`,{
-    headers: T_HEADER,
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': `Token ${localStorage.token}`
+    },
     method: "DELETE"
   }).then(res => res.json())
 }
@@ -89,7 +121,11 @@ export function createStop(state, trip_id){
   const stop = `${state.city}, ${state.state.toUpperCase()}`
   const stopParams = {stop, trip_id}
   return fetch(`http://localhost:3000/api/v1/trips/${trip_id}/stops`, {
-    headers: T_HEADER,
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': `Token ${localStorage.token}`
+    },
     method: 'POST',
     body: JSON.stringify(stopParams)
   }).then(res => res.json())
@@ -97,7 +133,11 @@ export function createStop(state, trip_id){
 
 export function destroyTrip(trip_id){
   return fetch(`http://localhost:3000/api/v1/trips/${trip_id}`,{
-    headers: T_HEADER,
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': `Token ${localStorage.token}`
+    },
     method: "DELETE"
   }).then(res => res.json())
 }
@@ -105,13 +145,21 @@ export function destroyTrip(trip_id){
 
 export function fetchTrip(trip_id){
   return fetch(`http://localhost:3000/api/v1/trips/${trip_id}`,{
-    headers: T_HEADER,
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': `Token ${localStorage.token}`
+    },
   }).then(res => res.json())
 }
 
 export function fetchNewTrip(trip_params){
   return fetch('http://localhost:3000/api/v1/trips',{
-    headers: T_HEADER,
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': `Token ${localStorage.token}`
+    },
     method: "POST",
     body: JSON.stringify(trip_params)
   }).then(res => res.json())
@@ -129,7 +177,11 @@ export function login(user_params){
 
 export function confirm(token){
   return fetch('http://localhost:3000/api/v1/current_user',{
-    headers: T_HEADER
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': `Token ${localStorage.token}`
+    }
   }).then(res => res.json())
 }
 
