@@ -13,11 +13,27 @@ export function getEveryTrip(){
 }
 
 export function submitPicture(activity_id, url){
-  createPicture(activity_id, url).then( json =>{
-    debugger
-    console.log(json)
-  })
+  return function(dispatch){
+    createPicture(activity_id, url).then( json =>{
+      console.log('this picture json is this: ', json)
+      dispatch({
+        type: "SELECT_STOP",
+        payload: json
+      })
+    })
+  }
 
+}
+export function refreshStop(trip_id, stop_id){
+  return function(dispatch){
+    fetchStop(trip_id, stop_id).then(json => {
+      json.stop.activities = json.activities
+      dispatch({
+        type: "SELECT_STOP",
+        payload: json.stop
+      })
+    })
+  }
 }
 
 export function getStop(trip_id,stop_id, history){
@@ -34,18 +50,7 @@ export function getStop(trip_id,stop_id, history){
   }
 }
 
-export function refreshStop(trip_id, stop_id){
-  return function(dispatch){
-    fetchStop(trip_id, stop_id).then(json => {
-      json.stop.activities = json.activities
 
-      dispatch({
-        type: "SELECT_STOP",
-        payload: json.stop
-      })
-    })
-  }
-}
 
 export function submitActivity(trip_id,stop_id,activity){
   return function(dispatch){

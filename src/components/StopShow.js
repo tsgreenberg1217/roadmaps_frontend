@@ -24,16 +24,9 @@ class StopShow extends React.Component{
 
 
   render(){
-    console.log(this.props.stop.activities)
     return(
       <div>
-      <Grid.Row columns={4}>
-        <Grid.Column>
-          <Image src='/assets/images/wireframe/image.png' />
-        </Grid.Column>
-      </Grid.Row>
-
-      <h2>{this.props.stop.name}</h2>
+      <h1>{this.props.stop.name}</h1>
       <CreateActivity stop = {this.props.stop}/>
       {(this.props.stop.activities) ? <ActivityContainer activities = {this.props.stop.activities}/> : <div/>}
       </div>

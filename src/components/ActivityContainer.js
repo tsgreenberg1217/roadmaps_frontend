@@ -13,6 +13,7 @@ class ActivityContainer extends React.Component{
   render(){
     const activityDivs = this.props.activities.map(act =>
       <Activity
+      pictures = {act.activity_pictures}
       name = {act.name}
       id = {act.id}
       pictures = {act.pictures}
