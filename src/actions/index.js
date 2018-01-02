@@ -107,6 +107,7 @@ export function deleteStop(stop_id, trip_id){
   return function(dispatch){
     destroyStop(stop_id, trip_id).then(json => {
       json.trip.stops = json.stops
+      json.trip.friends = json.friends
       dispatch({
         type: "REFRESH_TRIP",
         payload: json.trip
@@ -146,6 +147,7 @@ export function getOnTrips(){
 export function submitStop(state, trip_id){
   return function(dispatch){
     createStop(state, trip_id).then( json => {
+      debugger
       dispatch({
         type: "CREATE_STOP",
         payload: json.stops
@@ -153,8 +155,13 @@ export function submitStop(state, trip_id){
 
       const trip = json.trip.find(trip => trip.id === json.stop.trip_id)
       trip.stops = json.stops
+      trip.friends = json.friends
+      // dispatch({
+      //   type: "REFRESH_TRIP",
+      //   payload: trip
+      // })
       dispatch({
-        type: "REFRESH_TRIP",
+        type: "SELECT_TRIP",
         payload: trip
       })
     })
