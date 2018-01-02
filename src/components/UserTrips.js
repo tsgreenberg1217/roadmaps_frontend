@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom'
 
 import * as actions from '../actions';
-import { Button, Header, Image, Modal } from 'semantic-ui-react'
+import { Button, Header, Image, Modal, Icon } from 'semantic-ui-react'
 
 
 
@@ -29,7 +29,21 @@ class UserTrips extends React.Component{
 
         <h3>{phrase}</h3>
 
-        <CreateTrip />
+        <Modal trigger={<Button>Create Trip</Button>} closeIcon>
+          <Header icon='archive' content='Archive Old Messages' />
+          <Modal.Content>
+            <CreateTrip />
+          </Modal.Content>
+          <Modal.Actions>
+            <Button color='red'>
+              <Icon name='remove' /> No
+            </Button>
+            <Button color='green'>
+              <Icon name='checkmark' /> Yes
+            </Button>
+          </Modal.Actions>
+        </Modal>
+
 
         {(this.props.trips.trips.length !== undefined) ?
           <TripsContainer

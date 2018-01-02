@@ -10,9 +10,12 @@ class CreateTrip extends React.Component{
   constructor(){
     super()
     this.state={
-      trip: ''
+      trip: '',
+
     }
     this.handleTripChange = this.handleTripChange.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+    this.fileLoaded = this.fileLoaded.bind(this)
   }
 
 
