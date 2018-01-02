@@ -156,10 +156,6 @@ export function submitStop(state, trip_id){
       const trip = json.trip.find(trip => trip.id === json.stop.trip_id)
       trip.stops = json.stops
       trip.friends = json.friends
-      // dispatch({
-      //   type: "REFRESH_TRIP",
-      //   payload: trip
-      // })
       dispatch({
         type: "SELECT_TRIP",
         payload: trip

@@ -11,6 +11,7 @@ class Trip extends React.Component{
   componentDidMount(){
   }
   render(){
+    console.log(this.props.photo)
     return (
       <div key = {this.props.id}>
       <Card.Group>

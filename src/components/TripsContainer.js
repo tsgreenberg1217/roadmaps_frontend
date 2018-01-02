@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 import { withRouter } from 'react-router-dom'
 
-
 const TripsContainer = (props) =>{
+  console.log(props.trips)
   const tripDivs = props.trips.map(trip =>
     <Trip
     key = {trip.id}
