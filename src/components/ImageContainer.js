@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import * as actions from '../actions'
-import { Divider, Image } from 'semantic-ui-react'
+import { Divider, Image, Icon } from 'semantic-ui-react'
 
 
 class ImageContainer extends React.Component{
@@ -10,9 +10,7 @@ class ImageContainer extends React.Component{
   }
   render(){
 
-    const imgDivs = this.props.pictures.map(
-      img => <Image src={img.url} />
-    )
+    const imgDivs = this.props.pictures.map( img => <Image src={img.url} bordered = {true}/>)
     return(
       <Image.Group size = 'medium'>
         {imgDivs}

@@ -17,6 +17,7 @@ class Activity extends React.Component{
     this.handleChange = this.handleChange.bind(this)
     this.fileLoaded = this.fileLoaded.bind(this)
     this.handleSubmitPicture = this.handleSubmitPicture.bind(this)
+    this.handleDeleteActivity = this.handleDeleteActivity.bind(this)
   }
 
   componentDidMount() {
@@ -47,21 +48,24 @@ class Activity extends React.Component{
     this.props.submitPicture(activity_id,url)
   }
 
-  render(){
-    debugger
-    return(
+  handleDeleteActivity(e){
+    this.props.deleteActivity(this.props.id)
+  }
 
+  render(){
+    return(
       <div>
+      <br/>
         <h3>{this.props.name}</h3>
 
         {(this.props.pictures !== undefined) ? <ImageContainer pictures = {this.props.pictures}/> : null}
 
         <form onSubmit = {(e)=>this.handleSubmitPicture(e,this.props.id,this.state.fileURL)}>
           <input className="form-control" type="file" name="image_uploader" id="image_uploader" onChange={this.handleChange} />
-          <Button type="Submit">Submit</Button>
+          <Button type="Submit">Upload Picture</Button>
         </form>
+        <Button onClick = {(e)=>{this.handleDeleteActivity(e)}}>Delete</Button>
       </div>
-
     )
   }
 }
