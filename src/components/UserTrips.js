@@ -29,20 +29,8 @@ class UserTrips extends React.Component{
 
         <h3>{phrase}</h3>
 
-        <Modal trigger={<Button>Create Trip</Button>} closeIcon>
-          <Header icon='archive' content='Create your trip' />
-          <Modal.Content>
-            <CreateTrip />
-          </Modal.Content>
-          <Modal.Actions>
-            <Button color='red'>
-              <Icon name='remove' /> No
-            </Button>
-            <Button color='green'>
-              <Icon name='checkmark' /> Yes
-            </Button>
-          </Modal.Actions>
-        </Modal>
+        <CreateTrip />
+
 
 
         {(this.props.trips.trips.length !== undefined) ?
@@ -57,7 +45,6 @@ class UserTrips extends React.Component{
 
 
 const mapStateToProps = (state) => {
-  debugger
   return {
     user: state.auth.user,
     trips: state.trips
