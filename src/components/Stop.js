@@ -51,6 +51,9 @@ class Stop extends React.Component{
           <Card.Meta>
           {(this.props.order>1) ? this.props.duration : null}
           </Card.Meta>
+          <Card.Meta>
+          {(this.props.order>1) ? this.props.distance + ' miles' : null}
+          </Card.Meta>
           <Card.Description>
           </Card.Description>
         </Card.Content>

@@ -15,6 +15,7 @@ class StopContainer extends React.Component{
   render(){
     const stopDivs = this.props.stops.map(stop =>{
       return (<Stop
+            distance = {stop.distance}
             duration = {stop.duration}
             order = {stop.order}
             trip_id = {stop.trip_id}
