@@ -17,10 +17,8 @@ class StopShow extends React.Component{
     const stop_id = this.props.history.location.pathname.split("/")[3]
     const trip_id = this.props.history.location.pathname.split("/")[2]
     this.props.refreshStop(trip_id,stop_id)
+  }
 
-  }
-  componentWillReceiveProps(){
-  }
 
 
   render(){

@@ -29,6 +29,7 @@ export function submitPicture(activity_id, url){
   return function(dispatch){
     createPicture(activity_id, url).then( json =>{
       console.log('this picture json is this: ', json)
+      debugger
       dispatch({
         type: "SELECT_STOP",
         payload: json
@@ -140,7 +141,6 @@ export function deleteStop(stop_id, trip_id){
 export function allTrips(){
   return function(dispatch){
       getAllTrips().then(json => {
-        debugger
         dispatch({
         type: "ALL_TRIPS",
         payload: json
@@ -233,7 +233,6 @@ export function loginUser(value, history){
     login(value).then(json => {
       if (!json.error){
         localStorage.setItem("token", json.jwt)
-        debugger
         json.user.user_trips = json.trips
         dispatch({
           type: "FETCH_USER",

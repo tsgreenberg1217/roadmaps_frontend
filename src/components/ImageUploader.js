@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
+import { Button, Form, Input} from 'semantic-ui-react'
+
 
 class ImageUploader extends Component {
   // static propTypes = {
@@ -48,7 +50,7 @@ class ImageUploader extends Component {
   render() {
     return (
       <div>
-        <input className="form-control" type="file" name="image_uploader" id="image_uploader" onChange={this.handleChange} />
+        <Input type="file" name="image_uploader" id="image_uploader" onChange={this.handleChange} />
         <br/>
         <button type="button" onClick = {() => this.props.submitPicture(this.props.id,this.state.fileURL)}>upload image</button>
       </div>
