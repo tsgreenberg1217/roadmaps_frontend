@@ -36,10 +36,17 @@ class Login extends React.Component{
   }
 
   render(){
-
+    const titlePhoto  = 'https://c1.staticflickr.com/3/2357/2516643521_2c33144d43_b.jpg'
     return(
-      <div style = {{backgroundImage: `url(https://c1.staticflickr.com/3/2357/2516643521_2c33144d43_b.jpg)`}} >
-        <Segment inverted>
+      <Segment style = {
+        {
+          backgroundImage: `url(${titlePhoto})`,
+          minHeight: "900px",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "0% 70%"
+
+        }}   >
           <Form inverted onSubmit = {(e) => this.handleSubmit(e)}>
             <Form.Group widths='equal'>
               <Form.Input label='Username' placeholder='Username' onChange = {(e) => this.handleNameChange(e.target.value)}/>
@@ -47,8 +54,7 @@ class Login extends React.Component{
             </Form.Group>
             <Button type='submit'>Submit</Button>
           </Form>
-        </Segment>
-      </div>
+      </Segment>
 
     )
   }
