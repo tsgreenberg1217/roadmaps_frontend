@@ -12,6 +12,19 @@ const T_HEADER = {
   'Authorization': `Token ${localStorage.token}`
 }
 
+
+export function destroyPicture(picture_id){
+  return fetch(`http://localhost:3000/api/v1/trips/id/stops/id/activities/:id/pictures/${picture_id}`,{
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': `Token ${localStorage.token}`
+    },
+    method: "DELETE",
+    body: JSON.stringify({picture_id})
+  }).then(res => res.json())
+}
+
 export function destroyActivity(activity_id){
   return fetch(`http://localhost:3000/api/v1/trips/:id/stops/:id/activities/${activity_id}`,{
     headers: {

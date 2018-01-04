@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import * as actions from '../actions';
+import { Form, Button } from 'semantic-ui-react'
+
 
 class CreateActivity extends React.Component{
 
@@ -28,13 +30,14 @@ class CreateActivity extends React.Component{
   render(){
     return(
       <div>
-      <form onSubmit = {(e) => this.handleSubmit(e)}>
+      <Form onSubmit = {(e) => this.handleSubmit(e)}>
       <input
         type = "text"
+        placeholder = "what did you do?"
         onChange = {(e)=>this.handleChange(e.target.value)}
         value = {this.state.activity}/>
-      <button type= "Submit">submit</button>
-      </form>
+      <Button type= "Submit">submit</Button>
+      </Form>
       </div>
     )
   }

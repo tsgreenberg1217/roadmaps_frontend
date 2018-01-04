@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import * as actions from '../actions'
-import { Divider, Image, Icon } from 'semantic-ui-react'
+import { Divider, Card, Icon, Image, Button  } from 'semantic-ui-react'
 
 // <Image src={img.url} bordered = {true}/>
 
@@ -12,6 +12,9 @@ class ImageContainer extends React.Component{
   render(){
 
     const container = {
+      border: '1px solid #DDDDDD',
+      width: '200px',
+      height: '200px',
       display: 'inline-block',
       position: 'relative',
 
@@ -25,18 +28,22 @@ class ImageContainer extends React.Component{
        top: '0px'
     }
 
-    const imgDivs = this.props.pictures.map( img =>
-              <div style = {container}>
-                <div style = {tag}>
-                  <Icon  name = 'user'/>
-                </div>
-                <Image src={img.url} bordered = {true}/>
-              </div>
-                )
+  const  imgDivs = this.props.pictures.map( img =>
+    <Card style = {{display: 'inline-block', position: 'relative'}}>
+      <Image src={img.url} />
+      <Card.Content>
+        <Card.Description>
+        </Card.Description>
+      </Card.Content>
+      <Card.Content extra>
+      <Button onClick = {()=>this.props.deletePicture(img.id)}>Delete</Button>
+      </Card.Content>
+    </Card>
+        )
     return(
-      <Image.Group size = 'medium'>
+      <div>
         {imgDivs}
-      </Image.Group>
+      </div>
     )
   }
 }

@@ -1,6 +1,16 @@
-import {destroyActivity, fetchEveryTrip, createPicture ,fetchStop,createActivity,updateStopOrder, destroyStop,login, confirm, signup, fetchNewTrip, fetchTrip, destroyTrip, createStop, showStops, getAllTrips, createFriendship, getAllOnTrips} from '../services/backendApi'
+import {destroyPicture,destroyActivity, fetchEveryTrip, createPicture ,fetchStop,createActivity,updateStopOrder, destroyStop,login, confirm, signup, fetchNewTrip, fetchTrip, destroyTrip, createStop, showStops, getAllTrips, createFriendship, getAllOnTrips} from '../services/backendApi'
 
 
+export function deletePicture(picture_id){
+  return function(dispatch){
+    destroyPicture(picture_id).then(json => {
+      dispatch({
+        type: "SELECT_STOP",
+        payload: json
+      })
+    })
+  }
+}
 
 export function deleteActivity(activity_id){
   return function(dispatch){
