@@ -51,11 +51,11 @@ class CreateStop extends React.Component{
       <Form onSubmit = {(e)=>this.handleStopDispatch(e,this.state, this.props.trip_id)}>
         <Form.Field>
           <label>City</label>
-          <input placeholder='Miami'
+          <input placeholder='City'
           value = {this.state.city}
           onChange={(e)=>this.handleCityChange(e.target.value)}/>
           <label>State</label>
-          <input placeholder='FL'
+          <input placeholder='State'
           value = {this.state.state}
           onChange={(e)=>this.handleStateChange(e.target.value)}/>
         </Form.Field>

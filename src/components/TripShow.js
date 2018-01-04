@@ -56,9 +56,9 @@ class TripShow extends React.Component{
         </Container>
 
         <Container style = {{float: 'right', width: '670px'}}>
-        {(this.props.stops !== undefined) ?
+        {(this.props.stops.stops !== undefined) ?
 
-          <MyMapComponent center = {location} stops = {this.props.stops.stops} style = {{float: 'left'}}/>
+          <MyMapComponent stops = {this.props.stops.stops} style = {{float: 'left'}}/>
           : <div>no stops</div>}
         </Container>
 

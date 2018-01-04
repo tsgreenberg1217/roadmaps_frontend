@@ -8,8 +8,6 @@ import { withRouter } from 'react-router-dom'
 
 
 class Trip extends React.Component{
-  componentDidMount(){
-  }
   render(){
     console.log(this.props.photo)
     return (
@@ -21,11 +19,7 @@ class Trip extends React.Component{
         <Card.Header>
           {this.props.title}
         </Card.Header>
-        <Card.Meta>
-          Florida
-        </Card.Meta>
         <Card.Description>
-
         </Card.Description>
       </Card.Content>
       <Card.Content extra>

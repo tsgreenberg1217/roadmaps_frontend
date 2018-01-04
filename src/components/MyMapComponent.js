@@ -70,4 +70,5 @@ class MyMapComponent extends React.Component {
   }
 }
 
+
 export default MyMapComponent
