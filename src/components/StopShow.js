@@ -3,7 +3,7 @@ import * as actions from '../actions'
 import { connect } from 'react-redux';
 import CreateActivity from './CreateActivity'
 import ActivityContainer from './ActivityContainer'
-import { Grid, Image } from 'semantic-ui-react'
+import { Grid, Image, Container } from 'semantic-ui-react'
 
 
 
@@ -23,11 +23,12 @@ class StopShow extends React.Component{
 
   render(){
     return(
-      <div>
+
+      <Container>
       <h1>{this.props.stop.name}</h1>
       <CreateActivity stop = {this.props.stop}/>
       {(this.props.stop.activities) ? <ActivityContainer activities = {this.props.stop.activities}/> : <div/>}
-      </div>
+      </Container>
     )
   }
 

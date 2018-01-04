@@ -7,6 +7,8 @@ import TripsContainer from './TripsContainer'
 import CreateTrip from './CreateTrip'
 import OnTrips from './OnTrips'
 import UserTrips from './UserTrips'
+import { Container  } from 'semantic-ui-react'
+
 
 
 
@@ -21,7 +23,9 @@ class Profile extends React.Component{
 
   render(){
     return(
+      <Container>
       <UserTrips/>
+      </Container>
     )
   }
 
