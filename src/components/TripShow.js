@@ -34,10 +34,9 @@ class TripShow extends React.Component{
     }
     return(
 
-      <div>
-        <h3>{this.props.trips.selected_trip.title}</h3>
-
+      <Container>
         <Container style = {{width: "290px", float: 'left'}}>
+        <h3>{this.props.trips.selected_trip.title}</h3>
             {(this.props.trips.selected_trip.stops) ?
             <CreateStop
             stops_list = {this.props.trips.selected_trip.stops}
@@ -62,7 +61,7 @@ class TripShow extends React.Component{
           : <div>no stops</div>}
         </Container>
 
-      </div>
+      </Container>
     )
   }
 }

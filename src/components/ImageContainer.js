@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import * as actions from '../actions'
-import { Divider, Card, Icon, Image, Button  } from 'semantic-ui-react'
+import { Divider, Card, Icon, Image, Button, Container  } from 'semantic-ui-react'
 
 // <Image src={img.url} bordered = {true}/>
 
@@ -41,9 +41,11 @@ class ImageContainer extends React.Component{
     </Card>
         )
     return(
-      <div>
+      <Container>
+        <Card.Group>
         {imgDivs}
-      </div>
+        </Card.Group>
+      </Container>
     )
   }
 }
