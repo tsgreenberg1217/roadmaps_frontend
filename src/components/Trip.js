@@ -11,9 +11,7 @@ class Trip extends React.Component{
   render(){
     console.log(this.props.photo)
     return (
-      <div key = {this.props.id}>
-      <Card.Group>
-    <Card>
+    <Card key = {this.props.id}>
       <Card.Content>
         <Image floated='left' size='medium' src={this.props.photo} />
         <Card.Header>
@@ -31,9 +29,7 @@ class Trip extends React.Component{
         </div>
       </Card.Content>
     </Card>
-    </Card.Group>
 
-      </div>
     )
   }
 }

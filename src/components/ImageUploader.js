@@ -48,9 +48,17 @@ class ImageUploader extends Component {
   }
 
   render() {
+    const fileStyle = {
+              	width: '0.1px',
+              	height: '0.1px',
+              	opacity: '0',
+              	overflow: 'hidden',
+              	position: 'absolute',
+              	zIndex: '-1',
+              }
     return (
       <div>
-        <Input type="file" name="image_uploader" id="image_uploader" onChange={this.handleChange} />
+        <input style = {fileStyle} type="file" name="image_uploader" id="image_uploader" onChange={this.handleChange} />
         <br/>
         <button type="button" onClick = {() => this.props.submitPicture(this.props.id,this.state.fileURL)}>upload image</button>
       </div>

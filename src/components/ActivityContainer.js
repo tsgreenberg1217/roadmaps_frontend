@@ -2,6 +2,8 @@ import React from 'react'
 import * as actions from '../actions'
 import {connect} from 'react-redux'
 import Activity from './Activity'
+import { Segment } from 'semantic-ui-react'
+
 
 
 class ActivityContainer extends React.Component{

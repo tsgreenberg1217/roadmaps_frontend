@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom'
 import * as actions from '../actions';
 import { Segment, Form, Button } from 'semantic-ui-react'
+import SignUp from './SignUp'
 
 
 
@@ -36,7 +37,7 @@ class Login extends React.Component{
   }
 
   render(){
-    const titlePhoto  = 'https://www.classicsandcustoms.com/wp-content/uploads/2017/03/open-road-6.jpg'
+    const titlePhoto  = 'https://static.pexels.com/photos/63324/california-road-highway-mountains-63324.jpeg'
     const inputStyle = { color: `white`,
                         background: `none`,
                         border: `none`,
@@ -70,8 +71,9 @@ class Login extends React.Component{
               <input style = {inputStyle} label='Username' placeholder='Username' onChange = {(e) => this.handleNameChange(e.target.value)}/>
             <input style = {inputStyle} type = "password" label='Password' placeholder='Password' onChange = {(e) => this.handlePasswordChange(e.target.value)}/>
             <br/>
-            <Button type='submit'>Submit</Button>
+            <Button type='submit'>Login</Button>
           </Form>
+          <SignUp/>
       </Segment>
 
     )

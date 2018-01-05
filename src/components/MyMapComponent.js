@@ -18,13 +18,14 @@ class MyMapComponent extends React.Component {
         stops: this.props.stops,
         googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyAa_1I2oAv-cNMvVnW0EeAW6WaUeBniIhE&v=3.exp&libraries=geometry,drawing,places",
         loadingElement: <div style={{ height: `400px` }} />,
-        containerElement: <div style={{ height: `600px`, width: `600px` }} />,
+        containerElement: <div style={{ width: `100%` }} />,
         mapElement: <div style={{height: `600px`, width: `600px` }}  />,
       }),
       withScriptjs,
       withGoogleMap,
       lifecycle({
         componentDidMount() {
+          debugger
           const allStops = this.props.stops
           const firstStop = allStops.shift()
           const lastStop = allStops.pop()
@@ -37,6 +38,7 @@ class MyMapComponent extends React.Component {
             travelMode: google.maps.TravelMode.DRIVING,
           }, (result, status) => {
             if (status === google.maps.DirectionsStatus.OK) {
+              debugger
               this.setState({
                 directions: {...result},
                 markers: true
@@ -59,13 +61,10 @@ class MyMapComponent extends React.Component {
 
 
     return (
-      <div>
         <DirectionsComponent
         // isMarkerShown={this.state.isMarkerShown}
         // onMarkerClick={this.handleMarkerClick}
         />
-        <FriendSearch/>
-      </div>
     )
   }
 }

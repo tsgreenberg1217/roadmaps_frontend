@@ -7,8 +7,10 @@ import CreateStop from './CreateStop'
 import StopContainer from './StopContainer'
 import MyMapComponent from './MyMapComponent'
 import FriendsContainer from './FriendsContainer'
+import FriendSearch from './FriendSearch'
 
-import { Embed, Container, Modal, Button } from 'semantic-ui-react'
+
+import {Segment, Embed, Container, Modal, Button, Grid } from 'semantic-ui-react'
 
 
 
@@ -22,6 +24,7 @@ class TripShow extends React.Component{
 
 
   componentDidMount(){
+    debugger
     this.props.refreshShowTrip(this.props.history)
   }
 
@@ -32,11 +35,22 @@ class TripShow extends React.Component{
       lat: 40.75,
       lng: -73.98
     }
+    debugger
     return(
-
       <Container>
-        <Container style = {{width: "290px", float: 'left'}}>
-        <h3>{this.props.trips.selected_trip.title}</h3>
+      <Grid columns = {1}>
+
+        <Grid.Column >
+        <FriendSearch/>
+        {(this.props.trips.selected_trip.friends !== undefined) ?
+          <FriendsContainer friend = {this.props.trips.selected_trip.friends}/>
+          :<p>no friends to show</p>}
+        </Grid.Column>
+
+      </Grid>
+      <Grid columns = {3}>
+
+        <Grid.Column>
             {(this.props.trips.selected_trip.stops) ?
             <CreateStop
             stops_list = {this.props.trips.selected_trip.stops}
@@ -46,20 +60,18 @@ class TripShow extends React.Component{
               ? <StopContainer
               length = {this.props.trips.selected_trip.stops.length}
               stops = {this.props.trips.selected_trip.stops}
-              style = {{display: 'block', float: 'left'}}/>
+              />
               : <div>nothing</div>}
+          </Grid.Column>
 
-              {(this.props.trips.selected_trip.friends !== undefined) ?
-                <FriendsContainer friend = {this.props.trips.selected_trip.friends}/>
-                :<p>no friends to show</p>}
-        </Container>
-
-        <Container style = {{float: 'right', width: '670px'}}>
+          <Grid.Column>
         {(this.props.stops.stops !== undefined) ?
 
-          <MyMapComponent stops = {this.props.stops.stops} style = {{float: 'left'}}/>
+          <MyMapComponent stops = {this.props.stops.stops}/>
           : <div>no stops</div>}
-        </Container>
+        </Grid.Column>
+
+      </Grid>
 
       </Container>
     )
@@ -67,6 +79,7 @@ class TripShow extends React.Component{
 }
 
 const mapStateToProps = (state) => {
+  console.log(state)
   return{
     trips: state.trips,
     stops: state.stops

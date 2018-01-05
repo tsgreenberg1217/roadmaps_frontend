@@ -31,13 +31,11 @@ class UserTrips extends React.Component{
 
         <CreateTrip />
 
-
-
         {(this.props.trips.trips.length !== undefined) ?
           <TripsContainer
             trips = {this.props.trips.trips}
             name = {this.props.user.name}/>
-          : <div>null</div>}
+          : null}
       </div>
     )
   }

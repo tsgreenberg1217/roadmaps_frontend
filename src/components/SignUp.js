@@ -2,6 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 import { withRouter} from "react-router-dom";
+import { Segment, Form, Button } from 'semantic-ui-react'
+
 
 
 class SignUp extends React.Component{
@@ -34,25 +36,36 @@ class SignUp extends React.Component{
   }
 
   render(){
-    debugger
+    const inputStyle = { color: `white`,
+                        background: `none`,
+                        border: `none`,
+                        fontSize:`“50px`,
+                        width: `350px`,
+                        height: `95px`,
+                        borderBottom: `1px solid white`,
+                        margin: '2%'}
+
     return(
-      <div>
-      <h3>this is the signup page</h3>
-      <form onSubmit = {(e) => this.handleSubmit(e)}>
+
+      <Form inverted onSubmit = {(e) => this.handleSubmit(e)}>
       <input
+      style = {inputStyle}
       type="text"
+       placeholder='Username'
       onChange = {(e) => this.handleNameChange(e.target.value)}
       />
 
       <input
+      style = {inputStyle}
+       placeholder='Password'
       type="password"
       onChange = {(e) => this.handlePasswordChange(e.target.value)}
       />
-
-      <button type="Submit">Sign Up</button>
-      </form>
-
+      <div>
+      <Button type="Submit">Sign Up</Button>
       </div>
+      </Form>
+
     )
   }
 }

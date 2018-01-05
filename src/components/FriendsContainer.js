@@ -1,4 +1,6 @@
 import React from 'react'
+import {Segment, List} from 'semantic-ui-react'
+
 
 
 class FriendsContainer extends React.Component{
@@ -19,14 +21,20 @@ class FriendsContainer extends React.Component{
     // debugger
     const friendDivs = this.props.friend.map(friend =>{
       return(
-        <div>{friend.name}</div>
+        <List.Item>
+          <List.Content>
+            <List.Header>{friend.name} is invited</List.Header>
+          </List.Content>
+        </List.Item>
       )
     })
 
     return(
-      <div>
+      <Segment inverted>
+      <List divided inverted relaxed>
       {friendDivs}
-      </div>
+      </List>
+      </Segment>
     )
   }
 }

@@ -3,6 +3,8 @@ import Trip from './Trip'
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 import { withRouter } from 'react-router-dom'
+import { Card } from 'semantic-ui-react'
+
 
 const TripsContainer = (props) =>{
   console.log(props.trips)
@@ -15,7 +17,7 @@ const TripsContainer = (props) =>{
     name = {props.name}/>
   )
   return(
-    <div>{tripDivs}</div>
+    <Card.Group>{tripDivs}</Card.Group>
   )
 }
 

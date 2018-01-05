@@ -3,7 +3,7 @@ import * as actions from '../actions'
 import {connect} from 'react-redux'
 import ImageUploader from './ImageUploader'
 import ImageContainer from './ImageContainer'
-import { Form, Button } from 'semantic-ui-react'
+import { Form, Button, Divider } from 'semantic-ui-react'
 
 
 
@@ -59,12 +59,16 @@ class Activity extends React.Component{
         <h3>{this.props.name}</h3>
 
         {(this.props.pictures !== undefined) ? <ImageContainer pictures = {this.props.pictures}/> : null}
+        <br/>
 
         <form onSubmit = {(e)=>this.handleSubmitPicture(e,this.props.id,this.state.fileURL)}>
           <input className="form-control" type="file" name="image_uploader" id="image_uploader" onChange={this.handleChange} />
           <Button type="Submit">Upload Picture</Button>
         </form>
-        <Button onClick = {(e)=>{this.handleDeleteActivity(e)}}>Delete</Button>
+        <Button
+        floating = "left"        
+        onClick = {(e)=>{this.handleDeleteActivity(e)}}>Delete</Button>
+        <Divider clearing />
       </div>
     )
   }

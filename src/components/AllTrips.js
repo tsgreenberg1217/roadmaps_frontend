@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom'
 import TripsContainer from './TripsContainer'
 import CreateTrip from './CreateTrip'
+import {Container} from 'semantic-ui-react'
 
 class AllTrips extends React.Component{
   constructor(){
@@ -17,13 +18,13 @@ class AllTrips extends React.Component{
 
   render(){
     return(
-      <div>
+      <Container>
         {(this.props.trips.every_trip.length !== undefined) ?
           <TripsContainer
             trips = {this.props.trips.every_trip}
             name = {this.props.user.name}/>
         : <div>null</div>}
-      </div>
+      </Container>
     )
   }
 }

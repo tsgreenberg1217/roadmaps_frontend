@@ -3,6 +3,7 @@ import TripsContainer from './TripsContainer'
 import CreateTrip from './CreateTrip'
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom'
+import {Container} from 'semantic-ui-react'
 
 import * as actions from '../actions';
 
@@ -22,7 +23,7 @@ class OnTrips extends React.Component{
   render(){
     const phrase = `${this.props.user.name}`
     return(
-      <div>
+      <Container>
 
         <h3>{phrase}</h3>
 
@@ -34,7 +35,7 @@ class OnTrips extends React.Component{
             name = {this.props.user.name}/>
         : <div>null</div>}
 
-      </div>
+      </Container>
     )
   }
 }
