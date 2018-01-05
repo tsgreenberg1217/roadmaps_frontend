@@ -27,9 +27,9 @@ class MyMapComponent extends React.Component {
         componentDidMount() {
           debugger
           const allStops = this.props.stops
-          const firstStop = allStops.shift()
-          const lastStop = allStops.pop()
-          const middleStops = allStops.map(stop => {return{location: stop.name, stopover: true}}) || [{}]
+          const firstStop = allStops[0]
+          const lastStop = allStops[allStops.length -1]
+          const middleStops = allStops.slice(1,allStops.length-1).map(stop => {return{location: stop.name, stopover: true}}) || [{}]
           const DirectionsService = new google.maps.DirectionsService();
           DirectionsService.route({
             origin: new google.maps.LatLng(firstStop.lat, firstStop.lng),
