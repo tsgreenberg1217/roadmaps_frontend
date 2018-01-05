@@ -24,6 +24,7 @@ class TripShow extends React.Component{
 
 
   componentDidMount(){
+    debugger
     this.props.refreshShowTrip(this.props.history)
   }
 
@@ -35,7 +36,6 @@ class TripShow extends React.Component{
       lng: -73.98
     }
     console.log(this.props.trips.selected_trip.friends)
-    debugger
     return(
       <Container>
       <Grid columns = {3}>

@@ -39,7 +39,6 @@ export function submitPicture(activity_id, url){
   return function(dispatch){
     createPicture(activity_id, url).then( json =>{
       console.log('this picture json is this: ', json)
-      debugger
       dispatch({
         type: "SELECT_STOP",
         payload: json
@@ -208,6 +207,7 @@ export function refreshShowTrip(history){
       fetchTrip(id).then(json =>{
         json.trip.friends = json.friends
         json.trip.stops = json.stops
+        debugger
           dispatch({
           type: "SELECT_TRIP",
           payload: json.trip
