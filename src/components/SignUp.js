@@ -32,7 +32,7 @@ class SignUp extends React.Component{
 
   handleSubmit(e){
     e.preventDefault()
-    this.props.signupUser(this.state)
+    this.props.signupUser(this.state, this.props.history)
   }
 
   render(){
@@ -72,4 +72,4 @@ class SignUp extends React.Component{
 
 
 
-export default connect(null, actions)(SignUp)
+export default withRouter(connect(null, actions)(SignUp))

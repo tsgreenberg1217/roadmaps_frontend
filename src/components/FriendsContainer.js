@@ -11,14 +11,8 @@ class FriendsContainer extends React.Component{
   }
 
 
-  componentDidMount(){
-    console.log(this.props)
-  }
-
-
 
   render(){
-    // debugger
     const friendDivs = this.props.friend.map(friend =>{
       return(
         <List.Item>

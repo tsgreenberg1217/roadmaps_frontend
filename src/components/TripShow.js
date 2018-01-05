@@ -24,7 +24,6 @@ class TripShow extends React.Component{
 
 
   componentDidMount(){
-    debugger
     this.props.refreshShowTrip(this.props.history)
   }
 
@@ -35,17 +34,22 @@ class TripShow extends React.Component{
       lat: 40.75,
       lng: -73.98
     }
+    console.log(this.props.trips.selected_trip.friends)
     debugger
     return(
       <Container>
-      <Grid columns = {1}>
+      <Grid columns = {3}>
 
+      <Grid.Column/>
         <Grid.Column >
         <FriendSearch/>
-        {(this.props.trips.selected_trip.friends !== undefined) ?
-          <FriendsContainer friend = {this.props.trips.selected_trip.friends}/>
-          :<p>no friends to show</p>}
         </Grid.Column>
+        <Grid.Column >
+        {(this.props.trips.selected_trip.friends !== undefined && this.props.trips.selected_trip.friends[0] !== "there are no friends") ?
+          <FriendsContainer friend = {this.props.trips.selected_trip.friends}/>
+          : null}
+          </Grid.Column >
+
 
       </Grid>
       <Grid columns = {3}>
@@ -79,7 +83,6 @@ class TripShow extends React.Component{
 }
 
 const mapStateToProps = (state) => {
-  console.log(state)
   return{
     trips: state.trips,
     stops: state.stops

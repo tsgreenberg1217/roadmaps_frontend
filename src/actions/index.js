@@ -275,15 +275,15 @@ export function createTrip(value, history){
   }
 }
 
-export function signupUser(value){
+export function signupUser(value, history){
   return function(dispatch){
     signup(value).then(json => {
-
       localStorage.setItem("token", json.jwt)
       dispatch({
         type: "SIGNUP_USER",
         payload: json.user
       })
+      history.push(`/${json.user.name}`)
     })
   }
 }

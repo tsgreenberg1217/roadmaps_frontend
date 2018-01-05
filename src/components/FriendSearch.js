@@ -36,6 +36,7 @@ class FriendSearch extends React.Component{
           placeholder='Invite your friends here'
           value = {this.state.friend}
           onChange = {(e)=> this.handeChange(e.target.value)}/>
+          <br/>
           <Button type= "Submit">Invite</Button>
         </form>
       </div>
