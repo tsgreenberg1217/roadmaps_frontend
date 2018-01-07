@@ -24,7 +24,6 @@ class TripShow extends React.Component{
 
 
   componentDidMount(){
-    debugger
     this.props.refreshShowTrip(this.props.history)
   }
 

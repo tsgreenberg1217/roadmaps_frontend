@@ -151,8 +151,12 @@ export function allTrips(){
   return function(dispatch){
       getAllTrips().then(json => {
         dispatch({
-        type: "ALL_TRIPS",
+        type: "FETCH_USER",
         payload: json
+      })
+        dispatch({
+        type: "ALL_TRIPS",
+        payload: json.user_trips
       })
     })
   }
@@ -207,7 +211,6 @@ export function refreshShowTrip(history){
       fetchTrip(id).then(json =>{
         json.trip.friends = json.friends
         json.trip.stops = json.stops
-        debugger
           dispatch({
           type: "SELECT_TRIP",
           payload: json.trip
