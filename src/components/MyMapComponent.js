@@ -25,7 +25,6 @@ class MyMapComponent extends React.Component {
       withGoogleMap,
       lifecycle({
         componentDidMount() {
-
           const allStops = this.props.stops
           const firstStop = allStops[0]
           const lastStop = allStops[allStops.length -1]
@@ -38,7 +37,7 @@ class MyMapComponent extends React.Component {
             travelMode: google.maps.TravelMode.DRIVING,
           }, (result, status) => {
             if (status === google.maps.DirectionsStatus.OK) {
-              
+
               this.setState({
                 directions: {...result},
                 markers: true
