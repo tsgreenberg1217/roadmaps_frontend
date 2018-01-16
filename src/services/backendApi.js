@@ -1,6 +1,6 @@
 
-// const URL_START = 'https://myroadmaps.herokuapp.com/api/v1'
-const URL_START = 'http://localhost:3000/api/v1'
+const URL_START = 'https://myroadmaps.herokuapp.com/api/v1'
+// const URL_START = 'http://localhost:3000/api/v1'
 
 const HEADERS = {
   'Content-Type': 'application/json',
@@ -16,7 +16,7 @@ const T_HEADER = {
 
 
 export function destroyPicture(picture_id){
-  return fetch(`http://localhost:3000/api/v1/trips/id/stops/id/activities/:id/pictures/${picture_id}`,{
+  return fetch(`${URL_START}/trips/id/stops/id/activities/:id/pictures/${picture_id}`,{
     headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
@@ -28,7 +28,7 @@ export function destroyPicture(picture_id){
 }
 
 export function destroyActivity(activity_id){
-  return fetch(`http://localhost:3000/api/v1/trips/:id/stops/:id/activities/${activity_id}`,{
+  return fetch(`${URL_START}/trips/:id/stops/:id/activities/${activity_id}`,{
     headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
@@ -41,7 +41,7 @@ export function destroyActivity(activity_id){
 
 
 export function fetchEveryTrip(){
-  return fetch(`http://localhost:3000/api/v1/everytrip`,{
+  return fetch(`${URL_START}/everytrip`,{
     headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
@@ -52,7 +52,7 @@ export function fetchEveryTrip(){
 
 
 export function createPicture(activity_id, url){
-  return fetch(`http://localhost:3000/api/v1/trips/id/stops/id/activities/${activity_id}/pictures`,{
+  return fetch(`${URL_START}/trips/id/stops/id/activities/${activity_id}/pictures`,{
     headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
@@ -64,7 +64,7 @@ export function createPicture(activity_id, url){
 }
 
 export function fetchStop(trip_id,stop_id){
-  return fetch(`http://localhost:3000/api/v1/trips/${trip_id}/stops/${stop_id}`,{
+  return fetch(`${URL_START}/trips/${trip_id}/stops/${stop_id}`,{
     headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
@@ -75,7 +75,7 @@ export function fetchStop(trip_id,stop_id){
 
 
 export function createActivity(trip_id,stop_id,activity){
-  return fetch(`http://localhost:3000/api/v1/trips/:id/stops/${stop_id}/activities`,{
+  return fetch(`${URL_START}/trips/:id/stops/${stop_id}/activities`,{
     headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
@@ -87,7 +87,7 @@ export function createActivity(trip_id,stop_id,activity){
 }
 
 export function updateStopOrder(trip_id, stop_id, move){
-  return fetch('http://localhost:3000/api/v1/update-order',{
+  return fetch(`${URL_START}/update-order`,{
     headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
@@ -100,7 +100,7 @@ export function updateStopOrder(trip_id, stop_id, move){
 
 
 export function getAllOnTrips(){
-  return fetch('http://localhost:3000/api/v1/ontrips',{
+  return fetch(`${URL_START}/ontrips`,{
     headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
@@ -111,7 +111,7 @@ export function getAllOnTrips(){
 
 export function createFriendship(friend, trip_id){
   const friendParams = {friend, trip_id}
-  return fetch('http://localhost:3000/api/v1/friendships', {
+  return fetch(`${URL_START}/friendships`, {
     headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
@@ -123,7 +123,7 @@ export function createFriendship(friend, trip_id){
 }
 
 export function destroyStop(stop_id,trip_id){
-  return fetch(`http://localhost:3000/api/v1/trips/${trip_id}/stops/${stop_id}`,{
+  return fetch(`${URL_START}/trips/${trip_id}/stops/${stop_id}`,{
     headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
@@ -135,7 +135,7 @@ export function destroyStop(stop_id,trip_id){
 
 
 export function getAllTrips(){
-  return fetch('http://localhost:3000/api/v1/trips',{
+  return fetch(`${URL_START}/trips`,{
     headers:{
       'Content-Type': 'application/json',
       'Accept': 'application/json',
@@ -147,7 +147,7 @@ export function getAllTrips(){
 export function createStop(state, trip_id){
   const stop = `${state.city}, ${state.state.toUpperCase()}`
   const stopParams = {stop, trip_id}
-  return fetch(`http://localhost:3000/api/v1/trips/${trip_id}/stops`, {
+  return fetch(`${URL_START}/trips/${trip_id}/stops`, {
     headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
@@ -159,7 +159,7 @@ export function createStop(state, trip_id){
 }
 
 export function destroyTrip(trip_id){
-  return fetch(`http://localhost:3000/api/v1/trips/${trip_id}`,{
+  return fetch(`${URL_START}/trips/${trip_id}`,{
     headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
@@ -171,7 +171,7 @@ export function destroyTrip(trip_id){
 
 
 export function fetchTrip(trip_id){
-  return fetch(`http://localhost:3000/api/v1/trips/${trip_id}`,{
+  return fetch(`${URL_START}/trips/${trip_id}`,{
     headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
@@ -181,7 +181,7 @@ export function fetchTrip(trip_id){
 }
 
 export function fetchNewTrip(trip_params){
-  return fetch('http://localhost:3000/api/v1/trips',{
+  return fetch(`${URL_START}/trips`,{
     headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
@@ -193,7 +193,7 @@ export function fetchNewTrip(trip_params){
 }
 
 export function login(user_params){
-  return fetch('http://localhost:3000/api/v1/auth',{
+  return fetch(`${URL_START}/auth`,{
     headers: HEADERS,
     method: 'POST',
     body: JSON.stringify(user_params)
@@ -203,7 +203,7 @@ export function login(user_params){
 
 
 export function confirm(token){
-  return fetch('http://localhost:3000/api/v1/current_user',{
+  return fetch(`${URL_START}/current_user`,{
     headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
@@ -213,7 +213,7 @@ export function confirm(token){
 }
 
 export function signup(user_params){
-  return fetch('http://localhost:3000/api/v1/users', {
+  return fetch(`${URL_START}/users`, {
     headers: HEADERS,
     method: 'POST',
     body: JSON.stringify(user_params)
