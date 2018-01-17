@@ -244,6 +244,7 @@ export function getTrip(trip_id, history, name){
 export function loginUser(value, history){
   return function(dispatch){
     login(value).then(json => {
+      debugger
       if (!json.error){
         localStorage.setItem("token", json.jwt)
         json.user.user_trips = json.trips
@@ -281,6 +282,7 @@ export function createTrip(value, history){
 export function signupUser(value, history){
   return function(dispatch){
     signup(value).then(json => {
+      debugger
       localStorage.setItem("token", json.jwt)
       dispatch({
         type: "SIGNUP_USER",

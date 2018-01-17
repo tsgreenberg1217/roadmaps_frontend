@@ -1,5 +1,5 @@
 
-const URL_START = 'https://myroadmaps.herokuapp.com/api/v1'
+const URL_START = 'https://safe-caverns-60257.herokuapp.com/api/v1'
 // const URL_START = 'http://localhost:3000/api/v1'
 
 const HEADERS = {
@@ -193,6 +193,7 @@ export function fetchNewTrip(trip_params){
 }
 
 export function login(user_params){
+  debugger
   return fetch(`${URL_START}/auth`,{
     headers: HEADERS,
     method: 'POST',
@@ -213,6 +214,7 @@ export function confirm(token){
 }
 
 export function signup(user_params){
+  debugger
   return fetch(`${URL_START}/users`, {
     headers: HEADERS,
     method: 'POST',
