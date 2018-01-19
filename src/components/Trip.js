@@ -9,7 +9,7 @@ import { withRouter } from 'react-router-dom'
 
 class Trip extends React.Component{
   render(){
-    // console.log(this.props.photo)
+    // debugger
     return (
     <Card key = {this.props.id}
     onClick = {()=> this.props.getTrip(this.props.id, this.props.history, this.props.name)}>
@@ -18,12 +18,15 @@ class Trip extends React.Component{
         <Card.Header>
           {this.props.title}
         </Card.Header>
-        <Card.Description>
-        {this.props.stops.length} stops
-        </Card.Description>
-        <Card.Description>
-        {this.props.stops[0].name} to {this.props.stops[this.props.stops.length-1].name}
-        </Card.Description>
+        {this.props.stops !== undefined
+            ?
+            <Card.Description>
+            {this.props.stops.length} stops
+            <br/>
+            {this.props.stops[0].name} to {this.props.stops[this.props.stops.length-1].name}
+            </Card.Description>
+            :
+            null}
       </Card.Content>
       <Card.Content extra>
         <div className='ui two buttons'>
@@ -42,5 +45,8 @@ const mapStateToProps = (state) => {
     user: state.auth.user,
   }
 }
+
+
+
 
 export default withRouter(connect(mapStateToProps, actions)(Trip));
