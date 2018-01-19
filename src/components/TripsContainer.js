@@ -7,8 +7,6 @@ import { Card } from 'semantic-ui-react'
 
 
 const TripsContainer = (props) =>{
-  debugger
-  console.log(props.trips)
   const tripDivs = props.trips.map(trip =>
     <Trip
     stops = {trip.stops}

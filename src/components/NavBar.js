@@ -16,6 +16,7 @@ class NavBar extends React.Component{
   render(){
     return(
       <Container>
+
       <Menu secondary>
         <Menu.Item name='home' onClick = {() => this.props.history.push(`/home`)} />
         <Menu.Item name='Profile' onClick = {() => this.props.history.push(`/${this.props.user.name}`)} />
@@ -35,5 +36,12 @@ const mapStateToProps = (state) => {
     user: state.auth.user
   }
 }
-
+// <Menu>
+// <Menu.Item >Browse</Menu.Item>
+// <Menu.Item >Submit</Menu.Item>
+// <Menu>
+//   <Menu.Item >Sign Up</Menu.Item>
+//   <Menu.Item >Help</Menu.Item>
+// </Menu>
+// </Menu>
 export default withRouter(connect(mapStateToProps, actions)(NavBar))

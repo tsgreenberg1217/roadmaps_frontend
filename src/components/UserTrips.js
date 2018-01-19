@@ -30,6 +30,7 @@ class UserTrips extends React.Component{
         <h3>Your trips</h3>
 
         <CreateTrip />
+        <br/>
 
         {(this.props.trips.trips.length !== undefined) ?
           <TripsContainer
