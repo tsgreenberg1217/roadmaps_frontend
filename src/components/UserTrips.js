@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom'
 
 import * as actions from '../actions';
-import { Button, Header, Image, Modal, Icon } from 'semantic-ui-react'
+import {Segment, Button, Header, Image, Modal, Icon } from 'semantic-ui-react'
 
 
 
