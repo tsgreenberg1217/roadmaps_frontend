@@ -2,12 +2,12 @@ import React from 'react'
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom'
 import * as actions from '../actions';
-import { Segment, Form, Button } from 'semantic-ui-react'
+import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 import SignUp from './SignUp'
 
 
 
-class Login extends React.Component{
+class Login_new extends React.Component{
   constructor(){
     super()
     this.state = {
@@ -37,7 +37,7 @@ class Login extends React.Component{
   }
 
   render(){
-    const titlePhoto  = 'https://static.pexels.com/photos/63324/california-road-highway-mountains-63324.jpeg'
+    const titlePhoto  = 'https://travisallendotcom.files.wordpress.com/2012/04/070.jpg'
     const inputStyle = { color: `white`,
                         background: `none`,
                         border: `none`,
@@ -56,7 +56,8 @@ class Login extends React.Component{
                       color: 'white',
                       margin: '2%'}
     return(
-      <Segment style = {{
+      <div className='login-form'
+      style = {{
           backgroundImage: `url(${titlePhoto})`,
           minHeight: "900px",
           backgroundSize: "cover",
@@ -65,43 +66,62 @@ class Login extends React.Component{
           margin: '0',
           textAlign: 'center',
           display: 'block',
-        }} >
-        <h1 style = {font}>ROADMAPS</h1>
-        <Segment inverted>
-        <Form inverted>
-          <Form.Group widths='equal'>
-            <Form.Input fluid label='First name' placeholder='First name' />
-            <Form.Input fluid label='Last name' placeholder='Last name' />
-          </Form.Group>
-          <Form.Checkbox label='I agree to the Terms and Conditions' />
-          <Button type='submit'>Submit</Button>
-        </Form>
+        }}>
+  {/*
+    Heads up! The styles below are necessary for the correct render of this example.
+    You can do same with CSS, the main idea is that all the elements up to the `Grid`
+    below must have a height of 100%.
+  */}
+  <style>{`
+    body > div,
+    body > div > div,
+    body > div > div > div.login-form {
+      height: 100%;
+    }
+  `}</style>
+  <Grid
+    textAlign='center'
+    style={{ height: '100%' }}
+    verticalAlign='middle'
+  >
+    <Grid.Column style={{ maxWidth: 450 }}>
+      <Form
+      size='large'
+      onSubmit = {(e) => this.handleSubmit(e)}
+      >
+        <Segment stacked>
+        <Header as='h2' color='teal' textAlign='center' >
+        Log-in to your account
+        </Header>
+          <Form.Input
+            fluid
+            icon='user'
+            iconPosition='left'
+            placeholder='username'
+            onChange = {(e) => this.handleNameChange(e.target.value)}
+          />
+          <Form.Input
+            fluid
+            icon='lock'
+            iconPosition='left'
+            placeholder='Password'
+            type='password'
+            onChange = {(e) => this.handlePasswordChange(e.target.value)}
+          />
+
+          <Button color='teal' fluid size='large'>Login</Button>
         </Segment>
-          <Form onSubmit = {(e) => this.handleSubmit(e)}>
-
-            <input
-              fluid
-              label='Username'
-              placeholder='Username'
-              onChange = {(e) => this.handleNameChange(e.target.value)}/>
-
-            <input
-              fluid
-              type = "password"
-              label='Password'
-              placeholder='Password'
-              onChange = {(e) => this.handlePasswordChange(e.target.value)}/>
-
-            <br/>
-            <Button type='submit'>Login</Button>
-          </Form>
-          <SignUp/>
-      </Segment>
-
+      </Form>
+      <Message>
+        New to us? <a href='#'>Sign Up</a>
+      </Message>
+    </Grid.Column>
+  </Grid>
+</div>
     )
   }
 }
 
 
 
-export default withRouter(connect(null, actions)(Login));
+export default withRouter(connect(null, actions)(Login_new));

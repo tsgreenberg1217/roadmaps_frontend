@@ -8,6 +8,8 @@ import AuthAdapter from './services/AuthAdapter'
 import AllTrips from './components/AllTrips'
 import StopShow from './components/StopShow'
 import NavBar from './components/NavBar'
+import Login_new from './components/Login_new'
+
 import { withRouter, Route, browserHistory, Switch } from "react-router-dom";
 import './App.css'
 import {connect} from 'react-redux'
@@ -31,7 +33,7 @@ class App extends Component {
         <div>
         { (this.props.login) ? <NavBar/> : null}
           <Switch>
-            <Route exact path="/" component={Login}/>
+            <Route exact path="/" component={Login_new}/>
             <Route path="/signup" component={SignUp}/>
             <Route path="/home" component={AllTrips}/>
             <Route path="/:user/invited" component={OnTrips}/>
