@@ -1,5 +1,5 @@
 import React from 'react'
-import {Segment,Button, Card, Icon, Image as ImageComponent, Item, Label } from 'semantic-ui-react'
+import {Grid,Header,Segment,Button, Card, Icon, Image as ImageComponent, Item, Label } from 'semantic-ui-react'
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 import { withRouter } from 'react-router-dom'
@@ -18,9 +18,8 @@ class Trip extends React.Component{
       <Item.Image src={this.props.photo} size = 'large'/>
 
       <Item.Content>
-        <Item.Header  as='a'>{this.props.title}</Item.Header>
-        {this.props.stops !== undefined
-            ?
+        <Header as='h1' content={this.props.title} />
+        {this.props.stops !== undefined ?
             <Item.Description>
             <Icon name='marker' size = 'large' />
             {this.props.stops.length} stops
@@ -31,6 +30,12 @@ class Trip extends React.Component{
             :
             null}
       </Item.Content>
+      <Grid>
+        <Grid.Row columns = {2}>
+        <Grid.Column>
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
     </Item>
 
 

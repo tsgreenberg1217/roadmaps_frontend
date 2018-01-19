@@ -15,17 +15,16 @@ class NavBar extends React.Component{
 
   render(){
     return(
-      <Container>
+      <Menu inverted>
+      <Menu.Item onClick = {() => this.props.history.push(`/home`)}>Browse</Menu.Item>
+        <Menu.Item onClick = {() => this.props.history.push(`/${this.props.user.name}`)}>Profile</Menu.Item>
+        <Menu.Item onClick = {() => this.props.history.push(`/${this.props.user.name}/invited`)} >Invited</Menu.Item>
+        <Menu.Item
+        position= 'right'
+        onClick = {()=>this.props.logoutUser(this.props.history)}>
+        Logout</Menu.Item>
 
-      <Menu secondary>
-        <Menu.Item name='home' onClick = {() => this.props.history.push(`/home`)} />
-        <Menu.Item name='Profile' onClick = {() => this.props.history.push(`/${this.props.user.name}`)} />
-        <Menu.Item name='Invited' onClick = {() => this.props.history.push(`/${this.props.user.name}/invited`)} />
-        <Menu.Menu position='right'>
-            <Menu.Item name='logout' onClick = {()=>this.props.logoutUser(this.props.history)}/>
-        </Menu.Menu>
       </Menu>
-      </Container>
     )
   }
 }
@@ -36,12 +35,16 @@ const mapStateToProps = (state) => {
     user: state.auth.user
   }
 }
-// <Menu>
-// <Menu.Item >Browse</Menu.Item>
-// <Menu.Item >Submit</Menu.Item>
-// <Menu>
-//   <Menu.Item >Sign Up</Menu.Item>
-//   <Menu.Item >Help</Menu.Item>
+
+// <Container>
+// <Menu secondary>
+//   <Menu.Item name='home' onClick = {() => this.props.history.push(`/home`)} />
+//   <Menu.Item name='Profile' onClick = {() => this.props.history.push(`/${this.props.user.name}`)} />
+//   <Menu.Item name='Invited' onClick = {() => this.props.history.push(`/${this.props.user.name}/invited`)} />
+//   <Menu.Menu position='right'>
+//       <Menu.Item name='logout' onClick = {()=>this.props.logoutUser(this.props.history)}/>
+//   </Menu.Menu>
 // </Menu>
-// </Menu>
+// </Container>
+
 export default withRouter(connect(mapStateToProps, actions)(NavBar))
