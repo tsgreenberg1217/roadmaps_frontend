@@ -67,7 +67,7 @@ class Login extends React.Component{
           display: 'block',
         }} >
         <h1 style = {font}>ROADMAPS</h1>
-          <Form inverted onSubmit = {(e) => this.handleSubmit(e)}>
+          <Form onSubmit = {(e) => this.handleSubmit(e)}>
               <input style = {inputStyle} label='Username' placeholder='Username' onChange = {(e) => this.handleNameChange(e.target.value)}/>
             <input style = {inputStyle} type = "password" label='Password' placeholder='Password' onChange = {(e) => this.handlePasswordChange(e.target.value)}/>
             <br/>
