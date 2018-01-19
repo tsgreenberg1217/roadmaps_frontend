@@ -23,11 +23,11 @@ class UserTrips extends React.Component{
 
 
   render(){
-    const phrase = `${this.props.user.name}`
+    // const phrase = `${this.props.user.name}`
     return(
       <div>
 
-        <h3>{phrase}</h3>
+        <h3>Your trips</h3>
 
         <CreateTrip />
 

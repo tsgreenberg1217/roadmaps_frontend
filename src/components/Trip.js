@@ -9,7 +9,7 @@ import { withRouter } from 'react-router-dom'
 
 class Trip extends React.Component{
   render(){
-    console.log(this.props.photo)
+    // console.log(this.props.photo)
     return (
     <Card key = {this.props.id}>
       <Card.Content>
@@ -18,6 +18,10 @@ class Trip extends React.Component{
           {this.props.title}
         </Card.Header>
         <Card.Description>
+        {this.props.stops.length} stops
+        </Card.Description>
+        <Card.Description>
+        {this.props.stops[0].name} to {this.props.stops[this.props.stops.length-1].name}
         </Card.Description>
       </Card.Content>
       <Card.Content extra>
