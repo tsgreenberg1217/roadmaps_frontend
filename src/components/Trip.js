@@ -32,7 +32,7 @@ class Trip extends React.Component{
       </Item.Content>
       <Grid>
         <Grid.Row columns = {2}>
-        <Grid.Column>
+          <Grid.Column>
           </Grid.Column>
         </Grid.Row>
       </Grid>
