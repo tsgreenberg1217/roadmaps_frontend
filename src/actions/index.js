@@ -267,9 +267,12 @@ export function loginUser(value, history){
 }
 
 export function createTrip(value, history){
-  const token = localStorage.token
+  // const token = localStorage.token
   return function(dispatch){
-    fetchNewTrip({value, token}).then(json => {
+    fetchNewTrip(value).then(json => {
+      debugger
+      const newTrip = json.trips[json.trips.length-1]
+
       dispatch({
         type: "NEW_TRIP",
         payload: json

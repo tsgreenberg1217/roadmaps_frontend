@@ -1,6 +1,8 @@
 import React from 'react'
 import TripsContainer from './TripsContainer'
 import CreateTrip from './CreateTrip'
+import CreateTrip_form from './CreateTrip_form'
+
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom'
 
@@ -26,10 +28,7 @@ class UserTrips extends React.Component{
     // const phrase = `${this.props.user.name}`
     return(
       <div>
-
-        <h3>Your trips</h3>
-
-        <CreateTrip />
+        <CreateTrip_form />
         <br/>
 
         {(this.props.trips.trips.length !== undefined) ?

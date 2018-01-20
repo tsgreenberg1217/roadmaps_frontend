@@ -11,7 +11,6 @@ import NavBar from './components/NavBar'
 import Login_new from './components/Login_new'
 
 import { withRouter, Route, browserHistory, Switch } from "react-router-dom";
-import './App.css'
 import {connect} from 'react-redux'
 import * as actions from './actions'
 
