@@ -5,6 +5,8 @@ import ImageUploader from './ImageUploader'
 import {Form, Button, Modal, Header, Icon, Segment} from 'semantic-ui-react'
 import { withRouter } from 'react-router-dom'
 import './App.css'
+import Validate from "react-validate-form"
+
 
 
 class CreateTrip_form extends React.Component{
@@ -12,8 +14,10 @@ class CreateTrip_form extends React.Component{
     super()
     this.state={
       trip: '',
+      tripError: false,
       fileURL: '',
       start: '',
+      startError :false,
       end: '',
       open: false
     }
@@ -24,7 +28,8 @@ class CreateTrip_form extends React.Component{
     this.handleCreateTrip = this.handleCreateTrip.bind(this)
     this.handleStartChange = this.handleStartChange.bind(this)
     this.handleEndChange = this.handleEndChange.bind(this)
-
+    this.formValidate = this.formValidate.bind(this)
+    this.validate = this.validate.bind(this)
 
   }
 
@@ -73,6 +78,14 @@ class CreateTrip_form extends React.Component{
     // this.toggleModal()
   }
 
+  validate(){
+
+  }
+
+  formValidate(){
+    const valid = this.validate()
+  }
+
   renderLabel() {
     return this.props.label ? <label htmlFor="image_uploader">{this.props.label}</label> : null
   }
@@ -92,16 +105,24 @@ class CreateTrip_form extends React.Component{
       <Header as='h2' color='black' textAlign='left' >
       Start planning your new roadtrip
       </Header>
+
       <Form.Input
       placeholder = 'what is the title of your trip?'
+      error = {this.state.tripError}
+
       onChange = {(e)=>this.handleTripChange(e.target.value)}
       />
+
       <Form.Input
       placeholder = 'starting city'
+      error = {this.state.startError}
       onChange = {(e)=>this.handleStartChange(e.target.value)}
       />
+
       <Form.Input
       placeholder = 'ending city'
+      error = {this.state.endError}
+
       onChange = {(e)=>this.handleEndChange(e.target.value)}
 
       />
