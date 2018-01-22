@@ -154,6 +154,7 @@ class CreateTrip_form extends React.Component{
         let endValid = json.end !== 'invalid place' ? true : false
         let tripValid = this.state.trip !== '' ? true : false
         let allValid = startValid && endValid && tripValid
+        debugger
         allValid ? that.toggleModal() : that.handleValidationError(trip,tripValid,this.state.start,startValid,this.state.end,endValid)
       }
     )
@@ -174,18 +175,19 @@ class CreateTrip_form extends React.Component{
     let tripVal = tripValid ? trip : blank
     let startVal = startValid ? start : blank
     let endVal = endValid ? end : blank
+    debugger
 
     this.setState({
       trip: tripVal,
-      tripError: tripValid,
+      tripError: !tripValid,
       tripMessage : tripMessage,
 
       start: startVal,
-      startError: startValid,
+      startError: !startValid,
       startMessage: startMessage,
 
       end: endVal,
-      endError: endValid,
+      endError: !endValid,
       endMessage: endMessage,
 
       buttonLoad: false
