@@ -15,10 +15,17 @@ class CreateTrip_form extends React.Component{
     this.state={
       trip: '',
       tripError: false,
-      fileURL: '',
+      tripMessage: 'place trip here',
+
       start: '',
       startError :false,
+      startMessage: 'starting city, state',
+
       end: '',
+      endError: false,
+      endMessage: 'ending city, state',
+
+      fileURL: '',
       open: false
     }
     this.handleTripChange = this.handleTripChange.bind(this)
@@ -28,7 +35,7 @@ class CreateTrip_form extends React.Component{
     this.handleCreateTrip = this.handleCreateTrip.bind(this)
     this.handleStartChange = this.handleStartChange.bind(this)
     this.handleEndChange = this.handleEndChange.bind(this)
-    this.formValidate = this.formValidate.bind(this)
+    // this.formValidate = this.formValidate.bind(this)
     this.validate = this.validate.bind(this)
 
   }
@@ -78,13 +85,77 @@ class CreateTrip_form extends React.Component{
     // this.toggleModal()
   }
 
+  startValidate(start){
+    if(start !== 'invalid place'){
+      return true
+    }
+    else{
+      this.setState({
+        startError: true,
+        startMessage: 'please put in a valid location'
+      }, () => false)
+    }
+  }
+
+  endValidate(end){
+    if(end !== 'invalid place'){
+      return true
+    }
+    else{
+      this.setState({
+        endError: true,
+        endMessage: 'please put in a valid location'
+      }, () => false)
+    }
+  }
+
+  tripValidate(trip){
+    if(trip !== ''){
+      return true
+    }
+    else{
+      this.setState({
+        tripError: true,
+        tripMessage: 'Really? You thought we would let you leave this blank?'
+      }, () => false)
+    }
+  }
+
   validate(){
+    const URL_START = 'http://localhost:3000/api/v1'
+    const {trip,start,end} = this.state
+    const that = this
+    fetch(`${URL_START}/validations/start-end`,{
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': `Token ${localStorage.token}`
+      },
+      method: "POST",
+      body: JSON.stringify({start,end})})
+      .then(res => res.json())
+      .then(json =>{
+        const startValid = that.startValidate(json.start)
+        const endValid = that.endValidate(json.end)
+        const tripValid = that.tripValidate(trip)
+        const allValid = startValid && endValid && tripValid
+        allValid ? that.toggleModal() : console.log('oops')
+      }
+       // const startValid = this.startValidate(json.start)
+        // const endValid = this.endValidate(json.end)
+        // const tripValid = this.tripValidate(trip)
+        // const allValid = startValid && endValid && tripValid
+        // return allValid ?  true : false
+      )
+    }
 
-  }
-
-  formValidate(){
-    const valid = this.validate()
-  }
+  // async formValidate(){
+  //   const valid = await this.validate()
+  //   debugger
+  //   if(valid){
+  //     this.toggleModal
+  //   }
+  // }
 
   renderLabel() {
     return this.props.label ? <label htmlFor="image_uploader">{this.props.label}</label> : null
@@ -126,7 +197,7 @@ class CreateTrip_form extends React.Component{
       onChange = {(e)=>this.handleEndChange(e.target.value)}
 
       />
-      <Button onClick = {this.toggleModal}>Lets go!</Button>
+      <Button onClick = {this.validate}>Lets go!</Button>
       </Segment>
       </Form>
 
