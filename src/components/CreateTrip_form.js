@@ -154,16 +154,45 @@ class CreateTrip_form extends React.Component{
         let endValid = json.end !== 'invalid place' ? true : false
         let tripValid = this.state.trip !== '' ? true : false
         let allValid = startValid && endValid && tripValid
-        allValid ? that.toggleModal() : that.setState({buttonLoad: false})
-        // if(allValid){
-        //   that.toggleModal()
-        // }
-        // else{
-        //   debugger
-        //   that.setState({buttonLoad: false})
-        // }
+        allValid ? that.toggleModal() : that.handleValidationError(trip,tripValid,this.state.start,startValid,this.state.end,endValid)
       }
     )
+  }
+
+  handleValidationError(trip,tripValid,start,startValid,end,endValid){
+    const locationError = "Enter a valid location"
+    const TripError = 'Really? You thought we would let you leave this blank?'
+    const blank = ''
+    const tripDefault = 'enter your roadtrip title here'
+    const startDefault = 'starting city, state'
+    const endDefault = 'ending city, state'
+
+    let tripMessage = tripValid ? tripDefault : TripError
+    let startMessage = startValid ? startDefault : locationError
+    let endMessage = endValid ? endDefault : locationError
+
+    let tripVal = tripValid ? trip : blank
+    let startVal = startValid ? start : blank
+    let endVal = endValid ? end : blank
+
+    this.setState({
+      trip: tripVal,
+      tripError: tripValid,
+      tripMessage : tripMessage,
+
+      start: startVal,
+      startError: startValid,
+      startMessage: startMessage,
+
+      end: endVal,
+      endError: endValid,
+      endMessage: endMessage,
+
+      buttonLoad: false
+
+    })
+
+
   }
 
   renderLabel() {
