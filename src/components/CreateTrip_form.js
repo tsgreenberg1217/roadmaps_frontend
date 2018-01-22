@@ -15,7 +15,7 @@ class CreateTrip_form extends React.Component{
     this.state={
       trip: '',
       tripError: false,
-      tripMessage: 'place trip here',
+      tripMessage: 'enter your roadtrip title here',
 
       start: '',
       startError :false,
@@ -24,6 +24,8 @@ class CreateTrip_form extends React.Component{
       end: '',
       endError: false,
       endMessage: 'ending city, state',
+
+      buttonLoad: false,
 
       fileURL: '',
       open: false
@@ -37,6 +39,7 @@ class CreateTrip_form extends React.Component{
     this.handleEndChange = this.handleEndChange.bind(this)
     // this.formValidate = this.formValidate.bind(this)
     this.validate = this.validate.bind(this)
+    this.startValidate = this.startValidate.bind(this)
 
   }
 
@@ -74,6 +77,7 @@ class CreateTrip_form extends React.Component{
 
   toggleModal(){
     this.setState({
+      buttonLoad: false,
       open: !this.state.open
     })
   }
@@ -82,7 +86,6 @@ class CreateTrip_form extends React.Component{
     const {trip, fileURL, start, end} = this.state
     const value = {trip, fileURL, start, end}
     this.props.createTrip(value,this.props.history)
-    // this.toggleModal()
   }
 
   startValidate(start){
@@ -92,19 +95,22 @@ class CreateTrip_form extends React.Component{
     else{
       this.setState({
         startError: true,
-        startMessage: 'please put in a valid location'
+        startMessage: 'please put in a valid location',
+        start: ''
       }, () => false)
     }
   }
 
   endValidate(end){
+    end !== 'invalid place' ? true : false
     if(end !== 'invalid place'){
       return true
     }
     else{
       this.setState({
         endError: true,
-        endMessage: 'please put in a valid location'
+        endMessage: 'please put in a valid location',
+        end: ''
       }, () => false)
     }
   }
@@ -116,12 +122,21 @@ class CreateTrip_form extends React.Component{
     else{
       this.setState({
         tripError: true,
-        tripMessage: 'Really? You thought we would let you leave this blank?'
+        tripMessage: 'Really? You thought we would let you leave this blank?',
+        trip: ''
       }, () => false)
     }
   }
 
+  startValidate(){
+    debugger
+    this.setState({
+      buttonLoad: true
+    }, this.validate)
+  }
+
   validate(){
+    debugger
     const URL_START = 'http://localhost:3000/api/v1'
     const {trip,start,end} = this.state
     const that = this
@@ -135,27 +150,21 @@ class CreateTrip_form extends React.Component{
       body: JSON.stringify({start,end})})
       .then(res => res.json())
       .then(json =>{
-        const startValid = that.startValidate(json.start)
-        const endValid = that.endValidate(json.end)
-        const tripValid = that.tripValidate(trip)
-        const allValid = startValid && endValid && tripValid
-        allValid ? that.toggleModal() : console.log('oops')
+        let startValid = json.start !== 'invalid place' ? true : false
+        let endValid = json.end !== 'invalid place' ? true : false
+        let tripValid = this.state.trip !== '' ? true : false
+        let allValid = startValid && endValid && tripValid
+        allValid ? that.toggleModal() : that.setState({buttonLoad: false})
+        // if(allValid){
+        //   that.toggleModal()
+        // }
+        // else{
+        //   debugger
+        //   that.setState({buttonLoad: false})
+        // }
       }
-       // const startValid = this.startValidate(json.start)
-        // const endValid = this.endValidate(json.end)
-        // const tripValid = this.tripValidate(trip)
-        // const allValid = startValid && endValid && tripValid
-        // return allValid ?  true : false
-      )
-    }
-
-  // async formValidate(){
-  //   const valid = await this.validate()
-  //   debugger
-  //   if(valid){
-  //     this.toggleModal
-  //   }
-  // }
+    )
+  }
 
   renderLabel() {
     return this.props.label ? <label htmlFor="image_uploader">{this.props.label}</label> : null
@@ -178,26 +187,32 @@ class CreateTrip_form extends React.Component{
       </Header>
 
       <Form.Input
-      placeholder = 'what is the title of your trip?'
+      value = {this.state.trip}
+      placeholder = {this.state.tripMessage}
       error = {this.state.tripError}
-
       onChange = {(e)=>this.handleTripChange(e.target.value)}
       />
 
       <Form.Input
-      placeholder = 'starting city'
+      value = {this.state.start}
+      placeholder = {this.state.startMessage}
       error = {this.state.startError}
       onChange = {(e)=>this.handleStartChange(e.target.value)}
       />
 
       <Form.Input
-      placeholder = 'ending city'
+      value = {this.state.end}
+      placeholder = {this.state.endMessage}
       error = {this.state.endError}
 
       onChange = {(e)=>this.handleEndChange(e.target.value)}
 
       />
-      <Button onClick = {this.validate}>Lets go!</Button>
+        <Button
+         onClick = {this.startValidate}
+        loading = {this.state.buttonLoad}>
+        Lets go!
+        </Button>
       </Segment>
       </Form>
 
