@@ -11,8 +11,7 @@ class Activity extends React.Component{
   constructor() {
     super()
     this.state = {
-      loading: false,
-      fileURL: null
+      fileURL: ''
     }
     this.handleChange = this.handleChange.bind(this)
     this.fileLoaded = this.fileLoaded.bind(this)
@@ -26,12 +25,11 @@ class Activity extends React.Component{
   }
 
   fileLoaded(event) {
-    this.setState({ fileURL: event.target.result, loading: false })
+    this.setState({ fileURL: event.target.result}, this.handleSubmitPicture)
   }
 
   handleChange(event) {
     if(!event.target.files || !event.target.files[0]) return;
-    this.setState({ loading: true })
     this.reader.readAsDataURL(event.target.files[0])
   }
 
@@ -43,9 +41,9 @@ class Activity extends React.Component{
     return this.state.fileURL ? <img src={this.state.fileURL} className="uploaded-preview" alt="Uploaded Image" /> : null
   }
 
-  handleSubmitPicture(e, activity_id, url){
-    e.preventDefault()
-    this.props.submitPicture(activity_id,url)
+  handleSubmitPicture(){
+    debugger
+    this.props.submitPicture(this.props.id,this.state.fileURL)
   }
 
   handleDeleteActivity(e){
@@ -65,11 +63,10 @@ class Activity extends React.Component{
           Upload memory
           <input type="file"onChange={this.handleChange} />
         </label>
-
         <Button
         floating = "left"
         onClick = {(e)=>{this.handleDeleteActivity(e)}}
-        >Delete</Button>
+        >Delete Log</Button>
         <Divider clearing />
       </div>
     )
