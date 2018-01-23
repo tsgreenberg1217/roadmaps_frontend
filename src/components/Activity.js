@@ -1,7 +1,7 @@
+import './App.css'
 import React from 'react'
 import * as actions from '../actions'
 import {connect} from 'react-redux'
-import ImageUploader from './ImageUploader'
 import ImageContainer from './ImageContainer'
 import { Form, Button, Divider } from 'semantic-ui-react'
 
@@ -66,7 +66,7 @@ class Activity extends React.Component{
           <Button type="Submit">Upload Picture</Button>
         </form>
         <Button
-        floating = "left"        
+        floating = "left"
         onClick = {(e)=>{this.handleDeleteActivity(e)}}>Delete</Button>
         <Divider clearing />
       </div>

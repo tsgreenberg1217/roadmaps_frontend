@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import * as actions from '../actions';
-import ImageUploader from './ImageUploader'
+// import ImageUploader from './ImageUploader'
 import {Form, Button, Modal, Header, Icon, Segment} from 'semantic-ui-react'
 import { withRouter } from 'react-router-dom'
 import './App.css'
@@ -193,7 +193,6 @@ class CreateTrip_form extends React.Component{
       value = {this.state.end}
       placeholder = {this.state.endMessage}
       error = {this.state.endError}
-
       onChange = {(e)=>this.handleEndChange(e.target.value)}
 
       />

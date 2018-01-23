@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import * as actions from '../actions';
-import ImageUploader from './ImageUploader'
+// import ImageUploader from './ImageUploader'
 import {Form, Button, Modal, Header, Icon} from 'semantic-ui-react'
 import { withRouter } from 'react-router-dom'
 
