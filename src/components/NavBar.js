@@ -36,15 +36,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-// <Container>
-// <Menu secondary>
-//   <Menu.Item name='home' onClick = {() => this.props.history.push(`/home`)} />
-//   <Menu.Item name='Profile' onClick = {() => this.props.history.push(`/${this.props.user.name}`)} />
-//   <Menu.Item name='Invited' onClick = {() => this.props.history.push(`/${this.props.user.name}/invited`)} />
-//   <Menu.Menu position='right'>
-//       <Menu.Item name='logout' onClick = {()=>this.props.logoutUser(this.props.history)}/>
-//   </Menu.Menu>
-// </Menu>
-// </Container>
-
 export default withRouter(connect(mapStateToProps, actions)(NavBar))

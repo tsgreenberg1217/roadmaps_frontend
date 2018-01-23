@@ -178,6 +178,7 @@ export function getOnTrips(){
 export function submitStop(state, trip_id){
   return function(dispatch){
     createStop(state, trip_id).then( json => {
+      debugger
       dispatch({
         type: "CREATE_STOP",
         payload: json.stops

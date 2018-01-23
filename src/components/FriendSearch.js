@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import * as actions from '../actions';
-import { Button, Form } from 'semantic-ui-react'
+import { Button, Form, Input } from 'semantic-ui-react'
 
 import { withRouter } from 'react-router-dom'
 
@@ -10,7 +10,9 @@ class FriendSearch extends React.Component{
   constructor(){
     super()
     this.state = {
-      friend: ''
+      friend: '',
+      friendError: false,
+      friendMessage: 'Invite your friends here'
     }
     this.handeChange = this.handeChange.bind(this)
   }
@@ -21,20 +23,37 @@ class FriendSearch extends React.Component{
     })
   }
 
+  friendAlreadyAdded(friend){
+    // debugger
+    const friendIsThere = this.props.friends.find(name => name.name === friend)
+    return friendIsThere
+  }
+
   handleSubmit(e,friend){
     e.preventDefault()
-    this.props.submitFriendship(friend, this.props.history)
+    if(!this.friendAlreadyAdded(friend)){
+      this.props.submitFriendship(friend, this.props.history)
+    }
+    else{
+      this.setState({
+        friend: '',
+        friendError: true,
+        friendMessage: 'friend already there'
+      })
+    }
   }
 
   render(){
+    // debugger
     return(
       <div>
         <form onSubmit = {(e) => this.handleSubmit(e,this.state.friend)} >
-        <Form.Input
+        <Input
           type = 'text'
           id='form-subcomponent-shorthand-input-first-name'
-          placeholder='Invite your friends here'
+          placeholder= {this.state.friendMessage}
           value = {this.state.friend}
+          error = {this.state.friendError}
           onChange = {(e)=> this.handeChange(e.target.value)}/>
           <br/>
           <Button type= "Submit">Invite</Button>
@@ -45,4 +64,10 @@ class FriendSearch extends React.Component{
   }
 }
 
-export default withRouter(connect(null,actions)(FriendSearch))
+const mapStateToProps = (state) => {
+  return{
+    friends: state.trips.selected_trip.friends
+  }
+}
+
+export default withRouter(connect(mapStateToProps,actions)(FriendSearch))
