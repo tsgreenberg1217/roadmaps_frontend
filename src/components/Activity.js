@@ -60,19 +60,25 @@ class Activity extends React.Component{
 
         {(this.props.pictures !== undefined) ? <ImageContainer pictures = {this.props.pictures}/> : null}
         <br/>
+        <label className = 'pictureUploader'
+        name="image_uploader" id="image_uploader" onChange={this.handleChange}>
+          Upload memory
+          <input type="file"onChange={this.handleChange} />
+        </label>
 
-        <form onSubmit = {(e)=>this.handleSubmitPicture(e,this.props.id,this.state.fileURL)}>
-          <input className="form-control" type="file" name="image_uploader" id="image_uploader" onChange={this.handleChange} />
-          <Button type="Submit">Upload Picture</Button>
-        </form>
         <Button
         floating = "left"
-        onClick = {(e)=>{this.handleDeleteActivity(e)}}>Delete</Button>
+        onClick = {(e)=>{this.handleDeleteActivity(e)}}
+        >Delete</Button>
         <Divider clearing />
       </div>
     )
   }
 }
 
+// <form onSubmit = {(e)=>this.handleSubmitPicture(e,this.props.id,this.state.fileURL)}>
+//   <input className="form-control" type="file" name="image_uploader" id="image_uploader" onChange={this.handleChange} />
+//   <Button type="Submit">Upload Picture</Button>
+// </form>
 
 export default connect(null, actions)(Activity)

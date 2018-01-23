@@ -32,6 +32,7 @@ class CreateActivity extends React.Component{
       <div>
       <Form onSubmit = {(e) => this.handleSubmit(e)}>
       <input
+        style = {{marginBottom: '2%'}}
         type = "text"
         placeholder = "what did you do?"
         onChange = {(e)=>this.handleChange(e.target.value)}
