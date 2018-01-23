@@ -37,7 +37,6 @@ class CreateTrip_form extends React.Component{
     this.handleCreateTrip = this.handleCreateTrip.bind(this)
     this.handleStartChange = this.handleStartChange.bind(this)
     this.handleEndChange = this.handleEndChange.bind(this)
-    // this.formValidate = this.formValidate.bind(this)
     this.validate = this.validate.bind(this)
     this.startValidate = this.startValidate.bind(this)
 
@@ -66,6 +65,7 @@ class CreateTrip_form extends React.Component{
     this.reader.onload = this.fileLoaded
   }
 
+
   fileLoaded(event) {
     this.setState({ fileURL: event.target.result},this.handleCreateTrip)
   }
@@ -88,55 +88,16 @@ class CreateTrip_form extends React.Component{
     this.props.createTrip(value,this.props.history)
   }
 
-  startValidate(start){
-    if(start !== 'invalid place'){
-      return true
-    }
-    else{
-      this.setState({
-        startError: true,
-        startMessage: 'please put in a valid location',
-        start: ''
-      }, () => false)
-    }
-  }
 
-  endValidate(end){
-    end !== 'invalid place' ? true : false
-    if(end !== 'invalid place'){
-      return true
-    }
-    else{
-      this.setState({
-        endError: true,
-        endMessage: 'please put in a valid location',
-        end: ''
-      }, () => false)
-    }
-  }
-
-  tripValidate(trip){
-    if(trip !== ''){
-      return true
-    }
-    else{
-      this.setState({
-        tripError: true,
-        tripMessage: 'Really? You thought we would let you leave this blank?',
-        trip: ''
-      }, () => false)
-    }
-  }
 
   startValidate(){
-    debugger
     this.setState({
       buttonLoad: true
     }, this.validate)
   }
 
   validate(){
-    debugger
+
     const URL_START = 'http://localhost:3000/api/v1'
     const {trip,start,end} = this.state
     const that = this
@@ -154,7 +115,6 @@ class CreateTrip_form extends React.Component{
         let endValid = json.end !== 'invalid place' ? true : false
         let tripValid = this.state.trip !== '' ? true : false
         let allValid = startValid && endValid && tripValid
-        debugger
         allValid ? that.toggleModal() : that.handleValidationError(trip,tripValid,this.state.start,startValid,this.state.end,endValid)
       }
     )
@@ -175,8 +135,6 @@ class CreateTrip_form extends React.Component{
     let tripVal = tripValid ? trip : blank
     let startVal = startValid ? start : blank
     let endVal = endValid ? end : blank
-    debugger
-
     this.setState({
       trip: tripVal,
       tripError: !tripValid,
@@ -241,7 +199,7 @@ class CreateTrip_form extends React.Component{
       />
         <Button
          onClick = {this.startValidate}
-        loading = {this.state.buttonLoad}>
+         loading = {this.state.buttonLoad}>
         Lets go!
         </Button>
       </Segment>
@@ -258,17 +216,17 @@ class CreateTrip_form extends React.Component{
         </Modal.Content>
         <Modal.Actions style = {{margin: '2%'}}>
 
-        <Button color='red'
-        style = {{float: 'right'}}
-        onClick = {this.toggleModal}>
-        Nah
-        </Button>
         <label className = 'fileContainer'
         name="image_uploader" id="image_uploader" onChange={this.handleImgUrlChange}>
           Yes!
           <input type="file"onChange={this.handleImgUrlChange} />
         </label>
 
+        <Button color='red'
+        style = {{float: 'right'}}
+        onClick = {this.handleCreateTrip}>
+        Nah
+        </Button>
         </Modal.Actions>
       </Modal>
 
@@ -278,35 +236,5 @@ class CreateTrip_form extends React.Component{
   }
 }
 
-// <Form >
-// <input className="form-control" type="file" name="image_uploader" id="image_uploader" onChange={this.handleImgUrlChange} />
-// </Form>
-// const {trip, fileURL} = this.state
-// <div>
-// <Button onClick = {this.toggleModal}>Create Trip</Button>
-// <Modal
-// open = {this.state.open}
-// dimmer
-// closeOnDimmerClick>
-//   <Header icon='archive' content='Create your trip' />
-//   <Modal.Content>
-//   </Modal.Content>
-//     <Form >
-//       <input type = "text"
-//       onChange={(e)=>this.handleTripChange(e.target.value)}/>
-//       <input className="form-control" type="file" name="image_uploader" id="image_uploader" onChange={this.handleImgUrlChange} />
-//     </Form>
-//   <Modal.Actions>
-//     <Button color='red'
-//     onClick = {this.toggleModal}>
-//       <Icon name='remove' /> Cancel
-//     </Button>
-//     <Button color='green'
-//       onClick = {()=>this.handleCreateTrip({trip, fileURL}, this.props.history)}>
-//       <Icon name='checkmark' /> Create
-//     </Button>
-//   </Modal.Actions>
-// </Modal>
-// </div>
 
 export default withRouter(connect(null, actions)(CreateTrip_form));
