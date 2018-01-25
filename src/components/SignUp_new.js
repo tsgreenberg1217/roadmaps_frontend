@@ -7,7 +7,7 @@ import SignUp from './SignUp'
 
 
 
-class Login_new extends React.Component{
+class Signup_new extends React.Component{
   constructor(){
     super()
     this.state = {
@@ -33,7 +33,7 @@ class Login_new extends React.Component{
 
   handleSubmit(e){
     e.preventDefault()
-    this.props.loginUser(this.state, this.props.history)
+    this.props.signupUser(this.state, this.props.history)
   }
 
   render(){
@@ -91,7 +91,7 @@ class Login_new extends React.Component{
       >
         <Segment stacked>
         <Header as='h2' color='teal' textAlign='center' >
-        Log-in to your account
+        Create your profile
         </Header>
           <Form.Input
             fluid
@@ -109,11 +109,11 @@ class Login_new extends React.Component{
             onChange = {(e) => this.handlePasswordChange(e.target.value)}
           />
 
-          <Button color='teal' fluid size='large'>Login</Button>
+          <Button color='teal' fluid size='large'>Sign up</Button>
         </Segment>
       </Form>
       <Message>
-      Not part of Roadmaps? <Link to = '/signup'>Sign up</Link>
+        Already have an account? <Link to = '/login'>login</Link>
       </Message>
     </Grid.Column>
   </Grid>
@@ -124,4 +124,4 @@ class Login_new extends React.Component{
 
 
 
-export default withRouter(connect(null, actions)(Login_new));
+export default withRouter(connect(null, actions)(Signup_new));

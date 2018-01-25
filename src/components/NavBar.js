@@ -16,7 +16,6 @@ class NavBar extends React.Component{
   render(){
     return(
       <Menu inverted>
-      <Menu.Item onClick = {() => this.props.history.push(`/home`)}>Browse</Menu.Item>
         <Menu.Item onClick = {() => this.props.history.push(`/${this.props.user.name}`)}>Profile</Menu.Item>
         <Menu.Item onClick = {() => this.props.history.push(`/${this.props.user.name}/invited`)} >Invited</Menu.Item>
         <Menu.Item

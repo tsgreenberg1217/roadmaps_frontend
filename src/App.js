@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Login from './components/Login'
 import SignUp from './components/SignUp'
+import SignUp_new from './components/SignUp_new'
+
 import OnTrips from './components/OnTrips'
 import Profile from './components/Profile'
 import TripShow from './components/TripShow'
@@ -36,8 +38,7 @@ class App extends Component {
         { (this.props.login && this.props.history.location.pathname !== '/login') ? <NavBar/> : null}
           <Switch>
             <Route exact path="/login" component={Login_new}/>
-            <Route path="/signup" component={SignUp}/>
-            <Route path="/home" component={AllTrips}/>
+            <Route path="/signup" component={SignUp_new}/>
             <Route path="/:user/invited" component={OnTrips}/>
             <Route path="/:user/:trip/:stop" component={StopShow}/>
             <Route path="/:user/:trip" component={TripShow}/>
