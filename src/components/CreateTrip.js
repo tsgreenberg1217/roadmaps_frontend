@@ -91,8 +91,6 @@ class CreateTrip extends React.Component{
         </Modal.Actions>
       </Modal>
       </div>
-
-
     )
   }
 }

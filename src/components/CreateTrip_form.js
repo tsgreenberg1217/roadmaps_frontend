@@ -97,7 +97,7 @@ class CreateTrip_form extends React.Component{
   }
 
   validate(){
-
+    // const URL_START = `https://safe-caverns-60257.herokuapp.com/api/v1`
     const URL_START = 'http://localhost:3000/api/v1'
     const {trip,start,end} = this.state
     const that = this

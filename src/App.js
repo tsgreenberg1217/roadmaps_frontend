@@ -22,17 +22,20 @@ class App extends Component {
     if(token){
       this.props.confirmUser(token)
     }
+    else if (this.props.history.location.pathname === '/signup'){
+      this.props.history.push('/signup')
+    }
     else{
-      this.props.history.push(`/`)
+      this.props.history.push(`/login`)
     }
   }
 
   render() {
     return (
         <div>
-        { (this.props.login) ? <NavBar/> : null}
+        { (this.props.login && this.props.history.location.pathname !== '/login') ? <NavBar/> : null}
           <Switch>
-            <Route exact path="/" component={Login_new}/>
+            <Route exact path="/login" component={Login_new}/>
             <Route path="/signup" component={SignUp}/>
             <Route path="/home" component={AllTrips}/>
             <Route path="/:user/invited" component={OnTrips}/>

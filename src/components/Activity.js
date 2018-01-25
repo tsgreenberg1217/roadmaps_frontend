@@ -42,7 +42,6 @@ class Activity extends React.Component{
   }
 
   handleSubmitPicture(){
-    debugger
     this.props.submitPicture(this.props.id,this.state.fileURL)
   }
 
