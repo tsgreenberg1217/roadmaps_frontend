@@ -1,6 +1,7 @@
 
-const URL_START = 'https://safe-caverns-60257.herokuapp.com/api/v1'
+// const URL_START = 'https://safe-caverns-60257.herokuapp.com/api/v1'
 // const URL_START = 'http://localhost:3000/api/v1'
+const URL_START = require('../routes/routes').url
 
 const HEADERS = {
   'Content-Type': 'application/json',

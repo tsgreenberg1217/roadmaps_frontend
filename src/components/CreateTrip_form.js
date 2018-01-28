@@ -6,6 +6,7 @@ import {Form, Button, Modal, Header, Icon, Segment} from 'semantic-ui-react'
 import { withRouter } from 'react-router-dom'
 import './App.css'
 import Validate from "react-validate-form"
+const URL_START = require('../routes/routes').url
 
 
 
@@ -97,8 +98,7 @@ class CreateTrip_form extends React.Component{
   }
 
   validate(){
-    const URL_START = `https://safe-caverns-60257.herokuapp.com/api/v1`
-    // const URL_START = 'http://localhost:3000/api/v1'
+    // const URL_START = `https://safe-caverns-60257.herokuapp.com/api/v1`
     const {trip,start,end} = this.state
     const that = this
     fetch(`${URL_START}/validations/start-end`,{
