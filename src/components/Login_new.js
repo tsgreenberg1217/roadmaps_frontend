@@ -104,7 +104,7 @@ class Login_new extends React.Component{
             fluid
             icon='lock'
             iconPosition='left'
-            placeholder='Password'
+            placeholder='password'
             type='password'
             onChange = {(e) => this.handlePasswordChange(e.target.value)}
           />

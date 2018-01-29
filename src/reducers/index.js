@@ -31,10 +31,14 @@ const tripDefault = {
   every_trip: {}
 }
 
-function signupReducer(state = defaultState, action){
+function signupReducer(state = signupDefault, action){
   switch (action.type) {
     case "SIGNUP_ERROR":
-      state = {...state, errors:true, messages: 'username taken'}
+    // debugger
+      return {...state, errors:true, messages: 'username taken'}
+    case "SIGNUP_RESET":
+    // debugger
+       return {...state, errors:false, messages: 'username'}
     default:
       return state
   }
@@ -52,7 +56,6 @@ function loginReducer(state = defaultState, action) {
         return {...state, login: true, user: action.payload}
 
     case "LOGOUT_USER":
-    debugger
         return {...state, login: false, user: {}}
 
     default:

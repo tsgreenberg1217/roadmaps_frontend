@@ -8,8 +8,8 @@ import SignUp from './SignUp'
 
 
 class Signup_new extends React.Component{
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
     this.state = {
       name: '',
       password: '',
@@ -21,9 +21,31 @@ class Signup_new extends React.Component{
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  componentWillRecieveProps(next){
-    debugger
+  // componentDidMount(){
+  //   this.setState({
+  //     errors: this.props.errors,
+  //     messages: this.props.messages
+  //   }, () => {debugger})
+  // }
+
+  componentWillUpdate(nextProps, nextState){
+    if(this.state.errors !== nextProps.errors){
+      debugger
+        this.setState({
+          name: '',
+          password: '',
+          errors: nextProps.errors,
+          messages: nextProps.messages
+        })
+    }
   }
+
+  componentWillUnmount(){
+    this.props.resetSignup()
+  }
+
+
+
 
   handleNameChange(name){
     this.setState({
@@ -43,6 +65,8 @@ class Signup_new extends React.Component{
   }
 
   render(){
+    console.log('the props are',this.props.errors)
+    console.log('the state is',this.state.errors)
     const titlePhoto  = 'https://travisallendotcom.files.wordpress.com/2012/04/070.jpg'
     const inputStyle = { color: `white`,
                         background: `none`,
@@ -103,6 +127,7 @@ class Signup_new extends React.Component{
             fluid
             icon='user'
             iconPosition='left'
+            value = {this.state.name}
             error = {this.state.errors}
             placeholder= {this.state.messages}
             onChange = {(e) => this.handleNameChange(e.target.value)}
@@ -111,6 +136,8 @@ class Signup_new extends React.Component{
             fluid
             icon='lock'
             iconPosition='left'
+            value = {this.state.password}
+            error = {this.state.errors}
             placeholder='password'
             type='password'
             onChange = {(e) => this.handlePasswordChange(e.target.value)}
@@ -130,8 +157,11 @@ class Signup_new extends React.Component{
 }
 
 const mapStateToProps = (state) =>{
+  // debugger
+
   return{
-    signup: state.signup
+    errors: state.signup.errors,
+    messages: state.signup.messages
   }
 }
 

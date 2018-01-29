@@ -33,7 +33,6 @@ class App extends Component {
   }
 
   render() {
-    debugger
     return (
         <div>
         { (this.props.login && this.props.history.location.pathname !== '/login' && this.props.history.location.pathname !== '/signup')

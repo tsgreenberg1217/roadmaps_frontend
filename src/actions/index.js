@@ -1,6 +1,13 @@
 import {destroyPicture,destroyActivity, fetchEveryTrip, createPicture ,fetchStop,createActivity,updateStopOrder, destroyStop,login, confirm, signup, fetchNewTrip, fetchTrip, destroyTrip, createStop, showStops, getAllTrips, createFriendship, getAllOnTrips} from '../services/backendApi'
 
 
+export function resetSignup(){
+  return function(dispatch){
+
+    dispatch({type: "SIGNUP_RESET"})
+  }
+}
+
 export function deletePicture(picture_id){
   return function(dispatch){
     destroyPicture(picture_id).then(json => {
@@ -178,7 +185,7 @@ export function getOnTrips(){
 export function submitStop(state, trip_id){
   return function(dispatch){
     createStop(state, trip_id).then( json => {
-      debugger
+      // debugger
       dispatch({
         type: "CREATE_STOP",
         payload: json.stops
@@ -245,7 +252,7 @@ export function getTrip(trip_id, history, name){
 export function loginUser(value, history){
   return function(dispatch){
     login(value).then(json => {
-      debugger
+      // debugger
       if (!json.error){
         localStorage.setItem("token", json.jwt)
         json.user.user_trips = json.trips
@@ -273,21 +280,11 @@ export function createTrip(value, history){
 
   return function(dispatch){
     fetchNewTrip(value).then(json => {
-
-      if(json.messages){
-        dispatch({
-          type: "SIGNUP_ERROR",
-        })
-        history.push('/signup')
-      }
-      else{
-        dispatch({
+      dispatch({
           type: "SELECT_TRIP",
           payload: json
         })
-      }
       history.push(`/${user}/${json.id}`)
-
     })
 
   }
@@ -296,13 +293,20 @@ export function createTrip(value, history){
 export function signupUser(value, history){
   return function(dispatch){
     signup(value).then(json => {
-      debugger
-      localStorage.setItem("token", json.jwt)
-      dispatch({
-        type: "SIGNUP_USER",
-        payload: json.user
-      })
-      history.push(`/${json.user.name}`)
+      // debugger
+      if(json.message){
+        dispatch({type: "SIGNUP_ERROR"})
+        history.push('/signup')
+      }
+      else{
+
+        localStorage.setItem("token", json.jwt)
+        dispatch({
+          type: "SIGNUP_USER",
+          payload: json.user
+        })
+        history.push(`/${json.user.name}`)
+      }
     })
   }
 }
