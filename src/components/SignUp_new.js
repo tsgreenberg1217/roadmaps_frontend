@@ -30,7 +30,7 @@ class Signup_new extends React.Component{
 
   componentWillUpdate(nextProps, nextState){
     if(this.state.errors !== nextProps.errors){
-      debugger
+      // debugger
         this.setState({
           name: '',
           password: '',

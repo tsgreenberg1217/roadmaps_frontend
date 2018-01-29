@@ -194,7 +194,7 @@ export function fetchNewTrip(trip_params){
 }
 
 export function login(user_params){
-  debugger
+  // debugger
   return fetch(`${URL_START}/auth`,{
     headers: HEADERS,
     method: 'POST',
