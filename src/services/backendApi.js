@@ -215,7 +215,6 @@ export function confirm(token){
 }
 
 export function signup(user_params){
-  debugger
   return fetch(`${URL_START}/users`, {
     headers: HEADERS,
     method: 'POST',

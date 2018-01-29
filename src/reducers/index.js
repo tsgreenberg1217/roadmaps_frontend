@@ -3,6 +3,11 @@
 
 import {combineReducers} from 'redux'
 
+const signupDefault = {
+  errors: false,
+  messages: 'username'
+}
+
 const defaultState = {
   login: false,
   user: {},
@@ -26,6 +31,15 @@ const tripDefault = {
   every_trip: {}
 }
 
+function signupReducer(state = defaultState, action){
+  switch (action.type) {
+    case "SIGNUP_ERROR":
+      state = {...state, errors:true, messages: 'username taken'}
+    default:
+      return state
+  }
+}
+
 function loginReducer(state = defaultState, action) {
   switch (action.type) {
     case "FETCH_USER":
@@ -38,6 +52,7 @@ function loginReducer(state = defaultState, action) {
         return {...state, login: true, user: action.payload}
 
     case "LOGOUT_USER":
+    debugger
         return {...state, login: false, user: {}}
 
     default:
@@ -113,6 +128,7 @@ function uiReducer(state = defaultUi, action){
 
 
 export default combineReducers({
+  signup: signupReducer,
   auth: loginReducer,
   stops: stopReducer,
   ui: uiReducer,

@@ -268,16 +268,24 @@ export function loginUser(value, history){
 }
 
 export function createTrip(value, history){
-  debugger
+
   const user = history.location.pathname.split('/')[1]
 
   return function(dispatch){
     fetchNewTrip(value).then(json => {
-      debugger
-      dispatch({
-        type: "SELECT_TRIP",
-        payload: json
-      })
+
+      if(json.messages){
+        dispatch({
+          type: "SIGNUP_ERROR",
+        })
+        history.push('/signup')
+      }
+      else{
+        dispatch({
+          type: "SELECT_TRIP",
+          payload: json
+        })
+      }
       history.push(`/${user}/${json.id}`)
 
     })
@@ -317,7 +325,7 @@ export function logoutUser(history){
       type: "LOGOUT_USER",
       payload: null
     })
-    history.push(`/`)
+    history.push(`/login`)
 
   }
 }

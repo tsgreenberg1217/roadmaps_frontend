@@ -33,9 +33,11 @@ class App extends Component {
   }
 
   render() {
+    debugger
     return (
         <div>
-        { (this.props.login && this.props.history.location.pathname !== '/login') ? <NavBar/> : null}
+        { (this.props.login && this.props.history.location.pathname !== '/login' && this.props.history.location.pathname !== '/signup')
+        ? <NavBar/> : null}
           <Switch>
             <Route exact path="/login" component={Login_new}/>
             <Route path="/signup" component={SignUp_new}/>

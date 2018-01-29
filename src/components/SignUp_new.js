@@ -12,11 +12,17 @@ class Signup_new extends React.Component{
     super()
     this.state = {
       name: '',
-      password: ''
+      password: '',
+      errors: false,
+      messages: 'username'
     }
     this.handleNameChange = this.handleNameChange.bind(this)
     this.handlePasswordChange = this.handlePasswordChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+  }
+
+  componentWillRecieveProps(next){
+    debugger
   }
 
   handleNameChange(name){
@@ -97,14 +103,15 @@ class Signup_new extends React.Component{
             fluid
             icon='user'
             iconPosition='left'
-            placeholder='username'
+            error = {this.state.errors}
+            placeholder= {this.state.messages}
             onChange = {(e) => this.handleNameChange(e.target.value)}
           />
           <Form.Input
             fluid
             icon='lock'
             iconPosition='left'
-            placeholder='Password'
+            placeholder='password'
             type='password'
             onChange = {(e) => this.handlePasswordChange(e.target.value)}
           />
@@ -122,6 +129,12 @@ class Signup_new extends React.Component{
   }
 }
 
+const mapStateToProps = (state) =>{
+  return{
+    signup: state.signup
+  }
+}
 
 
-export default withRouter(connect(null, actions)(Signup_new));
+
+export default withRouter(connect(mapStateToProps, actions)(Signup_new));

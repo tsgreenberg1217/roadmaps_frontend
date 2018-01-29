@@ -9,9 +9,9 @@ class NavBar extends React.Component{
   constructor(){
     super()
     this.state = {}
-    this.handleItemClick = this.handleItemClick.bind(this)
+    // this.handleItemClick = this.handleItemClick.bind(this)
   }
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+  // handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
   render(){
     return(
