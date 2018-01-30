@@ -34,10 +34,9 @@ const tripDefault = {
 function signupReducer(state = signupDefault, action){
   switch (action.type) {
     case "SIGNUP_ERROR":
-    // debugger
+
       return {...state, errors:true, messages: 'username taken'}
     case "SIGNUP_RESET":
-    // debugger
        return {...state, errors:false, messages: 'username'}
     default:
       return state

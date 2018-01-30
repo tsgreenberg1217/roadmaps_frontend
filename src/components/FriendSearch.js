@@ -12,7 +12,7 @@ class FriendSearch extends React.Component{
     this.state = {
       friend: '',
       friendError: false,
-      friendMessage: 'Invite your friends here'
+      friendMessage: 'Find friend'
     }
     this.handeChange = this.handeChange.bind(this)
   }
@@ -55,7 +55,6 @@ class FriendSearch extends React.Component{
           value = {this.state.friend}
           error = {this.state.friendError}
           onChange = {(e)=> this.handeChange(e.target.value)}/>
-          <br/>
           <Button type= "Submit">Invite</Button>
         </form>
       </div>

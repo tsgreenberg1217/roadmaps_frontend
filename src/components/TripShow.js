@@ -34,16 +34,14 @@ class TripShow extends React.Component{
       lat: 40.75,
       lng: -73.98
     }
-    console.log(this.props.trips.selected_trip.friends)
     return(
       <Container>
       <Grid columns = {3}>
 
-      <Grid.Column/>
         <Grid.Column >
-        <FriendSearch/>
         </Grid.Column>
         <Grid.Column >
+        <FriendSearch/>
         {(this.props.trips.selected_trip.friends !== undefined && this.props.trips.selected_trip.friends[0] !== "there are no friends") ?
           <FriendsContainer friend = {this.props.trips.selected_trip.friends}/>
           : null}
