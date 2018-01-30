@@ -12,7 +12,7 @@
 
 ## How it's made 
 * The front end uses the React.js library along with Redux and thunk for asynchronus dispatches.
-* The google maps were gerated with the [react-google-maps]('https://github.com/tomchentw/react-google-maps') library. Waypoints, routes, and arrival times were fetched from the google maps api.
+* The google maps were gerated with the [react-google-maps](https://github.com/tomchentw/react-google-maps) library. Waypoints, routes, and arrival times were fetched from the google maps api.
 * Styled with semantic, and some custom CSS
 
 ## Instructions to run frontend
