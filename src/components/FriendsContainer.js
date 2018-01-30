@@ -1,5 +1,5 @@
 import React from 'react'
-import {Segment, List} from 'semantic-ui-react'
+import {Segment, List, Image} from 'semantic-ui-react'
 
 
 
@@ -16,19 +16,18 @@ class FriendsContainer extends React.Component{
     const friendDivs = this.props.friend.map(friend =>{
       return(
         <List.Item>
+        <List.Icon name = 'user'/>
           <List.Content>
-            <List.Header>{friend.name} is invited</List.Header>
+            <List.Description><strong>{friend.name}</strong> is on the trip</List.Description>
           </List.Content>
         </List.Item>
       )
     })
 
     return(
-      <Segment inverted>
-      <List divided inverted relaxed>
+      <List celled>
       {friendDivs}
       </List>
-      </Segment>
     )
   }
 }
