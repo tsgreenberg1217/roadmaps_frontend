@@ -14,7 +14,8 @@ class Signup_new extends React.Component{
       name: '',
       password: '',
       errors: false,
-      messages: 'username'
+      messages: 'username',
+      isLoading: false
     }
     this.handleNameChange = this.handleNameChange.bind(this)
     this.handlePasswordChange = this.handlePasswordChange.bind(this)
@@ -35,7 +36,8 @@ class Signup_new extends React.Component{
           name: '',
           password: '',
           errors: nextProps.errors,
-          messages: nextProps.messages
+          messages: nextProps.messages,
+          isLoading: false
         })
     }
   }
@@ -61,7 +63,10 @@ class Signup_new extends React.Component{
 
   handleSubmit(e){
     e.preventDefault()
-    this.props.signupUser(this.state, this.props.history)
+    this.setState({
+      isLoading: true
+    }, () =>{this.props.signupUser(this.state, this.props.history)})
+
   }
 
   render(){
@@ -143,7 +148,7 @@ class Signup_new extends React.Component{
             onChange = {(e) => this.handlePasswordChange(e.target.value)}
           />
 
-          <Button color='teal' fluid size='large'>Sign up</Button>
+          <Button loading= {this.state.isLoading}color='teal' fluid size='large'>Sign up</Button>
         </Segment>
       </Form>
       <Message>

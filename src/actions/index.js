@@ -293,13 +293,12 @@ export function createTrip(value, history){
 export function signupUser(value, history){
   return function(dispatch){
     signup(value).then(json => {
-      // debugger
+      debugger
       if(json.message){
         dispatch({type: "SIGNUP_ERROR"})
         history.push('/signup')
       }
       else{
-
         localStorage.setItem("token", json.jwt)
         dispatch({
           type: "SIGNUP_USER",
