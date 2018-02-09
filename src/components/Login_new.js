@@ -12,7 +12,8 @@ class Login_new extends React.Component{
     super()
     this.state = {
       name: '',
-      password: ''
+      password: '',
+      isLoading: false
     }
     this.handleNameChange = this.handleNameChange.bind(this)
     this.handlePasswordChange = this.handlePasswordChange.bind(this)
@@ -33,7 +34,9 @@ class Login_new extends React.Component{
 
   handleSubmit(e){
     e.preventDefault()
-    this.props.loginUser(this.state, this.props.history)
+    this.setState({
+      isLoading: true
+    },()=>{this.props.loginUser(this.state, this.props.history)})
   }
 
   render(){
@@ -109,7 +112,7 @@ class Login_new extends React.Component{
             onChange = {(e) => this.handlePasswordChange(e.target.value)}
           />
 
-          <Button color='teal' fluid size='large'>Login</Button>
+          <Button loading={this.state.isLoading} color='teal' fluid size='large'>Login</Button>
         </Segment>
       </Form>
       <Message>
